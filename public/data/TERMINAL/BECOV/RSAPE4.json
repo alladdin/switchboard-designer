@@ -1,0 +1,15 @@
+{
+    "name": {
+        "top": 47,
+        "width": "100%",
+        "left": 0
+    },
+    "symbol": {
+        "width": 7.4,
+        "height": 50,
+        "y_origin": 25,
+        "file": "TERMINAL/BECOV/din-terminal-RSAPE4-ground.svg"
+    },
+    "default": {},
+    "options": {}
+}

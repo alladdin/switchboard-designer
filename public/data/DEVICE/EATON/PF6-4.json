@@ -1,0 +1,35 @@
+{
+    "label": {
+        "title": [
+            { "text": "PF6-" },
+            { "text": "{{overcurrent}}", "tag": "strong", "font_size": "1.5em" },
+            { "text": "/4/" },
+            { "text": "{{cutoff_current}}", "tag": "strong", "font_size": "1.5em" }
+        ],
+        "font_size": "2.5mm",
+        "bottom": 52,
+        "width": "100%",
+        "left": 0
+    },
+    "name": {
+        "top": 52,
+        "width": "100%",
+        "left": 0
+    },
+    "symbol": {
+        "width": 70,
+        "height": 100,
+        "y_origin": 50,
+        "file": "DEVICE/EATON/din-device-rccb-p4.svg"
+    },
+    "params": {
+        "default": {
+            "overcurrent": 25,
+            "cutoff_current": "003"
+        },
+        "options": {
+            "overcurrent": [ 25, 40, 63 ],
+            "cutoff_current": [ "003", "03" ]
+        }
+    }
+}

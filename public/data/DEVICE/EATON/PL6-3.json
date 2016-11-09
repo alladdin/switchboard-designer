@@ -1,0 +1,34 @@
+{
+    "label": {
+        "title": [
+            { "text": "PL6-" },
+            { "text": "{{characteristic}}{{overcurrent}}", "tag": "strong", "font_size": "1.5em" },
+            { "text": "/3" }
+        ],
+        "font_size": "2.5mm",
+        "bottom": 52,
+        "width": "100%",
+        "left": 0
+    },
+    "name": {
+        "top": 52,
+        "width": "100%",
+        "left": 0
+    },
+    "symbol": {
+        "width": 52.5,
+        "height": 100,
+        "y_origin": 50,
+        "file": "DEVICE/EATON/din-device-p3.svg"
+    },
+    "params": {
+        "default": {
+            "characteristic": "B",
+            "overcurrent": 16
+        },
+        "options": {
+            "characteristic": ["B", "C"],
+            "overcurrent": [ 2, 4, 6, 10, 13, 16, 20, 25, 32, 40, 50, 63 ]
+        }
+    }
+}

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 52.5 100" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <radialGradient id="gradient-0" gradientUnits="userSpaceOnUse" cx="10.176" cy="17.176" r="3.75" gradientTransform="matrix(1.413424, 0, 0, 1.490798, -4.207004, -8.429953)">
+      <stop offset="0" style="stop-color: rgb(111, 111, 111);"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <linearGradient id="gradient-2" gradientUnits="userSpaceOnUse" x1="8.75" y1="52" x2="8.75" y2="55" gradientTransform="matrix(1.000001, 0, 0, 1, -0.000007, -0.000034)">
+      <stop offset="0" style="stop-color: rgb(51, 51, 51);"/>
+      <stop offset="1" style="stop-color: rgb(238, 238, 238);"/>
+    </linearGradient>
+    <radialGradient id="gradient-1" gradientUnits="userSpaceOnUse" cx="10.176" cy="17.176" r="3.75" gradientTransform="matrix(1.413424, 0, 0, 1.490798, -4.207009, 60.070049)">
+      <stop offset="0" style="stop-color: rgb(111, 111, 111);"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <linearGradient id="gradient-3" gradientUnits="userSpaceOnUse" x1="8.75" y1="41.5" x2="8.75" y2="52" gradientTransform="matrix(0.491555, 0, 0, 0.491555, 4.448895, 21.100487)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 1)"/>
+      <stop offset="0.47" style="stop-color: rgb(121, 121, 121);"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 1)"/>
+    </linearGradient>
+    <radialGradient id="gradient-4" gradientUnits="userSpaceOnUse" cx="10.176" cy="17.176" r="3.75" gradientTransform="matrix(1.413423, 0, 0, 1.490798, 13.293014, -8.429951)">
+      <stop offset="0" style="stop-color: rgb(111, 111, 111);"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <linearGradient id="gradient-5" gradientUnits="userSpaceOnUse" x1="8.75" y1="41.5" x2="8.75" y2="52" gradientTransform="matrix(0.491555, 0, 0, 0.491555, 21.948897, 21.100487)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 1)"/>
+      <stop offset="0.47" style="stop-color: rgb(121, 121, 121);"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 1)"/>
+    </linearGradient>
+    <linearGradient id="gradient-6" gradientUnits="userSpaceOnUse" x1="8.75" y1="52" x2="8.75" y2="55" gradientTransform="matrix(1.000001, 0, 0, 0.999997, 17.499994, 0.000102)">
+      <stop offset="0" style="stop-color: rgb(51, 51, 51);"/>
+      <stop offset="1" style="stop-color: rgb(238, 238, 238);"/>
+    </linearGradient>
+    <radialGradient id="gradient-7" gradientUnits="userSpaceOnUse" cx="10.176" cy="17.176" r="3.75" gradientTransform="matrix(1.413425, 0, 0, 1.4908, 13.292979, 60.070014)">
+      <stop offset="0" style="stop-color: rgb(111, 111, 111);"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <radialGradient id="gradient-8" gradientUnits="userSpaceOnUse" cx="10.176" cy="17.176" r="3.75" gradientTransform="matrix(1.413423, 0, 0, 1.490798, 30.793018, -8.429949)">
+      <stop offset="0" style="stop-color: rgb(111, 111, 111);"/>
+      <stop offset="1"/>
+    </radialGradient>
+    <linearGradient id="gradient-9" gradientUnits="userSpaceOnUse" x1="8.75" y1="41.5" x2="8.75" y2="52" gradientTransform="matrix(0.491556, 0, 0, 0.491555, 39.448891, 21.100487)">
+      <stop offset="0" style="stop-color: rgba(0, 0, 0, 1)"/>
+      <stop offset="0.47" style="stop-color: rgb(121, 121, 121);"/>
+      <stop offset="1" style="stop-color: rgba(0, 0, 0, 1)"/>
+    </linearGradient>
+    <linearGradient id="gradient-10" gradientUnits="userSpaceOnUse" x1="8.75" y1="52" x2="8.75" y2="55" gradientTransform="matrix(1.000001, 0, 0, 0.999996, 34.999993, 0.000141)">
+      <stop offset="0" style="stop-color: rgb(51, 51, 51);"/>
+      <stop offset="1" style="stop-color: rgb(238, 238, 238);"/>
+    </linearGradient>
+    <radialGradient id="gradient-11" gradientUnits="userSpaceOnUse" cx="10.176" cy="17.176" r="3.75" gradientTransform="matrix(1.413425, 0, 0, 1.4908, 30.792978, 60.070014)">
+      <stop offset="0" style="stop-color: rgb(111, 111, 111);"/>
+      <stop offset="1"/>
+    </radialGradient>
+  </defs>
+  <path d="M 5 8 L 12.5 8 L 12.5 10 L 17.5 10 L 17.5 90 L 12.5 90 L 12.5 92 L 5 92 L 5 90 L 0 90 L 0 10 L 5 10 Z" style="stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238); stroke-width: 0.2;"/>
+  <path d="M 0 27.5 H 17.5 M 17.5 72.5 H 0" style="stroke-width: 0.4; fill: none; stroke: rgb(0, 0, 0);"/>
+  <ellipse cx="8.75" cy="15.75" rx="3.75" ry="3.75" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-0);"/>
+  <rect y="41.5" width="13.5" height="10.5" x="2" style="fill: url(#gradient-3);"/>
+  <rect y="35.252" width="17.5" height="4.5" transform="matrix(1, 0, 0, 1.000001, 0, 2.248234)"/>
+  <rect y="42" width="2" height="13" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238);"/>
+  <rect y="42" width="2" height="13" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238);" x="15.5"/>
+  <rect x="2" width="13.5" height="3" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-2);" y="52"/>
+  <path d="M -23.728 81.681 L -19.728 95.681 L -27.728 95.681 L -23.728 81.681 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.2;" transform="matrix(0, 1, -1, 0, 95.681, 85.728041)" bx:shape="triangle -27.728 81.681 8 14 0.5 0 1@4f80ef38"/>
+  <path d="M -8.898 35.007 L -7.398 41.007 L -10.398 41.007 L -8.898 35.007 Z" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(26, 171, 3);" transform="matrix(0, 1, -1, 0, 46.007, 70.897996)" bx:shape="triangle -10.398 35.007 3 6 0.5 0 1@5811f3c1"/>
+  <ellipse cx="8.75" cy="84.25" rx="3.75" ry="3.75" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-1);"/>
+  <path d="M 22.5 8 L 30 8 L 30 10 L 35 10 L 35 90 L 30 90 L 30 92 L 22.5 92 L 22.5 90 L 17.5 90 L 17.5 10 L 22.5 10 Z" style="stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238); stroke-width: 0.2;"/>
+  <path d="M 17.5 27.5 L 35 27.5 M 35 72.5 L 17.5 72.5" style="stroke-width: 0.4; fill: none; stroke: rgb(0, 0, 0);"/>
+  <ellipse cx="26.25" cy="15.75" rx="3.75" ry="3.75" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-4);"/>
+  <rect y="41.5" width="13.5" height="10.5" x="19.5" style="fill: url(#gradient-5);"/>
+  <rect y="37.5" width="17.5" height="4.5" x="17.5"/>
+  <rect y="42" width="2" height="13" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238);" x="17.5"/>
+  <rect y="42" width="2" height="13" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238);" x="33"/>
+  <rect x="19.5" width="13.5" height="3" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-6);" y="52"/>
+  <path d="M -23.728 81.681 L -19.728 95.681 L -27.728 95.681 L -23.728 81.681 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.2;" transform="matrix(0, 1, -1, 0, 113.181, 85.728056)" bx:shape="triangle -27.728 81.681 8 14 0.5 0 1@4f80ef38"/>
+  <path d="M -8.898 35.007 L -7.398 41.007 L -10.398 41.007 L -8.898 35.007 Z" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(26, 171, 3);" transform="matrix(0, 1, -1, 0, 63.507, 70.897996)" bx:shape="triangle -10.398 35.007 3 6 0.5 0 1@5811f3c1"/>
+  <ellipse cx="26.25" cy="84.25" rx="3.75" ry="3.75" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-7);"/>
+  <path d="M 40 8 L 47.5 8 L 47.5 10 L 52.5 10 L 52.5 90 L 47.5 90 L 47.5 92 L 40 92 L 40 90 L 35 90 L 35 10 L 40 10 Z" style="stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238); stroke-width: 0.2;"/>
+  <path d="M 35 27.5 L 52.5 27.5 M 52.5 72.5 L 35 72.5" style="stroke-width: 0.4; fill: none; stroke: rgb(0, 0, 0);"/>
+  <ellipse cx="43.75" cy="15.75" rx="3.75" ry="3.75" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-8);"/>
+  <rect y="41.5" width="13.5" height="10.5" x="37" style="fill: url(#gradient-9);"/>
+  <rect y="37.5" width="17.5" height="4.5" x="35"/>
+  <rect y="42" width="2" height="13" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238);" x="35"/>
+  <rect y="42" width="2" height="13" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(238, 238, 238);" x="50.5"/>
+  <rect x="37" width="13.5" height="3" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-10);" y="52"/>
+  <path d="M -23.728 81.681 L -19.728 95.681 L -27.728 95.681 L -23.728 81.681 Z" style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0); stroke-width: 0.2;" transform="matrix(0, 1, -1, 0, 130.681, 85.728071)" bx:shape="triangle -27.728 81.681 8 14 0.5 0 1@4f80ef38"/>
+  <path d="M -8.898 35.007 L -7.398 41.007 L -10.398 41.007 L -8.898 35.007 Z" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: rgb(26, 171, 3);" transform="matrix(0, 1, -1, 0, 81.007004, 70.897996)" bx:shape="triangle -10.398 35.007 3 6 0.5 0 1@5811f3c1"/>
+  <ellipse cx="43.75" cy="84.25" rx="3.75" ry="3.75" style="stroke-width: 0.4; stroke: rgb(0, 0, 0); fill: url(#gradient-11);"/>
+  <path d="M 5 8 L 12.5 8 L 12.5 10 L 22.5 10 L 22.5 8 L 30 8 L 30 10 L 40 10 L 40 8 L 47.5 8 L 47.5 10 L 52.5 10 L 52.5 90 L 47.5 90 L 47.5 92 L 40 92 L 40 90 L 30 90 L 30 92 L 22.5 92 L 22.5 90 L 12.5 90 L 12.5 92 L 5 92 L 5 90 L 0 90 L 0 10 L 5 10 Z" style="stroke: rgb(0, 0, 0); fill: none; stroke-width: 0.8;"/>
+</svg>
