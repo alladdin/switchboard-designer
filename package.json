@@ -5,7 +5,7 @@
   "scripts": {
     "start": "tsc && concurrently \"tsc -w\" \"lite-server --config bs-config.js\" ",
     "lint": "tslint ./app/**/*.ts -t verbose",
-    "lite": "lite-server",
+    "lite": "lite-server --config bs-config.js",
     "tsc": "tsc",
     "tsc:w": "tsc -w",
     "test": "echo \"Error: no test specified\" && exit 1"

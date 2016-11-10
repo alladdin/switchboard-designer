@@ -24,3 +24,7 @@ div.app-loading {
     font-weight: bold;
     font-size: 2em;
 }
+
+.selected > h2, .selected > .name {
+    color: rgba(192,0,0,1);
+}

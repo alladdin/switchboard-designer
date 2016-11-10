@@ -4,10 +4,11 @@ import { Component } from '@angular/core';
     selector: 'my-app',
     template: `
         <div class="main-panel">
-            <SwitchBoard></SwitchBoard>
+            <SwitchBoard [ui]="ui"></SwitchBoard>
         </div>
     `
 })
 
 export class AppComponent {
+    public ui: any = { selected: [] };
 }

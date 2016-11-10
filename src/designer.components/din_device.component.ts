@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { DINDevice } from '../structures/all';
 import { Rail } from '../structures/all';
 import { ItemService } from '../item.service';
+import { ControlComponent } from './control.component';
 
 @Component({
     selector: 'DINDevice',
@@ -10,10 +11,6 @@ import { ItemService } from '../item.service';
         .din-device {
             position: relative;
             float: left;
-        }
-
-        .din-device.selected {
-            background-color: rgba(255,128,128,0.4);
         }
 
         .din-device .symbol {
@@ -41,9 +38,11 @@ import { ItemService } from '../item.service';
     `],
     template: `
         <div ngClass="din-device" *ngIf="device_type"
+                    [class.selected]="isSelected(item)"
                     [style.height]="current_rail.height + 'mm'"
                     [style.width]="device_type.symbol.width + 'mm'">
             <span ngClass="name"
+                    (click)="setSelected($event, [item])"
                     [style.left]="device_type.name.left + 'mm'"
                     [style.top]="device_type.name.top + 'mm'"
                     [style.bottom]="device_type.name.bottom + 'mm'"
@@ -51,6 +50,7 @@ import { ItemService } from '../item.service';
                 {{item.group_name}}{{item.group_id}}
             </span>
             <span ngClass="value"
+                    (click)="setSelected($event, [item])"
                     [style.left]="device_type.label.left + 'mm'"
                     [style.font-size]="device_type.label.font_size"
                     [style.top]="device_type.label.top + 'mm'"
@@ -59,6 +59,13 @@ import { ItemService } from '../item.service';
                 <ValueTitle [texts]="device_type.label.title" [params]="item.device_params"></ValueTitle>
             </span>
             <img ngClass="symbol" src="data/{{device_type.symbol.file | paramsInterpolate:item.device_params}}"
+                (click)="setSelected($event, [item])"
+                [style.width]="device_type.symbol.width + 'mm'"
+                [style.height]="device_type.symbol.height + 'mm'"
+                [style.top]="(current_rail.height/2 - device_type.symbol.y_origin) + 'mm'">
+            <img ngClass="symbol outline" src="data/{{device_type.symbol.outline | paramsInterpolate:item.device_params}}"
+                *ngIf="isSelected(item)"
+                (click)="setSelected($event, [item])"
                 [style.width]="device_type.symbol.width + 'mm'"
                 [style.height]="device_type.symbol.height + 'mm'"
                 [style.top]="(current_rail.height/2 - device_type.symbol.y_origin) + 'mm'">
@@ -66,14 +73,15 @@ import { ItemService } from '../item.service';
     `
 })
 
-export class DINDeviceComponent implements OnInit {
+export class DINDeviceComponent extends ControlComponent implements OnInit {
     @Input() item: DINDevice;
     @Input() current_rail: Rail;
+    @Input() ui: any;
     device_type: any;
 
     constructor(
         private item_service: ItemService
-    ) {}
+    ) { super() }
 
     loadDeviceType(): void {
         this.item_service.getItem(this.item.device_type).then(device_type => this.device_type = device_type);

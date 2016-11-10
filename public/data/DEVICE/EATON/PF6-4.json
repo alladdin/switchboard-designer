@@ -20,7 +20,8 @@
         "width": 70,
         "height": 100,
         "y_origin": 50,
-        "file": "DEVICE/EATON/din-device-rccb-p4.svg"
+        "file": "DEVICE/EATON/din-device-rccb-p4.svg",
+        "outline": "DEVICE/EATON/din-device-rccb-p4-outline.svg"
     },
     "params": {
         "default": {

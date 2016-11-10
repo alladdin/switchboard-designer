@@ -19,7 +19,8 @@
         "width": 52.5,
         "height": 100,
         "y_origin": 50,
-        "file": "DEVICE/EATON/din-device-p3.svg"
+        "file": "DEVICE/EATON/din-device-p3.svg",
+        "outline": "DEVICE/EATON/din-device-p3-outline.svg"
     },
     "params": {
         "default": {

@@ -3,6 +3,7 @@ import { Component, Input } from '@angular/core';
 import { DINTerminalGroup } from '../structures/all';
 import { Rail } from '../structures/all';
 import { ItemService } from '../item.service';
+import { ControlComponent } from './control.component';
 
 @Component({
     selector: 'DINTerminalGroup',
@@ -11,6 +12,10 @@ import { ItemService } from '../item.service';
             position: relative;
             float: left;
             border-left: 0.4mm dashed gray;
+        }
+
+        .din-terminal-group.selected {
+            background-color: rgba(255,128,128,0.4);
         }
 
         .din-terminal-group .name {
@@ -27,14 +32,24 @@ import { ItemService } from '../item.service';
         }
     `],
     template: `
-        <div ngClass="din-terminal-group" [style.height]="current_rail.height + 'mm'">
-            <span ngClass="name">{{item.group_name}}{{item.group_id}}</span>
-            <DINTerminal *ngFor="let terminal of item.terminals" [current_rail]="current_rail" [item]="terminal" ></DINTerminal>
+        <div ngClass="din-terminal-group"
+                    [class.selected]="isSelected(item)"
+                    (click)="setSelected($event, [item])"
+                    [style.height]="current_rail.height + 'mm'">
+            <span ngClass="name"
+                    (click)="setSelected($event, [item])">
+                {{item.group_name}}{{item.group_id}}
+            </span>
+            <DINTerminal *ngFor="let terminal of item.terminals" [current_rail]="current_rail" [item]="terminal" [ui]="ui" ></DINTerminal>
         </div>
     `
 })
 
-export class DINTerminalGroupComponent {
+export class DINTerminalGroupComponent extends ControlComponent {
     @Input() item: DINTerminalGroup;
     @Input() current_rail: Rail;
+    @Input() ui: any;
+
+    constructor (
+    ){ super() }
 }
