@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
+import { InlineSVGModule } from 'ng2-inline-svg';
 
 import {SwitchBoardService} from './switchboard.service';
 import {ItemService} from './item.service';
@@ -18,7 +19,8 @@ import { AppComponent }   from './app.component';
 @NgModule({
     imports: [
         BrowserModule,
-        HttpModule
+        HttpModule,
+        InlineSVGModule
     ],
     declarations: [
         AppComponent,

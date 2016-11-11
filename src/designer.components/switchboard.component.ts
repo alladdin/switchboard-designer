@@ -1,7 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { SwitchBoard } from '../structures/all';
-import { SwitchBoardService } from '../switchboard.service';
 import { ControlComponent } from './control.component';
 
 @Component({
@@ -23,14 +22,17 @@ import { ControlComponent } from './control.component';
             line-height: 1em;
             margin: 0;
             padding 0;
+            font-size: 3em;
         }
 
         .switchboard.selected {
             border: 0.8mm solid rgba(255,92,92,0.8);
+            /*background-color: rgba(255,128,128,0.4);*/
         }
     `],
     template: `
         <div *ngIf="current_switchboard" ngClass="switchboard"
+                [style.zoom]="(this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/100"
                 [class.selected]="isSelected(current_switchboard)"
                 (click)="setSelected($event, [current_switchboard])"
                 [style.width]="current_switchboard.width + 'mm'"
@@ -41,19 +43,9 @@ import { ControlComponent } from './control.component';
     `
 })
 
-export class SwitchBoardComponent extends ControlComponent implements OnInit {
+export class SwitchBoardComponent extends ControlComponent {
     @Input() ui: any;
-    current_switchboard: SwitchBoard;
+    @Input() current_switchboard: SwitchBoard;
 
-    constructor(
-        private switchboard_service: SwitchBoardService
-    ) { super() }
-
-    loadSwitchBoard(): void {
-        this.switchboard_service.getSwitchBoard(1).then(switchboard => this.current_switchboard = switchboard);
-    }
-
-    ngOnInit(): void {
-        this.loadSwitchBoard();
-    }
+    constructor() { super() }
 }

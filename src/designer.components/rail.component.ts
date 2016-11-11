@@ -14,10 +14,8 @@ import { ControlComponent } from './control.component';
             background-position: left center;      
         }
 
-        .rail-outline {
-            display: block;
-            position: absolute;
-            border: 0.8mm solid rgba(255,92,92,0.8);
+        .rail.selected {
+            background-color: rgba(255,128,128,0.4);
         }
 
         .rail > h2 {
@@ -32,12 +30,6 @@ import { ControlComponent } from './control.component';
         }
     `],
     template: `
-        <div *ngIf="current_rail && isSelected(current_rail)" ngClass="rail-outline"
-                [style.left]="current_rail.x + 'mm'"
-                [style.top]="current_rail.y + 'mm'"
-                [style.width]="current_rail.width + 'mm'"
-                [style.height]="current_rail.height + 'mm'">
-        </div>
         <div *ngIf="current_rail" ngClass="rail"
                 [class.selected]="isSelected(current_rail)"
                 (click)="setSelected($event, [current_rail])"

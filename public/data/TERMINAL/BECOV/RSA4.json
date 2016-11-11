@@ -4,12 +4,12 @@
         "width": "100%",
         "left": 0
     },
+    "width": 6.6,
     "symbol": {
         "width": 6.6,
         "height": 50,
         "y_origin": 25,
-        "file": "TERMINAL/BECOV/din-terminal-RSA4-{{color}}.svg",
-        "outline": "TERMINAL/BECOV/din-terminal-RSA4-outline.svg"
+        "file": "TERMINAL/BECOV/din-terminal-RSA4-{{color}}.svg"
     },
     "default": { "color": "gray" },
     "options": { "color": [ "black", "brown", "dark-blue", "gray", "green", "light-blue", "light-brown",

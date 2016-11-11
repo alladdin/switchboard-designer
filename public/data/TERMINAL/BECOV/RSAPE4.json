@@ -4,12 +4,12 @@
         "width": "100%",
         "left": 0
     },
+    "width": 7.4,
     "symbol": {
         "width": 7.4,
         "height": 50,
         "y_origin": 25,
-        "file": "TERMINAL/BECOV/din-terminal-RSAPE4-ground.svg",
-        "outline": "TERMINAL/BECOV/din-terminal-RSAPE4-ground-outline.svg"
+        "file": "TERMINAL/BECOV/din-terminal-RSAPE4-ground.svg"
     },
     "default": {},
     "options": {}

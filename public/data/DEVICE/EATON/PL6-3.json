@@ -15,12 +15,12 @@
         "width": "100%",
         "left": 0
     },
+    "width": 52.5,
     "symbol": {
         "width": 52.5,
         "height": 100,
         "y_origin": 50,
-        "file": "DEVICE/EATON/din-device-p3.svg",
-        "outline": "DEVICE/EATON/din-device-p3-outline.svg"
+        "file": "DEVICE/EATON/din-device-p3.svg"
     },
     "params": {
         "default": {

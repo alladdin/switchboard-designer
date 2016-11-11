@@ -28,7 +28,8 @@
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       'primeng': 'npm:primeng',
-      'angular2-uuid': 'npm:angular2-uuid/index.js'
+      'angular2-uuid': 'npm:angular2-uuid/index.js',
+      'ng2-inline-svg': 'npm:ng2-inline-svg'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -40,6 +41,10 @@
         defaultExtension: 'js'
       },
       primeng: {
+        defaultExtension: 'js'
+      },
+      'ng2-inline-svg': {
+        main: './lib/index.js',
         defaultExtension: 'js'
       }
     }

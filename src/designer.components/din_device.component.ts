@@ -4,6 +4,7 @@ import { DINDevice } from '../structures/all';
 import { Rail } from '../structures/all';
 import { ItemService } from '../item.service';
 import { ControlComponent } from './control.component';
+import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 
 @Component({
     selector: 'DINDevice',
@@ -40,7 +41,7 @@ import { ControlComponent } from './control.component';
         <div ngClass="din-device" *ngIf="device_type"
                     [class.selected]="isSelected(item)"
                     [style.height]="current_rail.height + 'mm'"
-                    [style.width]="device_type.symbol.width + 'mm'">
+                    [style.width]="device_type.width + 'mm'">
             <span ngClass="name"
                     (click)="setSelected($event, [item])"
                     [style.left]="device_type.name.left + 'mm'"
@@ -58,17 +59,12 @@ import { ControlComponent } from './control.component';
                     [style.width]="device_type.label.width">
                 <ValueTitle [texts]="device_type.label.title" [params]="item.device_params"></ValueTitle>
             </span>
-            <img ngClass="symbol" src="data/{{device_type.symbol.file | paramsInterpolate:item.device_params}}"
+            <div ngClass="symbol"
+                [inlineSVG]="'/data/'+ getSymbolPath()"
                 (click)="setSelected($event, [item])"
                 [style.width]="device_type.symbol.width + 'mm'"
                 [style.height]="device_type.symbol.height + 'mm'"
-                [style.top]="(current_rail.height/2 - device_type.symbol.y_origin) + 'mm'">
-            <img ngClass="symbol outline" src="data/{{device_type.symbol.outline | paramsInterpolate:item.device_params}}"
-                *ngIf="isSelected(item)"
-                (click)="setSelected($event, [item])"
-                [style.width]="device_type.symbol.width + 'mm'"
-                [style.height]="device_type.symbol.height + 'mm'"
-                [style.top]="(current_rail.height/2 - device_type.symbol.y_origin) + 'mm'">
+                [style.top]="(current_rail.height/2 - device_type.symbol.y_origin) + 'mm'"></div>
         </div>
     `
 })
@@ -89,5 +85,9 @@ export class DINDeviceComponent extends ControlComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadDeviceType();
+    }
+
+    getSymbolPath(): void {
+        return (new ParamsInterpolatePipe()).transform(this.device_type.symbol.file, this.item.device_params);
     }
 }

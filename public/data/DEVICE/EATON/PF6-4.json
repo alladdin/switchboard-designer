@@ -16,12 +16,12 @@
         "width": "100%",
         "left": 0
     },
+    "width": 70,
     "symbol": {
         "width": 70,
         "height": 100,
         "y_origin": 50,
-        "file": "DEVICE/EATON/din-device-rccb-p4.svg",
-        "outline": "DEVICE/EATON/din-device-rccb-p4-outline.svg"
+        "file": "DEVICE/EATON/din-device-rccb-p4.svg"
     },
     "params": {
         "default": {
