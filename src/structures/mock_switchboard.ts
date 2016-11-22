@@ -9,7 +9,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
     rails: [
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL1',
+            name: 'RAIL01',
             width: 437,
             height: 150,
             x: 54,
@@ -17,9 +17,8 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
             items: [
                 new Structure.DINDevice({
                     id: UUID.UUID(),
-                    group_name: 'GAS',
-                    group_id: 1,
-                    device_type: ['DEVICE', 'EATON', 'PL6-1'],
+                    name: 'GAS01',
+                    device_type: ['DEVICE', 'EATON', 'PL6', '1p'],
                     device_params: {
                         characteristic: 'B',
                         overcurrent: 6,
@@ -27,9 +26,8 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
                 }),
                 new Structure.DINDevice({
                     id: UUID.UUID(),
-                    group_name: 'GAS',
-                    group_id: 2,
-                    device_type: ['DEVICE', 'EATON', 'PL6-1'],
+                    name: 'GAS02',
+                    device_type: ['DEVICE', 'EATON', 'PL6', '1p'],
                     device_params: {
                         characteristic: 'B',
                         overcurrent: 6,
@@ -37,9 +35,9 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
                 }),
                 new Structure.DINDevice({
                     id: UUID.UUID(),
-                    group_name: 'GAS',
+                    name: 'GAS03',
                     group_id: 3,
-                    device_type: ['DEVICE', 'EATON', 'PL6-1'],
+                    device_type: ['DEVICE', 'EATON', 'PL6', '1p'],
                     device_params: {
                         characteristic: 'B',
                         overcurrent: 6,
@@ -49,7 +47,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
         }),
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL2',
+            name: 'RAIL02',
             width: 437,
             height: 150,
             x: 54,
@@ -57,9 +55,8 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
             items: [
                 new Structure.DINDevice({
                     id: UUID.UUID(),
-                    group_name: 'GAZ',
-                    group_id: 1,
-                    device_type: ['DEVICE', 'EATON', 'PL6-1'],
+                    name: 'GAZ01',
+                    device_type: ['DEVICE', 'EATON', 'PL6', '1p'],
                     device_params: {
                         characteristic: 'B',
                         overcurrent: 16,
@@ -67,9 +64,8 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
                 }),
                 new Structure.DINDevice({
                     id: UUID.UUID(),
-                    group_name: 'GAZ',
-                    group_id: 2,
-                    device_type: ['DEVICE', 'EATON', 'PL6-3'],
+                    name: 'GAZ02',
+                    device_type: ['DEVICE', 'EATON', 'PL6', '3p'],
                     device_params: {
                         characteristic: 'B',
                         overcurrent: 16,
@@ -77,9 +73,8 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
                 }),
                 new Structure.DINDevice({
                     id: UUID.UUID(),
-                    group_name: 'GAC',
-                    group_id: 1,
-                    device_type: ['DEVICE', 'EATON', 'PF6-4'],
+                    name: 'GAC01',
+                    device_type: ['DEVICE', 'EATON', 'PF6', '4p'],
                     device_params: {
                         overcurrent: 25,
                         cutoff_current: '003',
@@ -89,7 +84,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
         }),
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL3',
+            name: 'RAIL03',
             width: 437,
             height: 150,
             x: 54,
@@ -97,218 +92,211 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
             items: [
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAZ',
-                    group_id: 1,
+                    name: 'GAZ01',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'L',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'L',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'N',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'N',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'dark-blue' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'PE',
-                            device_type: ['TERMINAL', 'BECOV', 'RSAPE4'],
+                            name: 'PE',
+                            device_type: ['TERMINAL', 'BECOV', 'RSAPE', '4'],
                         }),
                     ],
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAZ',
-                    group_id: 2,
+                    name: 'GAZ02',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'L1',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'L1',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'L2',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'L2',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'L3',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'L3',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'N',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'N',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'dark-blue' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'PE',
-                            device_type: ['TERMINAL', 'BECOV', 'RSAPE4'],
+                            name: 'PE',
+                            device_type: ['TERMINAL', 'BECOV', 'RSAPE', '4'],
                         }),
                     ],
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAS',
-                    group_id: 1,
+                    name: 'GAS01',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'L',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'L',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'N',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'N',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'dark-blue' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'PE',
-                            device_type: ['TERMINAL', 'BECOV', 'RSAPE4'],
+                            name: 'PE',
+                            device_type: ['TERMINAL', 'BECOV', 'RSAPE', '4'],
                         }),
                     ],
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAS',
-                    group_id: 2,
+                    name: 'GAS02',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'L',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'L',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'N',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'N',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'dark-blue' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'PE',
-                            device_type: ['TERMINAL', 'BECOV', 'RSAPE4'],
+                            name: 'PE',
+                            device_type: ['TERMINAL', 'BECOV', 'RSAPE', '4'],
                         }),
                     ],
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAS',
-                    group_id: 3,
+                    group_name: 'GAS03',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'L',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'L',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'N',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: 'N',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'dark-blue' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: 'PE',
-                            device_type: ['TERMINAL', 'BECOV', 'RSAPE4'],
+                            name: 'PE',
+                            device_type: ['TERMINAL', 'BECOV', 'RSAPE', '4'],
                         }),
                     ],
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAT',
-                    group_id: 1,
+                    group_name: 'GAT01',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '0',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '0',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'gray' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '1',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '1',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'orange' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '2',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '2',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'orange' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '3',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '3',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'orange' }
                         }),
                     ],
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAT',
-                    group_id: 2,
+                    name: 'GAT02',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '0',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '0',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'black' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '1',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '1',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'red' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '2',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '2',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'red' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '3',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '3',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'red' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '4',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '4',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'red' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '5',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '5',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'red' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '6',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '6',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'red' }
                         }),
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
-                            local_name: '7',
-                            device_type: ['TERMINAL', 'BECOV', 'RSA4'],
+                            name: '7',
+                            device_type: ['TERMINAL', 'BECOV', 'RSA', '4'],
                             device_params: { color: 'red' }
                         }),
                     ],
@@ -317,11 +305,21 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
         }),
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL4',
+            name: 'RAIL04',
             width: 437,
             height: 150,
             x: 54,
             y: 510,
+            items: [
+                new Structure.DINDevice({
+                    id: UUID.UUID(),
+                    name: 'HLAVNÍ VYPÍNAČ',
+                    device_type: ['DEVICE', 'EATON', 'IS', '3p'],
+                    device_params: {
+                        overcurrent: 32,
+                    },
+                }),
+            ]
         })
     ],
 });

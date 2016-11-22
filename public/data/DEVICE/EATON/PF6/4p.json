@@ -32,5 +32,8 @@
             "overcurrent": [ 25, 40, 63 ],
             "cutoff_current": [ "003", "03" ]
         }
+    },
+    "title": {
+        "cs_CZ": "4 póly"
     }
 }

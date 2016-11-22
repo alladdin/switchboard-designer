@@ -42,7 +42,7 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
                     [style.top]="device_type.name.top + 'mm'"
                     [style.bottom]="device_type.name.bottom + 'mm'"
                     [style.width]="device_type.name.width">
-                {{item.local_name}}
+                {{item.name}}
             </span>
             <div ngClass="symbol"
                 [inlineSVG]="'/data/'+ getSymbolPath()"

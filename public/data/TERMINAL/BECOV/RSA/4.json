@@ -13,5 +13,9 @@
     },
     "default": { "color": "gray" },
     "options": { "color": [ "black", "brown", "dark-blue", "gray", "green", "light-blue", "light-brown",
-                        "orange", "purple", "red", "white", "yellow" ] }
+                        "orange", "purple", "red", "white", "yellow" ]
+    },
+    "title": {
+        "cs_CZ": "4 [mm2] (0,5-6 [mm2])"
+    }
 }

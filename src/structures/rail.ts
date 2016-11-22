@@ -2,7 +2,6 @@ import { Control } from './control';
 import { DINObject } from './din_object';
 
 export class Rail extends Control {
-    name: string;
     x: number;
     y: number;
     height: number;
@@ -11,7 +10,6 @@ export class Rail extends Control {
 
     constructor(params: any) {
         super(params);
-        this.name = params.name;
         this.x = params.x;
         this.y = params.y;
         this.width = params.width;

@@ -48,7 +48,7 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
                     [style.top]="device_type.name.top + 'mm'"
                     [style.bottom]="device_type.name.bottom + 'mm'"
                     [style.width]="device_type.name.width">
-                {{item.group_name}}{{item.group_id}}
+                {{item.name}}
             </span>
             <span ngClass="value"
                     (click)="setSelected($event, [item])"

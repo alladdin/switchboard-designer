@@ -11,6 +11,7 @@ import { ControlComponent } from './control.component';
             position: relative;
             background-color: #eee;
             border: 0.8mm solid #999;
+            transform-origin: 0 0;
         }
         
         .switchboard > h2 {
@@ -32,7 +33,7 @@ import { ControlComponent } from './control.component';
     `],
     template: `
         <div *ngIf="current_switchboard" ngClass="switchboard"
-                [style.zoom]="(this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/100"
+                [style.transform]="'scale('+(this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/100+')'"
                 [class.selected]="isSelected(current_switchboard)"
                 (click)="setSelected($event, [current_switchboard])"
                 [style.width]="current_switchboard.width + 'mm'"
