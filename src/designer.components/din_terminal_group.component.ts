@@ -38,7 +38,7 @@ import { ControlComponent } from './control.component';
                     [style.height]="current_rail.height + 'mm'">
             <span ngClass="name"
                     (click)="setSelected($event, [item])">
-                {{item.group_name}}{{item.group_id}}
+                {{item.name}}
             </span>
             <DINTerminal *ngFor="let terminal of item.terminals" [current_rail]="current_rail" [item]="terminal" [ui]="ui" ></DINTerminal>
         </div>
