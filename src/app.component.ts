@@ -41,6 +41,9 @@ import { SwitchBoardService } from './switchboard.service';
     template: `
         <div class="side app-panel">
             <h1>Switchboard designer</h1>
+            <pre>
+                {{ui.selected | json}}
+            </pre>
         </div>
         <div class="main app-panel">
             <SwitchBoard [ui]="ui" [current_switchboard]="current_switchboard"></SwitchBoard>
