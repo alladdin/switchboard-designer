@@ -5,7 +5,7 @@ import { HttpModule }    from '@angular/http';
 import {SwitchBoardService} from './switchboard.service';
 
 import { AppComponent }   from './app.component';
-import { DesignerModule } from './designer.module';
+import { DesignerModule } from './designer/designer.module';
 
 @NgModule({
     imports: [
