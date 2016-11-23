@@ -3,13 +3,13 @@ import { UUID } from 'angular2-uuid';
 
 export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard({
     id: UUID.UUID(),
-    name: 'Garage',
+    name: 'Garáž',
     width: 545,
     height: 738,
     rails: [
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL01',
+            name: 'ŘADA01',
             width: 437,
             height: 150,
             x: 54,
@@ -47,7 +47,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
         }),
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL02',
+            name: 'ŘADA02',
             width: 437,
             height: 150,
             x: 54,
@@ -84,7 +84,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
         }),
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL03',
+            name: 'ŘADA03',
             width: 437,
             height: 150,
             x: 54,
@@ -219,7 +219,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAT01',
+                    name: 'GAT01',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
@@ -305,7 +305,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
         }),
         new Structure.Rail({
             id: UUID.UUID(),
-            name: 'RAIL04',
+            name: 'ŘADA04',
             width: 437,
             height: 150,
             x: 54,

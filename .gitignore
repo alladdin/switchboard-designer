@@ -2,6 +2,7 @@
 .*.swp
 node_modules
 build
+build_css
 jspm_packages
 link-checker-results.txt
 **/*npm-debug.log.*

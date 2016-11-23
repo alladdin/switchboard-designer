@@ -33,7 +33,7 @@ import { ControlComponent } from './control.component';
     `],
     template: `
         <div *ngIf="current_switchboard" ngClass="switchboard"
-                [style.transform]="'scale('+(this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/100+')'"
+                [style.transform]="'scale('+(this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/140+')'"
                 [class.selected]="isSelected(current_switchboard)"
                 (click)="setSelected($event, [current_switchboard])"
                 [style.width]="current_switchboard.width + 'mm'"

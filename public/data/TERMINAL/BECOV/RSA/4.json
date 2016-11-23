@@ -11,9 +11,13 @@
         "y_origin": 25,
         "file": "TERMINAL/BECOV/din-terminal-RSA4-{{color}}.svg"
     },
-    "default": { "color": "gray" },
-    "options": { "color": [ "black", "brown", "dark-blue", "gray", "green", "light-blue", "light-brown",
+    "params": {
+        "color": {
+            "default": "gray",
+            "type": "select",
+            "options": [ "black", "brown", "dark-blue", "gray", "green", "light-blue", "light-brown",
                         "orange", "purple", "red", "white", "yellow" ]
+        }
     },
     "title": {
         "cs_CZ": "4 [mm2] (0,5-6 [mm2])"

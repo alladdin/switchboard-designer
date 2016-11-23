@@ -6,12 +6,14 @@ import {SwitchBoardService} from './switchboard.service';
 
 import { AppComponent }   from './app.component';
 import { DesignerModule } from './designer/designer.module';
+import { PropertyEditorModule } from './property.editor/property.editor.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         HttpModule,
         DesignerModule,
+        PropertyEditorModule,
     ],
     declarations: [
         AppComponent,

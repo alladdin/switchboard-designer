@@ -23,13 +23,15 @@
         "file": "DEVICE/EATON/din-device-p1.svg"
     },
     "params": {
-        "default": {
-            "characteristic": "B",
-            "overcurrent": 16
+        "characteristic": {
+            "default": "B",
+            "type": "select",
+            "options": ["B", "C"]
         },
-        "options": {
-            "characteristic": ["B", "C"],
-            "overcurrent": [ 2, 4, 6, 10, 13, 16, 20, 25, 32, 40, 50, 63 ]
+        "overcurrent": {
+            "default": 16,
+            "type": "select",
+            "options": [ 2, 4, 6, 10, 13, 16, 20, 25, 32, 40, 50, 63 ]
         }
     },
     "title": {

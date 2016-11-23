@@ -24,13 +24,15 @@
         "file": "DEVICE/EATON/din-device-rccb-p4.svg"
     },
     "params": {
-        "default": {
-            "overcurrent": 25,
-            "cutoff_current": "003"
+        "cutoff_current": {
+            "default": "003",
+            "type": "select",
+            "options": [ "003", "03" ]
         },
-        "options": {
-            "overcurrent": [ 25, 40, 63 ],
-            "cutoff_current": [ "003", "03" ]
+        "overcurrent": {
+            "default": 25,
+            "type": "select",
+            "options": [ 25, 40, 63 ]
         }
     },
     "title": {
