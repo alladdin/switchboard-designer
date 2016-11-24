@@ -5,6 +5,10 @@ import { FormsModule }   from '@angular/forms';
 
 import {ItemService} from '../item.service';
 import {PropertyEditorComponent} from './property.editor.component';
+import {ControlComponent} from './control.component';
+import {FieldRowComponent} from './field/row.component';
+import {FieldTextComponent} from './field/text.component';
+import {FieldTextAreaComponent} from './field/textarea.component';
 
 @NgModule({
     imports: [
@@ -13,6 +17,10 @@ import {PropertyEditorComponent} from './property.editor.component';
         FormsModule
     ],
     declarations: [
+        ControlComponent,
+        FieldRowComponent,
+        FieldTextComponent,
+        FieldTextAreaComponent,
         PropertyEditorComponent
     ],
     providers: [

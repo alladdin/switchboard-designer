@@ -196,7 +196,7 @@ export const MOCK_SWITCHBOARD: Structure.SwitchBoard = new Structure.SwitchBoard
                 }),
                 new Structure.DINTerminalGroup({
                     id: UUID.UUID(),
-                    group_name: 'GAS03',
+                    name: 'GAS03',
                     terminals: [
                         new Structure.DINTerminal({
                             id: UUID.UUID(),
