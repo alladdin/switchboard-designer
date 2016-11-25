@@ -35,6 +35,7 @@
         }
     },
     "title": {
-        "cs_CZ": "1 pól"
+        "en": "single pole",
+        "cs": "1 pól"
     }
 }

@@ -1,6 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
+import { LocaleModule, LocalizationModule } from 'angular2localization';
 
 import {SwitchBoardService} from './switchboard.service';
 
@@ -14,6 +15,8 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
         HttpModule,
         DesignerModule,
         PropertyEditorModule,
+        LocaleModule.forRoot(),
+        LocalizationModule.forRoot()
     ],
     declarations: [
         AppComponent,

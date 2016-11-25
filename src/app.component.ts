@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Locale, LocaleService, LocalizationService } from 'angular2localization';
 
 import { SwitchBoard } from './structures/all';
 import { SwitchBoardService } from './switchboard.service';
@@ -40,7 +41,12 @@ import { SwitchBoardService } from './switchboard.service';
     `],
     template: `
         <div class="side app-panel">
-            <h1>Switchboard designer</h1>
+            <h1>{{ 'APP.TITLE' | translate:lang }}</h1>
+            <div class="language-selector">
+                <ul class="menu">
+                    <li *ngFor="let lang of locale.getAvailableLanguages()"><a href="#" (click)="setLanguage(lang)">{{lang}}</a></li>
+                </ul>
+            </div>
             <PropertyEditor [ui]="ui" [item]="ui.selected[0]"></PropertyEditor>
         </div>
         <div class="main app-panel">
@@ -65,7 +71,7 @@ import { SwitchBoardService } from './switchboard.service';
     `
 })
 
-export class AppComponent implements OnInit {
+export class AppComponent extends Locale implements OnInit {
     public ui: any = {
         selected: [],
         zoom: {
@@ -77,8 +83,19 @@ export class AppComponent implements OnInit {
     public current_switchboard: SwitchBoard;
 
     constructor(
-        private switchboard_service: SwitchBoardService
-    ) {}
+        private switchboard_service: SwitchBoardService,
+        public locale: LocaleService,
+        public localization: LocalizationService
+    ) {
+        super(locale, localization);
+
+        this.locale.addLanguages(['en', 'cs']);
+        /*this.locale.definePreferredLocale('en', 'US', 30);*/
+        this.locale.definePreferredLanguage('en', 30);
+
+        this.localization.translationProvider('/locale/');
+        this.localization.updateTranslation();
+    }
 
     loadSwitchBoard(): void {
         this.switchboard_service.getSwitchBoard(1).then(switchboard => this.current_switchboard = switchboard);
@@ -102,5 +119,11 @@ export class AppComponent implements OnInit {
         if (this.ui.zoom.current > this.ui.zoom.min){
             this.ui.zoom.current--;
         }
+    }
+
+    setLanguage(lang: string) {
+        event.preventDefault();
+        event.stopPropagation();
+        this.locale.setCurrentLanguage(lang);
     }
 }
