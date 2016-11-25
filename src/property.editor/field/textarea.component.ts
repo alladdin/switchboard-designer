@@ -6,7 +6,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     `],
     template: `
         <FieldRow>
-            <label for="{{name}}"><ng-content></ng-content><textarea name="{{name}}" [(ngModel)]="model"></textarea></label>
+            <FieldLabel [name]="name"><textarea name="{{name}}" [(ngModel)]="model"></textarea></FieldLabel>
         </FieldRow>
     `
 })

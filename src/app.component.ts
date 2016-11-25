@@ -38,14 +38,21 @@ import { SwitchBoardService } from './switchboard.service';
         .top-toolbar .zoom text {
             fill: rgb(255,255,255);
         }
+
+        .language-selector {
+            padding: 0 20px;
+        }
     `],
     template: `
         <div class="side app-panel">
             <h1>{{ 'APP.TITLE' | translate:lang }}</h1>
             <div class="language-selector">
-                <ul class="menu">
-                    <li *ngFor="let lang of locale.getAvailableLanguages()"><a href="#" (click)="setLanguage(lang)">{{lang}}</a></li>
-                </ul>
+                <a *ngFor="let lang of locale.getAvailableLanguages()"
+                    (click)="setLanguage(lang)"
+                    [class.selected]="locale.getCurrentLanguage() === lang"
+                >
+                    <img src="{{getLanguageFlag(lang)}}" alt="{{lang}}" />
+                </a>
             </div>
             <PropertyEditor [ui]="ui" [item]="ui.selected[0]"></PropertyEditor>
         </div>
@@ -81,6 +88,10 @@ export class AppComponent extends Locale implements OnInit {
         }
     };
     public current_switchboard: SwitchBoard;
+    public supported_languages: any = {
+        en: 'us',
+        cs: 'cz'
+    };
 
     constructor(
         private switchboard_service: SwitchBoardService,
@@ -89,7 +100,7 @@ export class AppComponent extends Locale implements OnInit {
     ) {
         super(locale, localization);
 
-        this.locale.addLanguages(['en', 'cs']);
+        this.locale.addLanguages(Object.keys(this.supported_languages));
         /*this.locale.definePreferredLocale('en', 'US', 30);*/
         this.locale.definePreferredLanguage('en', 30);
 
@@ -125,5 +136,9 @@ export class AppComponent extends Locale implements OnInit {
         event.preventDefault();
         event.stopPropagation();
         this.locale.setCurrentLanguage(lang);
+    }
+
+    getLanguageFlag(lang: string) {
+        return '/node_modules/flag-icon-css/flags/4x3/'+this.supported_languages[lang]+'.svg';
     }
 }

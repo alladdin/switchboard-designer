@@ -1,5 +1,18 @@
 {
     "APP": {
         "TITLE": "Plánovač Rozvaděče"
+    },
+    "PROPERTY-EDITOR": {
+        "TITLE": "Úprava vlastností",
+        "FIELD": {
+            "TYPE": "typ",
+            "NAME": "název",
+            "DESCRIPTION": "popis"
+        }
+    },
+    "OBJECT": {
+        "SWITCHBOARD": "Rozvaděč",
+        "RAIL": "Přístrojová lišta",
+        "DINTERMINALGROUP": "Skupina svorek"
     }
 }

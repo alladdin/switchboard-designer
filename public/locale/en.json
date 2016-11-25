@@ -1,5 +1,18 @@
 {
     "APP": {
         "TITLE": "SwitchBoard Designer"
+    },
+    "PROPERTY-EDITOR": {
+        "TITLE": "Property editor",
+        "FIELD": {
+            "TYPE": "type",
+            "NAME": "name",
+            "DESCRIPTION": "decsription"
+        }
+    },
+    "OBJECT": {
+        "SWITCHBOARD": "Switchboard",
+        "RAIL": "DIN Rail",
+        "DINTERMINALGROUP": "Terminal Group"
     }
 }
