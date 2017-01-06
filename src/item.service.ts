@@ -6,6 +6,8 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/forkJoin';
+
 
 @Injectable()
 export class ItemService {
@@ -15,7 +17,7 @@ export class ItemService {
 
     constructor(private http: Http) { }
 
-    getItem(path_parts: string[]): Observable<string> {
+    getItem(path_parts: string[]): Observable<any> {
         var path = this.build_path(path_parts);
         if (this.cache[path]){
             if (this.cache[path] instanceof Observable){
@@ -29,6 +31,16 @@ export class ItemService {
                 .catch(this.handleError)
                 .share();
         }
+    }
+
+    getDescriptionChain(path_parts: string[]): Observable<any> {
+        let obs_chain: Observable<any>[] = [];
+        for (let i = path_parts.length - 1; i > 0; i--){
+            let desc_path = path_parts.slice(0, i);
+            desc_path.push('description');
+            obs_chain.unshift(this.getItem(desc_path));
+        }
+        return Observable.forkJoin(obs_chain);
     }
 
     private build_path(path_parts: string[]) {

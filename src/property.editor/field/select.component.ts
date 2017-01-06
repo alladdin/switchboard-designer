@@ -1,18 +1,24 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-    selector: 'FieldText',
+    selector: 'FieldSelect',
     styles: [`
     `],
     template: `
         <FieldRow>
-            <FieldLabel [name]="name"><input type="text" name="{{name}}" [(ngModel)]="model" /></FieldLabel>
+            <FieldLabel [name]="name">
+                <select name="{{name}}" [(ngModel)]="model">
+                    <option *ngFor="let val of options" [value]="val">{{val}}</option>
+                </select>
+            </FieldLabel>
         </FieldRow>
     `
 })
 
-export class FieldTextComponent {
+export class FieldSelectComponent {
     private model_value: string;
+
+    @Input() options: any[];
 
     @Output() modelChange: EventEmitter<string> = new EventEmitter<string>();
 
@@ -27,3 +33,4 @@ export class FieldTextComponent {
 
     @Input() name: string;
 }
+

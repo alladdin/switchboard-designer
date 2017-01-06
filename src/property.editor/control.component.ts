@@ -9,8 +9,10 @@ import { Control } from '../structures/all';
     `],
     template: `
         <div [ngSwitch]="item.constructor.name">
+            <DINDevice *ngSwitchCase="'DINDevice'" [item]="item"></DINDevice>
+            <DINTerminal *ngSwitchCase="'DINTerminal'" [item]="item"></DINTerminal>
             <div *ngSwitchDefault>
-                <FieldInfo [name]="'type'" [value]="localization.translate('OBJECT.'+item.constructor.name.toUpperCase())"></FieldInfo>
+                <FieldDeviceTypeInfo [name]="'type'" [value]="[localization.translate('OBJECT.'+item.constructor.name.toUpperCase())]"></FieldDeviceTypeInfo>
                 <FieldText [name]="'name'" [(model)]="item.name"></FieldText>
                 <FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea>
             </div>
