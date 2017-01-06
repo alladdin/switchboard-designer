@@ -23,7 +23,7 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
     ],
     providers: [
         SwitchBoardService,
-    ],    
+    ],
     bootstrap: [ AppComponent ]
 })
 

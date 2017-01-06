@@ -6,7 +6,7 @@ export class Rail extends Control {
     y: number;
     height: number;
     width: number;
-    items: DINObject[];
+    items: string[];
 
     constructor(params: any) {
         super(params);

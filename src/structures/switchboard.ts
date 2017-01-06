@@ -4,7 +4,7 @@ import { Rail } from './rail';
 export class SwitchBoard extends Control {
     width: number;
     height: number;
-    rails: Rail[];
+    rails: string[];
 
     constructor(params: any) {
         super(params);

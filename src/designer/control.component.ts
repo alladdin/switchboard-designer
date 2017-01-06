@@ -10,15 +10,18 @@ export class ControlComponent {
         if (this.ui === undefined){
             return false;
         }
-        let selected: Control[] = this.ui.selected;
-        return selected.filter(sel => sel.id === item.id).length > 0;
+        let selected: Control = this.ui.selected;
+        if (!selected){
+            return false;
+        }
+        return selected.id === item.id;
     }
 
-    setSelected(event: any, items: Control[]) {
+    setSelected(event: any, item_id: string) {
         if (this.ui !== undefined){
             event.preventDefault();
             event.stopPropagation();
-            this.ui.selected = items;
+            this.ui.selected = item_id;
         }
     }
 }

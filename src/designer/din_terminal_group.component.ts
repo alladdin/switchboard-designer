@@ -34,13 +34,13 @@ import { ControlComponent } from './control.component';
     template: `
         <div ngClass="din-terminal-group"
                     [class.selected]="isSelected(item)"
-                    (click)="setSelected($event, [item])"
+                    (click)="setSelected($event, item)"
                     [style.height]="current_rail.height + 'mm'">
             <span ngClass="name"
-                    (click)="setSelected($event, [item])">
+                    (click)="setSelected($event, item)">
                 {{item.name}}
             </span>
-            <DINTerminal *ngFor="let terminal of item.terminals" [current_rail]="current_rail" [item]="terminal" [ui]="ui" ></DINTerminal>
+            <DINTerminal *ngFor="let terminal of item.terminals" [current_rail]="current_rail" [id]="terminal" [ui]="ui" ></DINTerminal>
         </div>
     `
 })

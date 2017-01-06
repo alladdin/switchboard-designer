@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { SwitchBoard } from '../structures/all';
+import { SwitchBoardService } from '../switchboard.service';
 import { ControlComponent } from './control.component';
 
 @Component({
@@ -13,7 +14,7 @@ import { ControlComponent } from './control.component';
             border: 0.8mm solid #999;
             transform-origin: 0 0;
         }
-        
+
         .switchboard > h2 {
             position: absolute;
             display: block;
@@ -35,18 +36,30 @@ import { ControlComponent } from './control.component';
         <div *ngIf="current_switchboard" ngClass="switchboard"
                 [style.transform]="'scale('+(this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/140+')'"
                 [class.selected]="isSelected(current_switchboard)"
-                (click)="setSelected($event, [current_switchboard])"
+                (click)="setSelected($event, current_switchboard)"
                 [style.width]="current_switchboard.width + 'mm'"
                 [style.height]="current_switchboard.height + 'mm'">
-            <h2 (click)="setSelected($event, [current_switchboard])">{{current_switchboard.name}}</h2>
-            <Rail *ngFor="let rail of current_switchboard.rails" [current_rail]="rail" [ui]="ui" ></Rail>
+            <h2 (click)="setSelected($event, current_switchboard)">{{current_switchboard.name}}</h2>
+            <Rail *ngFor="let rail of current_switchboard.rails" [id]="rail" [ui]="ui" ></Rail>
         </div>
     `
 })
 
-export class SwitchBoardComponent extends ControlComponent {
+export class SwitchBoardComponent extends ControlComponent implements OnInit {
     @Input() ui: any;
-    @Input() current_switchboard: SwitchBoard;
+    @Input() id: string;
+    current_switchboard: SwitchBoard;
 
-    constructor() { super() }
+    constructor(
+        private switchboard_service: SwitchBoardService
+    ) { super() }
+
+    loadSwitchBoard(): void {
+        this.switchboard_service.getControl(this.id)
+            .subscribe(control => this.current_switchboard = <SwitchBoard>control);
+    }
+
+    ngOnInit(): void {
+        this.loadSwitchBoard();
+    }
 }

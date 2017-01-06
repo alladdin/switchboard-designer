@@ -5,6 +5,7 @@ import { Rail } from '../structures/all';
 import { ItemService } from '../item.service';
 import { ControlComponent } from './control.component';
 import { ParamsInterpolatePipe } from './params_interpolate.pipe';
+import { SwitchBoardService } from '../switchboard.service';
 
 @Component({
     selector: 'DINTerminal',
@@ -37,7 +38,7 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
                     [style.height]="current_rail.height + 'mm'"
                     [style.width]="device_type.width + 'mm'">
             <span ngClass="name"
-                    (click)="setSelected($event, [item])"
+                    (click)="setSelected($event, item)"
                     [style.left]="device_type.name.left + 'mm'"
                     [style.top]="device_type.name.top + 'mm'"
                     [style.bottom]="device_type.name.bottom + 'mm'"
@@ -46,7 +47,7 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
             </span>
             <div ngClass="symbol"
                 [inlineSVG]="'/data/'+ getSymbolPath()"
-                (click)="setSelected($event, [item])"
+                (click)="setSelected($event, item)"
                 [style.width]="device_type.symbol.width + 'mm'"
                 [style.height]="device_type.symbol.height + 'mm'"
                 [style.top]="(current_rail.height/2 - device_type.symbol.y_origin) + 'mm'"></div>
@@ -55,20 +56,28 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 })
 
 export class DINTerminalComponent extends ControlComponent implements OnInit {
-    @Input() item: DINTerminal;
+    @Input() id: string;
+    private item: DINTerminal;
     @Input() current_rail: Rail;
     @Input() ui: any;
     device_type: any;
 
     constructor(
-        private item_service: ItemService
+        private item_service: ItemService,
+        private switchboard_service: SwitchBoardService
     ) { super() }
 
+    loadItem(): void {
+        this.switchboard_service.getControl(this.id)
+            .subscribe(control => this.item = <DINTerminal>control);
+    }
+
     loadDeviceType(): void {
-        this.item_service.getItem(this.item.device_type).then(device_type => this.device_type = device_type);
+        this.item_service.getItem(this.item.device_type).subscribe(device_type => this.device_type = device_type);
     }
 
     ngOnInit(): void {
+        this.loadItem();
         this.loadDeviceType();
     }
 

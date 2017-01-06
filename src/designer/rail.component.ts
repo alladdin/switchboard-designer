@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { Rail } from '../structures/all';
+import { SwitchBoardService } from '../switchboard.service';
 import { ControlComponent } from './control.component';
 
 @Component({
@@ -11,7 +12,7 @@ import { ControlComponent } from './control.component';
             position: absolute;
             background-image: url(images/din-rail-simple.svg);
             background-repeat: repeat-x;
-            background-position: left center;      
+            background-position: left center;
         }
 
         .rail.selected {
@@ -32,22 +33,33 @@ import { ControlComponent } from './control.component';
     template: `
         <div *ngIf="current_rail" ngClass="rail"
                 [class.selected]="isSelected(current_rail)"
-                (click)="setSelected($event, [current_rail])"
+                (click)="setSelected($event, current_rail)"
                 [style.left]="current_rail.x + 'mm'"
                 [style.top]="current_rail.y + 'mm'"
                 [style.width]="current_rail.width + 'mm'"
                 [style.height]="current_rail.height + 'mm'">
-            <h2 (click)="setSelected($event, [current_rail])">{{current_rail.name}}</h2>
-            <DINObject *ngFor="let item of current_rail.items" [current_rail]="current_rail" [item]="item" [ui]="ui" ></DINObject>
+            <h2 (click)="setSelected($event, current_rail)">{{current_rail.name}}</h2>
+            <DINObject *ngFor="let item of current_rail.items" [current_rail]="current_rail" [id]="item" [ui]="ui" ></DINObject>
         </div>
     `
 })
 
-export class RailComponent extends ControlComponent {
-    @Input() current_rail: Rail;
+export class RailComponent extends ControlComponent implements OnInit {
+    @Input() id: string;
+    current_rail: Rail;
     @Input() ui: any;
 
-    constructor (
-    ){ super() }
+    constructor(
+        private switchboard_service: SwitchBoardService
+    ) { super() }
+
+    loadRail(): void {
+        this.switchboard_service.getControl(this.id)
+            .subscribe(control => this.current_rail = <Rail>control);
+    }
+
+    ngOnInit(): void {
+        this.loadRail();
+    }
 }
 

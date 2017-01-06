@@ -54,10 +54,10 @@ import { SwitchBoardService } from './switchboard.service';
                     <img src="{{getLanguageFlag(lang)}}" alt="{{lang}}" />
                 </a>
             </div>
-            <PropertyEditor [ui]="ui" [item]="ui.selected[0]"></PropertyEditor>
+            <PropertyEditor [ui]="ui" [item]="ui.selected"></PropertyEditor>
         </div>
         <div class="main app-panel">
-            <SwitchBoard [ui]="ui" [current_switchboard]="current_switchboard"></SwitchBoard>
+            <SwitchBoard [ui]="ui" [id]="current_switchboard_id"></SwitchBoard>
             <div ngClass="top-toolbar">
                 <svg width="140" height="60">
                     <g class="zoom">
@@ -80,14 +80,14 @@ import { SwitchBoardService } from './switchboard.service';
 
 export class AppComponent extends Locale implements OnInit {
     public ui: any = {
-        selected: [],
+        selected: undefined,
         zoom: {
             current: 5,
             min: 1,
             max: 9
         }
     };
-    public current_switchboard: SwitchBoard;
+    public current_switchboard_id: string;
     public supported_languages: any = {
         en: 'us',
         cs: 'cz'
@@ -109,7 +109,7 @@ export class AppComponent extends Locale implements OnInit {
     }
 
     loadSwitchBoard(): void {
-        this.switchboard_service.getSwitchBoard(1).then(switchboard => this.current_switchboard = switchboard);
+        this.current_switchboard_id = this.switchboard_service.getSwitchBoardID();
     }
 
     ngOnInit(): void {
