@@ -1,4 +1,4 @@
-.symbol svg {
+.symbol svg, svg.symbol {
     left: 0;
     top: 0;
     width: 100%;
@@ -6,12 +6,13 @@
     display: block;
 }
 
-.selected > .symbol > svg .outline {
+.selected > .symbol > svg .outline, .selected > g > .symbol .outline {
     stroke: rgb(192,0,0) !important;
 }
 
 .selected > h2, .selected > .name {
     color: rgba(192,0,0,1);
+    fill: rgb(192,0,0) !important;
 }
 
 .app-panel {

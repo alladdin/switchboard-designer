@@ -2,22 +2,21 @@ import { Component, Input, OnInit } from '@angular/core';
 
 import { DINObject } from '../structures/all';
 import { SwitchBoardService } from '../switchboard.service';
-import { Rail } from '../structures/all';
 
 @Component({
-    selector: 'DINObject',
+    selector: '[DINObject]',
     template: `
-        <div *ngIf="item" [ngSwitch]="item.constructor.name">
-            <DINDevice *ngSwitchCase="'DINDevice'" [item]="item" [current_rail]="current_rail" [ui]="ui"></DINDevice>
-            <DINTerminalGroup *ngSwitchCase="'DINTerminalGroup'" [item]="item" [current_rail]="current_rail" [ui]="ui"></DINTerminalGroup>
-            <div *ngSwitchDefault>Unknown: {{item.constructor.name}}</div>
-        </div>
+        <svg:g *ngIf="item" [ngSwitch]="item.constructor.name">
+            <svg:g DINDevice *ngSwitchCase="'DINDevice'" [item]="item" [parent_height]="parent_height" [ui]="ui"></svg:g>
+            <svg:g DINTerminalGroup *ngSwitchCase="'DINTerminalGroup'" [item]="item" [parent_height]="parent_height" [ui]="ui"></svg:g>
+            <svg:text *ngSwitchDefault>Unknown: {{item.constructor.name}}</svg:text>
+        </svg:g>
     `
 })
 
 export class DINObjectComponent implements OnInit {
     @Input() id: string;
-    @Input() current_rail: Rail;
+    @Input() parent_height: number;
     @Input() ui: any;
     private item: DINObject;
 

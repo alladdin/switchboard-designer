@@ -7,14 +7,12 @@
             { "text": "{{cutoff_current}}", "tag": "strong", "font_size": "1.5em" }
         ],
         "font_size": "2.5mm",
-        "bottom": 52,
-        "width": "100%",
-        "left": 0
+        "top": 71.5,
+        "left": 1
     },
     "name": {
-        "top": 52,
-        "width": "100%",
-        "left": 0
+        "top": 32,
+        "left": 1
     },
     "width": 70,
     "symbol": {

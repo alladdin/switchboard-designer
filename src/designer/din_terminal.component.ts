@@ -1,64 +1,57 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { DINTerminal } from '../structures/all';
-import { Rail } from '../structures/all';
 import { ItemService } from '../item.service';
 import { ControlComponent } from './control.component';
 import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 import { SwitchBoardService } from '../switchboard.service';
 
 @Component({
-    selector: 'DINTerminal',
+    selector: '[DINTerminal]',
     styles: [`
         .din-terminal {
-            position: relative;
-            float: left;
-        }
-
-        .din-terminal .symbol {
-            position: absolute;
-            left: 0;
+            cursor: default;
         }
 
         .din-terminal .name {
-            position: absolute;
-            padding: 0.5mm 1mm;
             font-family: monospace;
             font-weight: normal;
-            display: block;
-            z-index: 100;
-            text-align: center;
             font-size: 4mm;
-            line-height: 4.5mm;
         }
     `],
     template: `
-        <div ngClass="din-terminal" *ngIf="device_type"
-                    [class.selected]="isSelected(item)"
-                    [style.height]="current_rail.height + 'mm'"
-                    [style.width]="device_type.width + 'mm'">
-            <span ngClass="name"
+        <svg ngClass="din-terminal" *ngIf="device_type"
+            [class.selected]="isSelected(item)"
+            [attr.height]="parent_height + 'mm'"
+            [attr.width]="device_type.width + 'mm'"
+            [attr.y]="0"
+            [attr.x]="item.x + 'mm'"
+        >
+            <svg:g>
+                <svg ngClass="symbol"
                     (click)="setSelected($event, item)"
-                    [style.left]="device_type.name.left + 'mm'"
-                    [style.top]="device_type.name.top + 'mm'"
-                    [style.bottom]="device_type.name.bottom + 'mm'"
-                    [style.width]="device_type.name.width">
-                {{item.name}}
-            </span>
-            <div ngClass="symbol"
-                [inlineSVG]="'/data/'+ getSymbolPath()"
+                    [inlineSVG]="'/data/'+ getSymbolPath()"
+                    [attr.width]="device_type.symbol.width + 'mm'"
+                    [attr.height]="device_type.symbol.height + 'mm'"
+                    [attr.y]="getSymbolTop() + 'mm'"
+                ></svg>
+            </svg:g>
+            <svg:text ngClass="name"
                 (click)="setSelected($event, item)"
-                [style.width]="device_type.symbol.width + 'mm'"
-                [style.height]="device_type.symbol.height + 'mm'"
-                [style.top]="(current_rail.height/2 - device_type.symbol.y_origin) + 'mm'"></div>
-        </div>
+                [attr.x]="device_type.name.left + 'mm'"
+                [attr.y]="(device_type.name.top + getSymbolTop()) + 'mm'"
+                [attr.text-anchor]="device_type.name.text_anchor"
+            >
+                {{item.name}}
+            </svg:text>
+        </svg>
     `
 })
 
 export class DINTerminalComponent extends ControlComponent implements OnInit {
     @Input() id: string;
     private item: DINTerminal;
-    @Input() current_rail: Rail;
+    @Input() parent_height: number;
     @Input() ui: any;
     device_type: any;
 
@@ -83,6 +76,10 @@ export class DINTerminalComponent extends ControlComponent implements OnInit {
 
     getSymbolPath(): void {
         return (new ParamsInterpolatePipe()).transform(this.device_type.symbol.file, this.item.device_params);
+    }
+
+    getSymbolTop(): number {
+        return (this.parent_height/2 - this.device_type.symbol.y_origin);
     }
 }
 

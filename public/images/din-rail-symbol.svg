@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg width="50mm" height="50mm" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+  <path d="M 2.5 25 C 2.5 26.381 3.6189999999999998 27.5 5 27.5 L 20 27.5 C 21.381 27.5 22.5 26.381 22.5 25 C 22.5 23.619 21.381 22.5 20 22.5 L 5 22.5 C 3.6189999999999998 22.5 2.5 23.619 2.5 25 Z M 27.5 25 C 27.5 26.381 28.619 27.5 30 27.5 L 45 27.5 C 46.381 27.5 47.5 26.381 47.5 25 C 47.5 23.619 46.381 22.5 45 22.5 L 30 22.5 C 28.619 22.5 27.5 23.619 27.5 25 Z M 0 12.5 L 50 12.5 L 50 37.5 L 0 37.5 Z" style="fill: rgb(204, 204, 204); stroke-width: 0.4;"/>
+  <rect width="50" height="5" y="7.5" style="fill: rgb(204, 204, 204); stroke-width: 0.4;"/>
+  <rect width="50" height="5" y="37.5" style="fill: rgb(204, 204, 204); stroke-width: 0.4;"/>
+  <path d="M 0 7.5 L 50 7.5" style="fill: none; stroke: black; stroke-width: 0.4;"/>
+  <path d="M 0 12.5 L 50 12.5" style="fill: none; stroke: black; stroke-width: 0.4;"/>
+  <path d="M 0 37.5 L 50 37.5" style="fill: none; stroke: black; stroke-width: 0.4;"/>
+  <path d="M 0 42.5 L 50 42.5" style="fill: none; stroke: black; stroke-width: 0.4;"/>
+</svg>

@@ -5,42 +5,58 @@ import { SwitchBoardService } from '../switchboard.service';
 import { ControlComponent } from './control.component';
 
 @Component({
-    selector: 'Rail',
+    selector: '[Rail]',
     styles: [`
         .rail {
-            display: block;
-            position: absolute;
-            background-image: url(images/din-rail-simple.svg);
-            background-repeat: repeat-x;
-            background-position: left center;
+            cursor: default;
         }
 
-        .rail.selected {
-            background-color: rgba(255,128,128,0.4);
+        .rail.selected > rect.rail-background {
+            fill-opacity: 0.4 !important;
         }
 
-        .rail > h2 {
-            position: absolute;
-            display: block;
-            top: 1mm;
-            left: 1mm;
-            z-index:100;
-            line-height: 1em;
-            margin: 0;
-            padding 0;
+        .rail > .name {
+            font-size: 10mm;
+            font-weight: bold;
         }
     `],
     template: `
-        <div *ngIf="current_rail" ngClass="rail"
-                [class.selected]="isSelected(current_rail)"
-                (click)="setSelected($event, current_rail)"
-                [style.left]="current_rail.x + 'mm'"
-                [style.top]="current_rail.y + 'mm'"
-                [style.width]="current_rail.width + 'mm'"
-                [style.height]="current_rail.height + 'mm'">
-            <h2 (click)="setSelected($event, current_rail)">{{current_rail.name}}</h2>
-            <DINObject *ngFor="let item of current_rail.items" [current_rail]="current_rail" [id]="item" [ui]="ui" ></DINObject>
-        </div>
+        <svg *ngIf="current_rail" ngClass="rail"
+            [class.selected]="isSelected(current_rail)"
+            (click)="setSelected($event, current_rail)"
+            [attr.x]="current_rail.x + 'mm'"
+            [attr.y]="current_rail.y + 'mm'"
+            [attr.width]="current_rail.width + 'mm'"
+            [attr.height]="current_rail.height + 'mm'"
+        >
+            <svg:rect class="rail-background"
+                [attr.width]="current_rail.width + 'mm'"
+                [attr.height]="current_rail.height + 'mm'"
+                stroke="none"
+                fill="#f99"
+                fill-opacity="0"
+            />
+            <svg:rect
+                [attr.x]="0"
+                [attr.y]="((current_rail.height - 50)/2) + 'mm'"
+                [attr.width]="current_rail.width + 'mm'"
+                [attr.height]="'50mm'"
+                stroke="none"
+                fill="url(#din-rail-symbol)"
+            />
+            <svg:text ngClass="name"
+                x="1mm"
+                y="11mm"
+            >
+                {{current_rail.name}}
+            </svg:text>
+            <svg:g DINObject
+                *ngFor="let item of current_rail.items"
+                [parent_height]="current_rail.height"
+                [id]="item"
+                [ui]="ui"
+            ></svg:g>
+        </svg>
     `
 })
 

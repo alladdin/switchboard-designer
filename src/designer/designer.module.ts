@@ -11,6 +11,7 @@ import {DINDeviceComponent} from './din_device.component';
 import {DINTerminalComponent} from './din_terminal.component';
 import {DINTerminalGroupComponent} from './din_terminal_group.component';
 import {ValueTitleComponent} from './value_title.component';
+import {ValueTitleSVGComponent} from './value_title_svg.component';
 import {ParamsInterpolatePipe} from './params_interpolate.pipe';
 
 @NgModule({
@@ -27,6 +28,7 @@ import {ParamsInterpolatePipe} from './params_interpolate.pipe';
         DINTerminalGroupComponent,
         DINTerminalComponent,
         ValueTitleComponent,
+        ValueTitleSVGComponent,
         ParamsInterpolatePipe
     ],
     providers: [
