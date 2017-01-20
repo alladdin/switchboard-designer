@@ -1,6 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { CommonModule }  from '@angular/common';
-import { InlineSVGModule } from 'ng2-inline-svg';
+import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpModule }    from '@angular/http';
 
 import {ItemService} from '../item.service';

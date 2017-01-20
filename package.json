@@ -31,7 +31,7 @@
     "core-js": "^2.4.1",
     "flag-icon-css": "^2.8.0",
     "font-awesome": "^4.7.0",
-    "ng2-inline-svg": "^1.2.0",
+    "ng-inline-svg": "^2.2.0",
     "primeng": "^1.0.0-rc.3",
     "reflect-metadata": "^0.1.8",
     "rxjs": "5.0.0-beta.12",
