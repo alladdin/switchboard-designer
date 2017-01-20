@@ -30,9 +30,16 @@ import { SwitchBoardService } from './switchboard.service';
         }
 
         .top-toolbar .zoom path {
-            fill: rgba(0,0,128,0.4);
             stroke: rgba(0,0,128,0.4);
             stroke-width: 1;
+        }
+
+        #zoom-level-pattern .background {
+            fill: rgba(0,0,128,0.4) !important;
+        }
+
+        #zoom-level-pattern .foreground {
+            fill: rgba(0,0,128,0.4) !important;
         }
 
         .top-toolbar .zoom text {
@@ -60,18 +67,28 @@ import { SwitchBoardService } from './switchboard.service';
             <SwitchBoard [ui]="ui" [id]="current_switchboard_id"></SwitchBoard>
             <div ngClass="top-toolbar">
                 <svg width="140" height="60">
-                    <g class="zoom">
-                        <path d="M 30 0 h 80 a 30 30 0 0 0 0 60 h -80 a 30 30 0 0 0 0 -60 z" />
-                        <text x="70" y="37" text-anchor="middle" font-size="20">{{ui.zoom.current}}</text>
-                    </g>
-                    <g class="button" (click)="zoomIn($event)" (mousedown)="$event.preventDefault()">
-                        <circle cx="30" cy="30" r="30" />
-                        <text x="30" y="40" text-anchor="middle" font-size="30">+</text>
-                    </g>
-                    <g class="button" (click)="zoomOut($event)" (mousedown)="$event.preventDefault()">
-                        <circle cx="110" cy="30" r="30" />
-                        <text x="110" y="40" text-anchor="middle" font-size="30">&minus;</text>
-                    </g>
+                    <svg:defs>
+                        <svg:pattern id="zoom-level-pattern" width="1" height="1">
+                            <svg:rect class="background" x="0" y="0" width="80" height="60" />
+                            <svg:rect class="foreground" y="0" height="60"
+                                [attr.x]="80 * (1 - (ui.zoom.current - ui.zoom.min)/(ui.zoom.max - ui.zoom.min))"
+                                [attr.width]="80 * (ui.zoom.current - ui.zoom.min)/(ui.zoom.max - ui.zoom.min)" />
+                        </svg:pattern>
+                    </svg:defs>
+                    <svg:g class="zoom">
+                        <svg:path d="M 30 0 h 80 a 30 30 0 0 0 0 60 h -80 a 30 30 0 0 0 0 -60 z"
+                            fill="url(#zoom-level-pattern)"
+                        />
+                        <svg:text x="70" y="37" text-anchor="middle" font-size="20">{{ui.zoom.current}}</svg:text>
+                    </svg:g>
+                    <svg:g class="button" (click)="zoomIn($event)" (mousedown)="$event.preventDefault()">
+                        <svg:circle cx="30" cy="30" r="30" />
+                        <svg:text x="30" y="40" text-anchor="middle" font-size="30">+</svg:text>
+                    </svg:g>
+                    <svg:g class="button" (click)="zoomOut($event)" (mousedown)="$event.preventDefault()">
+                        <svg:circle cx="110" cy="30" r="30" />
+                        <svg:text x="110" y="40" text-anchor="middle" font-size="30">&minus;</svg:text>
+                    </svg:g>
                 </svg>
             </div>
         </div>
