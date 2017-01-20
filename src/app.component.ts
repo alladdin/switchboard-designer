@@ -7,89 +7,49 @@ import { SwitchBoardService } from './switchboard.service';
 @Component({
     selector: 'my-app',
     styles: [`
-        .top-toolbar {
-            position: fixed;
-            right: 30px;
-            top: 30px;
+        .app-toolbar-filler {
+            flex: 1 1 auto;
         }
 
-        .top-toolbar .button {
-            cursor: pointer;
-        }
-
-        .top-toolbar .button circle {
-            fill: rgb(32,32,192);
-        }
-
-        .top-toolbar .button text {
-            fill: rgb(255,255,255);
-        }
-
-        .top-toolbar .button:hover circle {
-            fill: rgb(64,64,221);
-        }
-
-        .top-toolbar .zoom path {
-            stroke: rgba(0,0,128,0.4);
-            stroke-width: 1;
-        }
-
-        #zoom-level-pattern .background {
-            fill: rgba(0,0,128,0.4) !important;
-        }
-
-        #zoom-level-pattern .foreground {
-            fill: rgba(0,0,128,0.4) !important;
-        }
-
-        .top-toolbar .zoom text {
-            fill: rgb(255,255,255);
-        }
-
-        .language-selector {
-            padding: 0 20px;
+        .app-toolbar-menu {
+            min-width: 0;
         }
     `],
     template: `
-        <div class="side app-panel">
-            <h1>{{ 'APP.TITLE' | translate:lang }}</h1>
-            <div class="language-selector">
-                <a *ngFor="let lang of locale.getAvailableLanguages()"
-                    (click)="setLanguage(lang)"
-                    [class.selected]="locale.getCurrentLanguage() === lang"
+        <div class="app-container">
+            <md-toolbar color="primary">
+                <!--<button md-button class="app-toolbar-menu">
+                    <i class="fa fa-bars fa-2x"></i>
+                </button>-->
+                <span>{{ 'APP.TITLE' | translate:lang }}</span>
+                <span class="app-toolbar-filler"></span>
+                <md-button-toggle-group name="language-selector" class="language-selector"
+                    [value]="locale.getCurrentLanguage()"
+                    (change)="onLanguageChange($event)"
                 >
-                    <img src="{{getLanguageFlag(lang)}}" alt="{{lang}}" />
-                </a>
-            </div>
-            <PropertyEditor [ui]="ui" [item]="ui.selected"></PropertyEditor>
-        </div>
-        <div class="main app-panel">
-            <SwitchBoard [ui]="ui" [id]="current_switchboard_id"></SwitchBoard>
-            <div ngClass="top-toolbar">
-                <svg width="140" height="60">
-                    <svg:defs>
-                        <svg:pattern id="zoom-level-pattern" width="1" height="1">
-                            <svg:rect class="background" x="0" y="0" width="80" height="60" />
-                            <svg:rect class="foreground" y="0" height="60"
-                                [attr.x]="80 * (1 - (ui.zoom.current - ui.zoom.min)/(ui.zoom.max - ui.zoom.min))"
-                                [attr.width]="80 * (ui.zoom.current - ui.zoom.min)/(ui.zoom.max - ui.zoom.min)" />
-                        </svg:pattern>
-                    </svg:defs>
-                    <svg:g class="zoom">
-                        <svg:path d="M 30 0 h 80 a 30 30 0 0 0 0 60 h -80 a 30 30 0 0 0 0 -60 z"
-                            fill="url(#zoom-level-pattern)"
-                        />
-                        <svg:text x="70" y="37" text-anchor="middle" font-size="20">{{ui.zoom.current}}</svg:text>
-                    </svg:g>
-                    <svg:g class="button" (click)="zoomIn($event)" (mousedown)="$event.preventDefault()">
-                        <svg:circle cx="30" cy="30" r="30" />
-                        <svg:text x="30" y="40" text-anchor="middle" font-size="30">+</svg:text>
-                    </svg:g>
-                    <svg:g class="button" (click)="zoomOut($event)" (mousedown)="$event.preventDefault()">
-                        <svg:circle cx="110" cy="30" r="30" />
-                        <svg:text x="110" y="40" text-anchor="middle" font-size="30">&minus;</svg:text>
-                    </svg:g>
-                </svg>
+                    <md-button-toggle *ngFor="let lang of locale.getAvailableLanguages()"
+                        [value]="lang"
+                    >
+                        <img src="{{getLanguageFlag(lang)}}" alt="{{lang}}" />
+                    </md-button-toggle>
+                </md-button-toggle-group>
+                <button md-icon-button (click)="zoomIn($event)"><i class="fa fa-search-plus"></i></button>
+                <md-slider
+                    [(ngModel)]="ui.zoom.current"
+                    [min]="ui.zoom.min"
+                    [max]="ui.zoom.max"
+                    [step]="1"
+                    invert="1"
+                ></md-slider>
+                <button md-icon-button (click)="zoomOut($event)"><i class="fa fa-search-minus"></i></button>
+            </md-toolbar>
+            <div class="app-panels">
+                <div *ngIf="ui.selected" class="side app-panel">
+                    <PropertyEditor [ui]="ui" [item]="ui.selected"></PropertyEditor>
+                </div>
+                <div class="main app-panel">
+                    <SwitchBoard [ui]="ui" [id]="current_switchboard_id"></SwitchBoard>
+                </div>
             </div>
         </div>
     `
@@ -147,6 +107,10 @@ export class AppComponent extends Locale implements OnInit {
         if (this.ui.zoom.current > this.ui.zoom.min){
             this.ui.zoom.current--;
         }
+    }
+
+    onLanguageChange(event: any) {
+        this.setLanguage(event.value);
     }
 
     setLanguage(lang: string) {

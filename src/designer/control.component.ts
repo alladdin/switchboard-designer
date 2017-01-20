@@ -21,7 +21,11 @@ export class ControlComponent {
         if (this.ui !== undefined){
             event.preventDefault();
             event.stopPropagation();
-            this.ui.selected = item_id;
+            if (this.ui.selected === item_id){
+                this.ui.selected = undefined;
+            }else{
+                this.ui.selected = item_id;
+            }
         }
     }
 }

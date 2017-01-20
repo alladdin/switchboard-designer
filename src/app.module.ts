@@ -2,6 +2,8 @@ import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
 import { LocaleModule, LocalizationModule } from 'angular2localization';
+import { MaterialModule } from '@angular/material';
+import { FormsModule }   from '@angular/forms';
 
 import {SwitchBoardService} from './switchboard.service';
 
@@ -14,9 +16,11 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
         BrowserModule,
         HttpModule,
         DesignerModule,
+        FormsModule,
         PropertyEditorModule,
         LocaleModule.forRoot(),
-        LocalizationModule.forRoot()
+        LocalizationModule.forRoot(),
+        MaterialModule.forRoot()
     ],
     declarations: [
         AppComponent,

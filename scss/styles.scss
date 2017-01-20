@@ -1,13 +1,4 @@
-@import 'settings';
-@import 'foundation';
-
-@include foundation-global-styles;
-@include foundation-grid;
-@include foundation-typography;
-@include foundation-button;
-@include foundation-forms;
-@include foundation-menu;
-
 @import 'base';
+@import 'material';
 @import 'app-loading';
 @import 'app';

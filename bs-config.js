@@ -8,5 +8,6 @@ module.exports = {
             "/systemjs.config.js": "systemjs.config.js",
             "/css": "build_css"
         }
-    }
+    },
+    "browser": "chrome"
 };

@@ -1,21 +1,27 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Locale, LocaleService, LocalizationService } from 'angular2localization';
 
 @Component({
     selector: 'FieldSelect',
     styles: [`
     `],
     template: `
-        <FieldRow>
-            <FieldLabel [name]="name">
-                <select name="{{name}}" [(ngModel)]="model">
-                    <option *ngFor="let val of options" [value]="val">{{val}}</option>
-                </select>
-            </FieldLabel>
-        </FieldRow>
+        <div class="field-wrapper" [style.width]="'100%'">
+            <div class="md-input-wrapper">
+                <md-select
+                    placeholder="{{'PROPERTY-EDITOR.FIELD.'+name | uppercase | translate:lang}}:"
+                    name="{{name}}"
+                    [(ngModel)]="model"
+                    [style.width]="'100%'"
+                >
+                    <md-option *ngFor="let val of options" [value]="val">{{val}}</md-option>
+                </md-select>
+            </div>
+        </div>
     `
 })
 
-export class FieldSelectComponent {
+export class FieldSelectComponent extends Locale {
     private model_value: string;
 
     @Input() options: any[];
@@ -32,5 +38,12 @@ export class FieldSelectComponent {
     }
 
     @Input() name: string;
+
+    constructor(
+        public locale: LocaleService,
+        public localization: LocalizationService
+    ) {
+        super(locale, localization);
+    }
 }
 

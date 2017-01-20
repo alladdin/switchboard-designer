@@ -1,17 +1,23 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Locale, LocaleService, LocalizationService } from 'angular2localization';
 
 @Component({
     selector: 'FieldText',
     styles: [`
     `],
     template: `
-        <FieldRow>
-            <FieldLabel [name]="name"><input type="text" name="{{name}}" [(ngModel)]="model" /></FieldLabel>
-        </FieldRow>
+        <md-input-container [style.width]="'100%'">
+            <input md-input
+                placeholder="{{'PROPERTY-EDITOR.FIELD.'+name | uppercase | translate:lang}}:"
+                type="text"
+                name="{{name}}"
+                [(ngModel)]="model"
+            />
+        </md-input-container>
     `
 })
 
-export class FieldTextComponent {
+export class FieldTextComponent extends Locale {
     private model_value: string;
 
     @Output() modelChange: EventEmitter<string> = new EventEmitter<string>();
@@ -26,4 +32,11 @@ export class FieldTextComponent {
     }
 
     @Input() name: string;
+
+    constructor(
+        public locale: LocaleService,
+        public localization: LocalizationService
+    ) {
+        super(locale, localization);
+    }
 }
