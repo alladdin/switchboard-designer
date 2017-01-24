@@ -1,10 +1,8 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 
 import { DINTerminal } from '../structures/all';
-import { ItemService } from '../item.service';
 import { ControlComponent } from './control.component';
 import { ParamsInterpolatePipe } from './params_interpolate.pipe';
-import { SwitchBoardService } from '../switchboard.service';
 
 @Component({
     selector: '[DINTerminal]',
@@ -21,15 +19,14 @@ import { SwitchBoardService } from '../switchboard.service';
     `],
     template: `
         <svg ngClass="din-terminal" *ngIf="device_type"
-            [class.selected]="isSelected(item)"
+            [class.selected]="isSelected()"
             [attr.height]="parent_height + 'mm'"
             [attr.width]="device_type.width + 'mm'"
             [attr.y]="0"
-            [attr.x]="item.x + 'mm'"
+            [attr.x]="corrected_x + 'mm'"
         >
             <svg:g>
                 <svg ngClass="symbol"
-                    (click)="setSelected($event, item)"
                     [inlineSVG]="'/data/'+ getSymbolPath()"
                     [attr.width]="device_type.symbol.width + 'mm'"
                     [attr.height]="device_type.symbol.height + 'mm'"
@@ -37,7 +34,6 @@ import { SwitchBoardService } from '../switchboard.service';
                 ></svg>
             </svg:g>
             <svg:text ngClass="name"
-                (click)="setSelected($event, item)"
                 [attr.x]="device_type.name.left + 'mm'"
                 [attr.y]="(device_type.name.top + getSymbolTop()) + 'mm'"
                 [attr.text-anchor]="device_type.name.text_anchor"
@@ -49,29 +45,18 @@ import { SwitchBoardService } from '../switchboard.service';
 })
 
 export class DINTerminalComponent extends ControlComponent implements OnInit {
-    @Input() id: string;
-    private item: DINTerminal;
+    @Input() item: DINTerminal;
     @Input() parent_height: number;
     @Input() ui: any;
+    @Input() corrected_x: number;
+
     device_type: any;
 
     constructor(
-        private item_service: ItemService,
-        private switchboard_service: SwitchBoardService
     ) { super() }
 
-    loadItem(): void {
-        this.switchboard_service.getControl(this.id)
-            .subscribe(control => this.item = <DINTerminal>control);
-    }
-
-    loadDeviceType(): void {
-        this.item_service.getItem(this.item.device_type).subscribe(device_type => this.device_type = device_type);
-    }
-
     ngOnInit(): void {
-        this.loadItem();
-        this.loadDeviceType();
+        this.device_type = this.item.device_data;
     }
 
     getSymbolPath(): void {
@@ -80,6 +65,13 @@ export class DINTerminalComponent extends ControlComponent implements OnInit {
 
     getSymbolTop(): number {
         return (this.parent_height/2 - this.device_type.symbol.y_origin);
+    }
+
+    @HostListener('click', ['$event'])
+    onClick(event: any): void {
+        this.setSelected();
+        event.preventDefault();
+        event.stopPropagation();
     }
 }
 

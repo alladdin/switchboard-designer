@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 
-import { Rail } from '../structures/all';
+import { Rail, DINObject } from '../structures/all';
 import { SwitchBoardService } from '../switchboard.service';
 import { ControlComponent } from './control.component';
 
@@ -21,25 +21,24 @@ import { ControlComponent } from './control.component';
         }
     `],
     template: `
-        <svg *ngIf="current_rail" ngClass="rail"
-            [class.selected]="isSelected(current_rail)"
-            (click)="setSelected($event, current_rail)"
-            [attr.x]="current_rail.x + 'mm'"
-            [attr.y]="current_rail.y + 'mm'"
-            [attr.width]="current_rail.width + 'mm'"
-            [attr.height]="current_rail.height + 'mm'"
+        <svg *ngIf="item" ngClass="rail"
+            [class.selected]="isSelected()"
+            [attr.x]="item.x + 'mm'"
+            [attr.y]="item.y + 'mm'"
+            [attr.width]="item.width + 'mm'"
+            [attr.height]="item.height + 'mm'"
         >
             <svg:rect class="rail-background"
-                [attr.width]="current_rail.width + 'mm'"
-                [attr.height]="current_rail.height + 'mm'"
+                [attr.width]="item.width + 'mm'"
+                [attr.height]="item.height + 'mm'"
                 stroke="none"
                 fill="#f99"
                 fill-opacity="0"
             />
             <svg:rect
                 [attr.x]="0"
-                [attr.y]="((current_rail.height - 50)/2) + 'mm'"
-                [attr.width]="current_rail.width + 'mm'"
+                [attr.y]="((item.height - 50)/2) + 'mm'"
+                [attr.width]="item.width + 'mm'"
                 [attr.height]="'50mm'"
                 stroke="none"
                 fill="url(#din-rail-symbol)"
@@ -48,34 +47,69 @@ import { ControlComponent } from './control.component';
                 x="1mm"
                 y="11mm"
             >
-                {{current_rail.name}}
+                {{item.name}}
             </svg:text>
             <svg:g DINObject
-                *ngFor="let item of current_rail.items"
-                [parent_height]="current_rail.height"
-                [id]="item"
+                *ngFor="let object of getOrderedList()"
+                [parent_height]="item.height"
+                [item]="object.item"
                 [ui]="ui"
+                [corrected_x]="object.corrected_x"
             ></svg:g>
         </svg>
     `
 })
 
 export class RailComponent extends ControlComponent implements OnInit {
-    @Input() id: string;
-    current_rail: Rail;
+    @Input() item: Rail;
     @Input() ui: any;
+
+    items: DINObject[];
 
     constructor(
         private switchboard_service: SwitchBoardService
     ) { super() }
 
-    loadRail(): void {
-        this.switchboard_service.getControl(this.id)
-            .subscribe(control => this.current_rail = <Rail>control);
+    loadItems(): void {
+        this.switchboard_service.getControls(this.item.items)
+            .subscribe(controls => {
+                this.items = <DINObject[]>controls;
+            });
     }
 
     ngOnInit(): void {
-        this.loadRail();
+        this.loadItems();
+    }
+
+    getOrderedList(): any[] {
+        let last_x = 0;
+        return this.getSortedItems().map(item => {
+                if (last_x < item.x) {
+                    last_x = item.x;
+                }
+                let ret = {
+                    'corrected_x': last_x,
+                    'item': item,
+                };
+                last_x += item.width;
+                return ret;
+            });
+    }
+
+    private getSortedItems(): any[] {
+        if (!this.items){
+            return [];
+        }
+        let list: any[] = this.items.slice();
+        list.sort((a, b) => a.x - b.x);
+        return list;
+    }
+
+    @HostListener('click', ['$event'])
+    onClick(event: any): void {
+        this.setSelected();
+        event.preventDefault();
+        event.stopPropagation();
     }
 }
 

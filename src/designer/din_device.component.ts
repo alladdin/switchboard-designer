@@ -1,7 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 
 import { DINDevice } from '../structures/all';
-import { ItemService } from '../item.service';
 import { ControlComponent } from './control.component';
 import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 
@@ -22,15 +21,14 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
     `],
     template: `
         <svg ngClass="din-device" *ngIf="device_type"
-            [class.selected]="isSelected(item)"
+            [class.selected]="isSelected()"
             [attr.height]="parent_height + 'mm'"
             [attr.width]="device_type.width + 'mm'"
-            [attr.x]="item.x + 'mm'"
+            [attr.x]="corrected_x + 'mm'"
             y="0"
         >
             <svg:g>
                 <svg ngClass="symbol"
-                    (click)="setSelected($event, item)"
                     [inlineSVG]="'/data/'+ getSymbolPath()"
                     [attr.width]="device_type.symbol.width + 'mm'"
                     [attr.height]="device_type.symbol.height + 'mm'"
@@ -38,14 +36,12 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
                 ></svg>
             </svg:g>
             <svg:text ngClass="name"
-                (click)="setSelected($event, item)"
                 [attr.x]="device_type.name.left + 'mm'"
                 [attr.y]="(device_type.name.top + getSymbolTop()) + 'mm'"
             >
                 {{item.name}}
             </svg:text>
             <svg:text ValueTitleSVG
-                (click)="setSelected($event, item)"
                 ngClass="value"
                 [attr.x]="device_type.label.left + 'mm'"
                 [attr.y]="(device_type.label.top + getSymbolTop()) + 'mm'"
@@ -58,21 +54,15 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 })
 
 export class DINDeviceComponent extends ControlComponent implements OnInit {
-    @Input() item: DINDevice;
     @Input() parent_height: number;
+    @Input() corrected_x: number;
+    @Input() item: DINDevice;
     @Input() ui: any;
+
     device_type: any;
 
-    constructor(
-        private item_service: ItemService
-    ) { super() }
-
-    loadDeviceType(): void {
-        this.item_service.getItem(this.item.device_type).subscribe(device_type => this.device_type = device_type);
-    }
-
     ngOnInit(): void {
-        this.loadDeviceType();
+        this.device_type = this.item.device_data;
     }
 
     getSymbolPath(): void {
@@ -81,5 +71,12 @@ export class DINDeviceComponent extends ControlComponent implements OnInit {
 
     getSymbolTop(): number {
         return (this.parent_height/2 - this.device_type.symbol.y_origin);
+    }
+
+    @HostListener('click', ['$event'])
+    onClick(event: any): void {
+        this.setSelected();
+        event.preventDefault();
+        event.stopPropagation();
     }
 }

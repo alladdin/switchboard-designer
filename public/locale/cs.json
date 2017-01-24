@@ -11,7 +11,11 @@
             "COLOR": "barva",
             "CHARACTERISTIC": "charakteristika",
             "OVERCURRENT": "jmenovitý proud",
-            "CUTOFF_CURRENT": "vypínací proud"
+            "CUTOFF_CURRENT": "vypínací proud",
+            "DIMENSION_X": "x",
+            "DIMENSION_Y": "y",
+            "DIMENSION_WIDTH": "šířka",
+            "DIMENSION_HEIGHT": "výška"
         }
     },
     "OBJECT": {

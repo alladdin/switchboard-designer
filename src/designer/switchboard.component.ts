@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, HostListener } from '@angular/core';
 
-import { SwitchBoard } from '../structures/all';
+import { SwitchBoard, Rail } from '../structures/all';
 import { SwitchBoardService } from '../switchboard.service';
 import { ControlComponent } from './control.component';
 
@@ -21,9 +21,9 @@ import { ControlComponent } from './control.component';
         }
     `],
     template: `
-        <svg *ngIf="current_switchboard"
-            [attr.width]="(current_switchboard.width * getZoom()) + 'mm'"
-            [attr.height]="(current_switchboard.height * getZoom()) + 'mm'"
+        <svg *ngIf="item"
+            [attr.width]="(item.width * getZoom()) + 'mm'"
+            [attr.height]="(item.height * getZoom()) + 'mm'"
         >
             <svg:defs>
                 <svg:pattern id="din-rail-symbol" x="0" y="0" width="50mm" height="50mm" patternUnits="userSpaceOnUse"
@@ -32,12 +32,11 @@ import { ControlComponent } from './control.component';
             </svg:defs>
             <svg:g ngClass="switchboard"
                 [attr.transform]="'scale('+getZoom()+')'"
-                [class.selected]="isSelected(current_switchboard)"
-                (click)="setSelected($event, current_switchboard)"
+                [class.selected]="isSelected()"
             >
                 <svg:rect
-                    [attr.width]="current_switchboard.width + 'mm'"
-                    [attr.height]="current_switchboard.height + 'mm'"
+                    [attr.width]="item.width + 'mm'"
+                    [attr.height]="item.height + 'mm'"
                     stroke="#999"
                     stroke-width="2mm"
                     fill="#eee"
@@ -46,9 +45,9 @@ import { ControlComponent } from './control.component';
                     x="5mm"
                     y="20mm"
                 >
-                    {{current_switchboard.name}}
+                    {{item.name}}
                 </svg:text>
-                <svg:g Rail *ngFor="let rail of current_switchboard.rails" [id]="rail" [ui]="ui" ></svg:g>
+                <svg:g Rail *ngFor="let rail of rails" [item]="rail" [ui]="ui" ></svg:g>
             </svg:g>
         </svg>
     `
@@ -57,7 +56,9 @@ import { ControlComponent } from './control.component';
 export class SwitchBoardComponent extends ControlComponent implements OnInit {
     @Input() ui: any;
     @Input() id: string;
-    current_switchboard: SwitchBoard;
+    item: SwitchBoard;
+
+    rails: Rail[];
 
     constructor(
         private switchboard_service: SwitchBoardService
@@ -65,14 +66,31 @@ export class SwitchBoardComponent extends ControlComponent implements OnInit {
 
     loadSwitchBoard(): void {
         this.switchboard_service.getControl(this.id)
-            .subscribe(control => this.current_switchboard = <SwitchBoard>control);
+            .subscribe(control => {
+                this.item = <SwitchBoard>control;
+                this.loadRails();
+            });
     }
 
     getZoom():number {
         return (this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/140;
     }
 
+    loadRails(): void {
+        this.switchboard_service.getControls(this.item.rails)
+            .subscribe(controls => {
+                this.rails = <Rail[]>controls;
+            });
+    }
+
     ngOnInit(): void {
         this.loadSwitchBoard();
+    }
+
+    @HostListener('click', ['$event'])
+    onClick(event: any): void {
+        this.setSelected();
+        event.preventDefault();
+        event.stopPropagation();
     }
 }

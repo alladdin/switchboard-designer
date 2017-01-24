@@ -11,10 +11,12 @@ import { Control } from '../structures/all';
         <div [ngSwitch]="item.constructor.name">
             <DINDevice *ngSwitchCase="'DINDevice'" [item]="item"></DINDevice>
             <DINTerminal *ngSwitchCase="'DINTerminal'" [item]="item"></DINTerminal>
+            <DINTerminalGroup *ngSwitchCase="'DINTerminalGroup'" [item]="item"></DINTerminalGroup>
+            <Rail *ngSwitchCase="'Rail'" [item]="item"></Rail>
             <div *ngSwitchDefault>
-                <FieldDeviceTypeInfo [name]="'type'" [value]="[localization.translate('OBJECT.'+item.constructor.name.toUpperCase())]"></FieldDeviceTypeInfo>
-                <FieldText [name]="'name'" [(model)]="item.name"></FieldText>
-                <FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea>
+                <div class="row full"><FieldDeviceTypeInfo [name]="'type'" [value]="[localization.translate('OBJECT.'+item.constructor.name.toUpperCase())]"></FieldDeviceTypeInfo></div>
+                <div class="row full"><FieldText [name]="'name'" [(model)]="item.name"></FieldText></div>
+                <div class="row full"><FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea></div>
             </div>
         </div>
     `

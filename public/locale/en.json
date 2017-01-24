@@ -11,7 +11,11 @@
             "COLOR": "color",
             "CHARACTERISTIC": "characteristic",
             "OVERCURRENT": "overcurrent",
-            "CUTOFF_CURRENT": "cuttof current"
+            "CUTOFF_CURRENT": "cuttof current",
+            "DIMENSION_X": "x",
+            "DIMENSION_Y": "y",
+            "DIMENSION_WIDTH": "width",
+            "DIMENSION_HEIGHT": "height"
         }
     },
     "OBJECT": {

@@ -8,7 +8,6 @@ import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/forkJoin';
 
-
 @Injectable()
 export class ItemService {
     private base_path = '/data';

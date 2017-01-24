@@ -9,7 +9,7 @@ import { Control } from '../structures/all';
     `],
     template: `
         <div *ngIf="item" ngClass="property-editor">
-            <h4>{{'PROPERTY-EDITOR.TITLE' | translate:lang }}</h4>
+            <div class="row full"><h4>{{'PROPERTY-EDITOR.TITLE' | translate:lang }}</h4></div>
             <form>
                 <Control [item]="item"></Control>
             </form>

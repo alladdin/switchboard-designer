@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Locale, LocaleService, LocalizationService } from 'angular2localization';
 
 import { ItemService } from '../item.service';
@@ -9,18 +9,25 @@ import { DINDevice } from '../structures/all';
     styles: [`
     `],
     template: `
-        <FieldDeviceTypeInfo [name]="'type'" [value]="getDeviceTitle(lang)"></FieldDeviceTypeInfo>
-        <FieldText [name]="'name'" [(model)]="item.name"></FieldText>
-        <FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea>
-        <FieldSelect *ngFor="let param_key of getDeviceParamKeys()"
+        <div class="row full"><FieldDeviceTypeInfo [name]="'type'" [value]="getDeviceTitle(lang)"></FieldDeviceTypeInfo></div>
+        <div class="row full"><FieldText [name]="'name'" [(model)]="item.name"></FieldText></div>
+        <div class="row full"><FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea></div>
+        <div class="row full"><FieldNumber
+            [name]="'dimension_x'"
+            [(model)]="item.x"
+            [step]="0.1"
+            [units]="'mm'"
+            [width]="'100%'"
+        ></FieldNumber></div>
+        <div class="row full"><FieldSelect *ngFor="let param_key of getDeviceParamKeys()"
             [name]="param_key"
             [(model)]="item.device_params[param_key]"
             [options]="device_type.params[param_key].options"
-        ></FieldSelect>
+        ></FieldSelect></div>
     `
 })
 
-export class DINDeviceComponent extends Locale implements OnInit {
+export class DINDeviceComponent extends Locale {
     @Input() item: DINDevice;
     device_type: any;
     device_descriptions: any[];
@@ -76,9 +83,6 @@ export class DINDeviceComponent extends Locale implements OnInit {
         this.item_service.getDescriptionChain(this.item.device_type).subscribe(
             descriptions => this.device_descriptions = descriptions
         );
-    }
-
-    ngOnInit(): void {
     }
 
     ngDoCheck(): void {
