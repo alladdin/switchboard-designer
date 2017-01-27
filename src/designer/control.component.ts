@@ -1,7 +1,17 @@
+import { Component, Input, OnInit, HostListener } from '@angular/core';
+
 import { Control } from '../structures/all';
 
+@Component({
+    selector: '[Control]',
+    styles: [`
+    `],
+    template: `
+    `
+})
+
 export class ControlComponent {
-    ui: any;
+    @Input() ui: any;
     item: Control;
 
     constructor() {}
@@ -25,5 +35,12 @@ export class ControlComponent {
                 this.ui.selected = this.item;
             }
         }
+    }
+
+    @HostListener('click', ['$event'])
+    onClick(event: any): void {
+        this.setSelected();
+        event.preventDefault();
+        event.stopPropagation();
     }
 }

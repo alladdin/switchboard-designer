@@ -62,7 +62,6 @@ import { ControlComponent } from './control.component';
 
 export class RailComponent extends ControlComponent implements OnInit {
     @Input() item: Rail;
-    @Input() ui: any;
 
     items: DINObject[];
 
@@ -103,13 +102,6 @@ export class RailComponent extends ControlComponent implements OnInit {
         let list: any[] = this.items.slice();
         list.sort((a, b) => a.x - b.x);
         return list;
-    }
-
-    @HostListener('click', ['$event'])
-    onClick(event: any): void {
-        this.setSelected();
-        event.preventDefault();
-        event.stopPropagation();
     }
 }
 

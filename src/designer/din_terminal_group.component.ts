@@ -69,7 +69,6 @@ import { SwitchBoardService } from '../switchboard.service';
 export class DINTerminalGroupComponent extends ControlComponent implements OnInit {
     @Input() item: DINTerminalGroup;
     @Input() parent_height: number;
-    @Input() ui: any;
     @Input() corrected_x: number;
 
     terminals: DINTerminal[];
@@ -124,12 +123,5 @@ export class DINTerminalGroupComponent extends ControlComponent implements OnIni
         let list: any[] = this.terminals.slice();
         list.sort((a, b) => a.x - b.x);
         return list;
-    }
-
-    @HostListener('click', ['$event'])
-    onClick(event: any): void {
-        this.setSelected();
-        event.preventDefault();
-        event.stopPropagation();
     }
 }

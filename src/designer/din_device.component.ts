@@ -57,7 +57,6 @@ export class DINDeviceComponent extends ControlComponent implements OnInit {
     @Input() parent_height: number;
     @Input() corrected_x: number;
     @Input() item: DINDevice;
-    @Input() ui: any;
 
     device_type: any;
 
@@ -71,12 +70,5 @@ export class DINDeviceComponent extends ControlComponent implements OnInit {
 
     getSymbolTop(): number {
         return (this.parent_height/2 - this.device_type.symbol.y_origin);
-    }
-
-    @HostListener('click', ['$event'])
-    onClick(event: any): void {
-        this.setSelected();
-        event.preventDefault();
-        event.stopPropagation();
     }
 }

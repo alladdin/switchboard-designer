@@ -54,7 +54,6 @@ import { ControlComponent } from './control.component';
 })
 
 export class SwitchBoardComponent extends ControlComponent implements OnInit {
-    @Input() ui: any;
     @Input() id: string;
     item: SwitchBoard;
 
@@ -85,12 +84,5 @@ export class SwitchBoardComponent extends ControlComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadSwitchBoard();
-    }
-
-    @HostListener('click', ['$event'])
-    onClick(event: any): void {
-        this.setSelected();
-        event.preventDefault();
-        event.stopPropagation();
     }
 }

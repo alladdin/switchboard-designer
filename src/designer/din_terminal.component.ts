@@ -47,7 +47,6 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 export class DINTerminalComponent extends ControlComponent implements OnInit {
     @Input() item: DINTerminal;
     @Input() parent_height: number;
-    @Input() ui: any;
     @Input() corrected_x: number;
 
     device_type: any;
@@ -65,13 +64,6 @@ export class DINTerminalComponent extends ControlComponent implements OnInit {
 
     getSymbolTop(): number {
         return (this.parent_height/2 - this.device_type.symbol.y_origin);
-    }
-
-    @HostListener('click', ['$event'])
-    onClick(event: any): void {
-        this.setSelected();
-        event.preventDefault();
-        event.stopPropagation();
     }
 }
 
