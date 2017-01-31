@@ -1,8 +1,7 @@
-import { Component, Input, OnInit, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { DINTerminalGroup, DINTerminal } from '../structures/all';
 import { ControlComponent } from './control.component';
-import { SwitchBoardService } from '../switchboard.service';
 
 @Component({
     selector: '[DINTerminalGroup]',
@@ -66,24 +65,14 @@ import { SwitchBoardService } from '../switchboard.service';
     `
 })
 
-export class DINTerminalGroupComponent extends ControlComponent implements OnInit {
+export class DINTerminalGroupComponent extends ControlComponent {
     @Input() item: DINTerminalGroup;
     @Input() parent_height: number;
     @Input() corrected_x: number;
 
-    terminals: DINTerminal[];
-
     private display_terminals: any[] = [];
     private all_terminals_width: number = 0;
     private item_width: number = 0;
-
-    constructor(
-        private switchboard_service: SwitchBoardService
-    ) { super() }
-
-    ngOnInit(): void {
-        this.loadTerminals();
-    }
 
     ngDoCheck() {
         let new_terminals_width = this.displayTerminalsIdent();
@@ -93,23 +82,16 @@ export class DINTerminalGroupComponent extends ControlComponent implements OnIni
         }
     }
 
-    loadTerminals(): void {
-        this.switchboard_service.getControls(this.item.terminals)
-            .subscribe(controls => {
-                this.terminals = <DINTerminal[]>controls;
-            });
-    }
-
     getItemWidth(): number {
         this.item.width = this.item_width;
         return this.item.width;
     }
 
     displayTerminalsIdent(): number {
-        if (!this.terminals){
+        if (!this.item.controls){
             return 0;
         }
-        return this.terminals.map(item => item.x + item.width).reduce((a, b) => a+b);
+        return this.item.controls.map(item => item.x + item.width).reduce((a, b) => a+b);
     }
 
     updateDisplayTerminals(): void {
@@ -144,10 +126,10 @@ export class DINTerminalGroupComponent extends ControlComponent implements OnIni
     }
 
     private getSortedTerminals(): any[] {
-        if (!this.terminals){
+        if (!this.item.controls){
             return [];
         }
-        let list: any[] = this.terminals.slice();
+        let list: any[] = this.item.controls.slice();
         list.sort((a, b) => a.x - b.x);
         return list;
     }

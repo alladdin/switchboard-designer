@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { SwitchBoard, Rail } from '../structures/all';
-import { SwitchBoardService } from '../switchboard.service';
+import { SwitchBoard } from '../structures/all';
 import { ControlComponent } from './control.component';
 
 @Component({
@@ -47,42 +46,16 @@ import { ControlComponent } from './control.component';
                 >
                     {{item.name}}
                 </svg:text>
-                <svg:g Rail *ngFor="let rail of rails" [item]="rail" [ui]="ui" ></svg:g>
+                <svg:g Rail *ngFor="let rail of item.controls" [item]="rail" [ui]="ui" ></svg:g>
             </svg:g>
         </svg>
     `
 })
 
-export class SwitchBoardComponent extends ControlComponent implements OnInit {
-    @Input() id: string;
-    item: SwitchBoard;
-
-    rails: Rail[];
-
-    constructor(
-        private switchboard_service: SwitchBoardService
-    ) { super() }
-
-    loadSwitchBoard(): void {
-        this.switchboard_service.getControl(this.id)
-            .subscribe(control => {
-                this.item = <SwitchBoard>control;
-                this.loadRails();
-            });
-    }
+export class SwitchBoardComponent extends ControlComponent {
+    @Input() item: SwitchBoard;
 
     getZoom():number {
         return (this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/140;
-    }
-
-    loadRails(): void {
-        this.switchboard_service.getControls(this.item.rails)
-            .subscribe(controls => {
-                this.rails = <Rail[]>controls;
-            });
-    }
-
-    ngOnInit(): void {
-        this.loadSwitchBoard();
     }
 }

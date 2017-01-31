@@ -1,0 +1,14 @@
+{
+    "type": "DINTerminalGroup",
+    "name": "GAZ02",
+    "x": 20.6,
+    "width": 33.8,
+    "id": "1d17fbfc-26e3-c069-64eb-6c82bf7deb3a",
+    "controls": [
+        "e7efe792-9392-c568-0d8e-60091e1a9bb0",
+        "d0905b78-e67c-da8e-cc09-3087a1b7049f",
+        "60c8ddf1-861e-8e33-22cf-bf89b68453d4",
+        "d7425d10-3cdb-612f-1425-4a21a8a42aa8",
+        "339ef324-9f6f-726b-06e6-65743f652d46"
+    ]
+}

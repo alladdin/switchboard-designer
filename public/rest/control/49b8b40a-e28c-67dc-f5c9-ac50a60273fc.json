@@ -1,0 +1,18 @@
+{
+    "type": "Rail",
+    "name": "ŘADA03",
+    "width": 437,
+    "height": 150,
+    "x": 54,
+    "y": 360,
+    "id": "49b8b40a-e28c-67dc-f5c9-ac50a60273fc",
+    "controls": [
+        "ea56e761-0b6e-5bf3-007e-7be6e2df205e",
+        "1d17fbfc-26e3-c069-64eb-6c82bf7deb3a",
+        "5a37625e-8c8f-8488-ac85-c03fc6d8ee8f",
+        "1c212b2b-6658-1318-6670-c996d76f1314",
+        "56c38930-e2b3-cca0-1002-eabbcbd06a1d",
+        "716c6caf-bae8-1cef-b338-eb01768ae1ef",
+        "f7f7b821-2beb-c289-f76c-513e9829bab1"
+    ]
+}

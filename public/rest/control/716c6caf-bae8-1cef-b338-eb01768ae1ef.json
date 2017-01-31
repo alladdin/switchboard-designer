@@ -1,0 +1,13 @@
+{
+    "type": "DINTerminalGroup",
+    "name": "GAT01",
+    "x": 116.19999999999999,
+    "width": 26.4,
+    "id": "716c6caf-bae8-1cef-b338-eb01768ae1ef",
+    "controls": [
+        "15bfa856-9dee-b69f-26f7-4fdc2bbc7948",
+        "bcaaf8e9-5534-4f0a-4237-06b1a966fb77",
+        "3c3d43cb-415b-4f99-bf74-80675e19ba7e",
+        "7378beb7-7a07-3df0-2a07-b9191564c840"
+    ]
+}

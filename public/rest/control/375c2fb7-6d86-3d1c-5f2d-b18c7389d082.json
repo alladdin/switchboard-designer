@@ -1,0 +1,12 @@
+{
+    "type": "DINTerminal",
+    "x": 13.2,
+    "name": "PE",
+    "device_type": [
+        "TERMINAL",
+        "BECOV",
+        "RSAPE",
+        "4"
+    ],
+    "id": "375c2fb7-6d86-3d1c-5f2d-b18c7389d082"
+}

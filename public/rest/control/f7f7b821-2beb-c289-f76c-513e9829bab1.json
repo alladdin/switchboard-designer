@@ -1,0 +1,17 @@
+{
+    "type": "DINTerminalGroup",
+    "name": "GAT02",
+    "x": 142.6,
+    "width": 52.8,
+    "id": "f7f7b821-2beb-c289-f76c-513e9829bab1",
+    "controls": [
+        "f99f2b32-3dab-8d3a-586f-2d6ad11186da",
+        "629c2cec-2c64-1464-24df-80b787b0a9ee",
+        "9c98b9d0-5383-597a-7dd5-b2ca2cdd9e89",
+        "f36ea62d-8d4c-be68-0f9b-430212fb83e1",
+        "e755aca6-db9f-85d7-4e94-85e2f53fb5d4",
+        "af2ccffc-d998-45d5-13d7-5650990c4e11",
+        "71e71086-f398-8f27-3581-c332cc7ee847",
+        "90768cc1-461a-eb23-cde5-9f5a80559dbe"
+    ]
+}

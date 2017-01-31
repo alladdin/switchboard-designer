@@ -1,0 +1,16 @@
+{
+    "type": "DINDevice",
+    "name": "GAC01",
+    "x": 87.5,
+    "device_type": [
+        "DEVICE",
+        "EATON",
+        "PF6",
+        "4p"
+    ],
+    "device_params": {
+        "overcurrent": 25,
+        "cutoff_current": "003"
+    },
+    "id": "1a58146f-7121-471a-4e9b-afedb4e9af6b"
+}

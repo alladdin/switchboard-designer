@@ -1,0 +1,12 @@
+{
+    "type": "Rail",
+    "name": "ŘADA04",
+    "width": 437,
+    "height": 150,
+    "x": 54,
+    "y": 510,
+    "id": "27aaccb5-7ce3-3a90-10d0-0fa415f4af07",
+    "controls": [
+        "e681b3d4-c43c-589e-b9ca-2b77ce591ec7"
+    ]
+}

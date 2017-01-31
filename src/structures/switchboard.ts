@@ -1,11 +1,8 @@
 import { Control } from './control';
-import { Rail } from './rail';
+import { ControlGroup } from './control_group';
 
-export class SwitchBoard extends Control {
-    rails: string[];
-
-    constructor(params: any) {
-        super(params);
-        this.rails = params.rails;
+export class SwitchBoard extends ControlGroup {
+    constructor(params: any, controls: Control[]) {
+        super(params, controls);
     }
 }

@@ -1,35 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Headers, Http } from '@angular/http';
+import { Http } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
+
+import {CacheableService} from './cacheable.service';
+import {LoaderService} from './loader.service';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/forkJoin';
 
 @Injectable()
-export class ItemService {
+export class ItemService extends CacheableService {
     private base_path = '/data';
     private extension = '.json';
-    private cache = {};
 
-    constructor(private http: Http) { }
+    constructor(
+        private http: Http,
+        private loader: LoaderService
+    ) {
+        super();
+    }
 
     getItem(path_parts: string[]): Observable<any> {
-        var path = this.build_path(path_parts);
-        if (this.cache[path]){
-            if (this.cache[path] instanceof Observable){
-                return this.cache[path];
-            }else{
-                return Observable.of(this.cache[path]);
-            }
-        }else{
-            return this.cache[path] = this.http.get(path)
-                .map(response => this.cache[path] = response.json())
+        return this.getWithCache( this.build_path(path_parts), (path) => {
+            this.loader.start_request();
+            return this.http.get(path)
+                .map(response => {
+                    this.loader.finish_request();
+                    return response.json();
+                })
                 .catch(this.handleError)
-                .share();
-        }
+        });
     }
 
     getDescriptionChain(path_parts: string[]): Observable<any> {
@@ -47,6 +49,7 @@ export class ItemService {
     }
 
     private handleError(error: any): Observable<string> {
+        this.loader.finish_request();
         console.error('An error occurred', error);
         return Observable.of(undefined);
     }

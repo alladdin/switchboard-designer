@@ -1,0 +1,15 @@
+{
+    "type": "DINDevice",
+    "name": "HLAVNÍ VYPÍNAČ",
+    "x": 0,
+    "device_type": [
+        "DEVICE",
+        "EATON",
+        "IS",
+        "3p"
+    ],
+    "device_params": {
+        "overcurrent": 32
+    },
+    "id": "e681b3d4-c43c-589e-b9ca-2b77ce591ec7"
+}

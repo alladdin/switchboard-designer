@@ -1,6 +1,6 @@
-import { DINObject } from './din_object';
+import { Control } from './control';
 
-export class DINTerminal extends DINObject {
+export class DINTerminal extends Control {
     device_type: string[];
     device_data: any;
     device_params: any;

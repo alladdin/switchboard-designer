@@ -1,0 +1,16 @@
+{
+    "type": "DINDevice",
+    "name": "GAZ02",
+    "x": 17.5,
+    "device_type": [
+        "DEVICE",
+        "EATON",
+        "PL6",
+        "3p"
+    ],
+    "device_params": {
+        "characteristic": "B",
+        "overcurrent": 16
+    },
+    "id": "9b68f2ae-0396-a8d3-e9e7-007ed772a725"
+}

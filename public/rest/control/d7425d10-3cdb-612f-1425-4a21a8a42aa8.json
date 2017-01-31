@@ -1,0 +1,15 @@
+{
+    "type": "DINTerminal",
+    "x": 19.799999999999997,
+    "name": "N",
+    "device_type": [
+        "TERMINAL",
+        "BECOV",
+        "RSA",
+        "4"
+    ],
+    "device_params": {
+        "color": "dark-blue"
+    },
+    "id": "d7425d10-3cdb-612f-1425-4a21a8a42aa8"
+}

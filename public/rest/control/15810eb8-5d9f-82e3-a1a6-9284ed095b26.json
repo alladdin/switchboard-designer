@@ -1,0 +1,16 @@
+{
+    "type": "DINDevice",
+    "name": "GAS03",
+    "x": 35,
+    "device_type": [
+        "DEVICE",
+        "EATON",
+        "PL6",
+        "1p"
+    ],
+    "device_params": {
+        "characteristic": "B",
+        "overcurrent": 6
+    },
+    "id": "15810eb8-5d9f-82e3-a1a6-9284ed095b26"
+}

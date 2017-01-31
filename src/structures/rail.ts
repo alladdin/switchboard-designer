@@ -1,11 +1,8 @@
 import { Control } from './control';
-import { DINObject } from './din_object';
+import { ControlGroup } from './control_group';
 
-export class Rail extends Control {
-    items: string[];
-
-    constructor(params: any) {
-        super(params);
-        this.items = params.items;
+export class Rail extends ControlGroup {
+    constructor(params: any, controls: Control[]) {
+        super(params, controls);
     }
 }

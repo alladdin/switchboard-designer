@@ -1,7 +1,6 @@
-import { Component, Input, OnInit, HostListener } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
-import { Rail, DINObject } from '../structures/all';
-import { SwitchBoardService } from '../switchboard.service';
+import { Rail, Control } from '../structures/all';
 import { ControlComponent } from './control.component';
 
 @Component({
@@ -60,28 +59,11 @@ import { ControlComponent } from './control.component';
     `
 })
 
-export class RailComponent extends ControlComponent implements OnInit {
+export class RailComponent extends ControlComponent {
     @Input() item: Rail;
-
-    items: DINObject[];
 
     private display_items: any[] = [];
     private all_items_width: number = 0;
-
-    constructor(
-        private switchboard_service: SwitchBoardService
-    ) { super() }
-
-    loadItems(): void {
-        this.switchboard_service.getControls(this.item.items)
-            .subscribe(controls => {
-                this.items = <DINObject[]>controls;
-            });
-    }
-
-    ngOnInit(): void {
-        this.loadItems();
-    }
 
     ngDoCheck() {
         let new_items_width = this.displayItemsIdent();
@@ -92,10 +74,10 @@ export class RailComponent extends ControlComponent implements OnInit {
     }
 
     displayItemsIdent(): number {
-        if (!this.items){
+        if (!this.item.controls){
             return 0;
         }
-        return this.items.map(item => item.x + item.width).reduce((a, b) => a+b);
+        return this.item.controls.map(item => item.x + item.width).reduce((a, b) => a+b);
     }
 
     updateDisplayItems(): void {
@@ -118,10 +100,10 @@ export class RailComponent extends ControlComponent implements OnInit {
     }
 
     private getSortedItems(): any[] {
-        if (!this.items){
+        if (!this.item.controls){
             return [];
         }
-        let list: any[] = this.items.slice();
+        let list: any[] = this.item.controls.slice();
         list.sort((a, b) => a.x - b.x);
         return list;
     }

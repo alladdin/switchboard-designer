@@ -1,73 +1,86 @@
 import { Injectable } from '@angular/core';
-import { MOCK_ALL_OBJECTS, MOCK_SWITCHBOARD_UUID } from './structures/mock_switchboard';
+import { Http } from '@angular/http';
 import * as Structure from './structures/all';
 import {Observable} from 'rxjs/Observable';
 
-import {ItemService} from './item.service';
+import {CacheableService} from './cacheable.service';
+import {LoaderService} from './loader.service';
+import {ControlService} from './control.service';
 
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/share';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/forkJoin';
+import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
-export class SwitchBoardService {
-    private cache = {};
+export class SwitchBoardService extends CacheableService {
+    private base_path = '/rest/switchboard';
+    private extension = '.json';
 
-    constructor(private item_service: ItemService) { }
+    constructor(
+        private control_service: ControlService,
+        private http: Http,
+        private loader: LoaderService
+    ) { super(); }
 
-    getSwitchBoardID(): string {
-        return MOCK_SWITCHBOARD_UUID;
+    getSwitchBoard(id: string): Observable<any> {
+        return this.getWithCache(id, id => this.getSwitchBoardData(id));
     }
 
-    getControl(id: string): Observable<Structure.Control> {
-        if (this.cache[id]){
-            if (this.cache[id] instanceof Observable){
-                return this.cache[id];
-            } else {
-                return Observable.of(this.cache[id]);
-            }
-        }else{
-            let response_json = MOCK_ALL_OBJECTS[id];
-            if ((response_json.type === 'DINDevice') || (response_json.type === 'DINTerminal')){
-                let obs = this.item_service.getItem(response_json.device_type);
+    getSwitchBoardData(id: string): Observable<any> {
+        return this.http.get(this.build_path(id))
+            .mergeMap(response => this.control_service.getControls(response.json()))
+            .map(response => this.buildControlStructure(id, response));
+    }
 
-                return this.cache[id] = obs.share().map(item => {
-                    response_json.device_data = item;
-                    return this.cache[id] = this.createControl(response_json, id);
-                });
-            } else {
-                this.cache[id] = this.createControl(response_json, id);
-            }
-            return Observable.of(this.cache[id]);
+    buildControlStructure(id:string, data:any[]){
+        let current_data = data.find(item => item.id === id);
+        let controls:any[] = [];
+        if (current_data.controls){
+            controls = current_data.controls.map((control_id:any) => this.buildControlStructure(control_id, data));
         }
+        return this.createControl(current_data, controls);
     }
 
-    getControls(ids: string[]): Observable<Structure.Control[]> {
-        var obs_chain: Observable<Structure.Control>[] = [];
-        for (let id of ids){
-            obs_chain.push(this.getControl(id));
+    getControl(id: string): Observable<any> {
+        return this.control_service.getControl(id)
+            .map(control => this.createControl(control, []) );
+    }
+
+    getControls(ids: string[]): Observable<any> {
+        if (!ids){
+            return Observable.of([]);
         }
-        return Observable.forkJoin(obs_chain);
+        return this.control_service.getControls(ids)
+            .map(controls => controls.map((control:any) => this.createControl(control, []) ));
     }
 
-    createControl(data: any, id: string): Structure.Control {
-        data.id = id;
+    createControl(data: any, controls:any[]): Structure.Control {
         switch(data.type){
             case 'SwitchBoard':
-                return new Structure.SwitchBoard(data);
+                return new Structure.SwitchBoard(data, controls);
             case 'Rail':
-                return new Structure.Rail(data);
+                return new Structure.Rail(data, controls);
             case 'DINDevice':
                 return new Structure.DINDevice(data);
             case 'DINTerminal':
                 return new Structure.DINTerminal(data);
             case 'DINTerminalGroup':
-                return new Structure.DINTerminalGroup(data);
+                return new Structure.DINTerminalGroup(data, controls);
             default:
                 console.error('Unknown object type for control %o', data);
                 return undefined;
         }
+    }
+
+    private build_path(id:string) {
+        return this.base_path + '/' + id + this.extension;
+    }
+
+    private handleError(error: any): Observable<string> {
+        this.loader.finish_request();
+        console.error('An error occurred', error);
+        return Observable.of(undefined);
     }
 }

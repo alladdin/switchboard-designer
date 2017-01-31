@@ -1,12 +1,8 @@
-import { DINObject } from './din_object';
-import { DINTerminal } from './din_terminal';
-import { Rail } from './rail';
+import { Control } from './control';
+import { ControlGroup } from './control_group';
 
-export class DINTerminalGroup extends DINObject {
-    terminals: string[];
-
-    constructor(params: any) {
-        super(params);
-        this.terminals = params.terminals;
+export class DINTerminalGroup extends ControlGroup {
+    constructor(params: any, controls: Control[]) {
+        super(params, controls);
     }
 }

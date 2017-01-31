@@ -6,6 +6,8 @@ import { MaterialModule } from '@angular/material';
 import { FormsModule }   from '@angular/forms';
 
 import {SwitchBoardService} from './switchboard.service';
+import {LoaderService} from './loader.service';
+import {ControlService} from './control.service';
 
 import { AppComponent }   from './app.component';
 import { DesignerModule } from './designer/designer.module';
@@ -27,6 +29,8 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
     ],
     providers: [
         SwitchBoardService,
+        LoaderService,
+        ControlService,
     ],
     bootstrap: [ AppComponent ]
 })

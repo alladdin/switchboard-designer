@@ -1,0 +1,12 @@
+{
+    "type": "DINTerminalGroup",
+    "name": "GAS03",
+    "x": 95.6,
+    "width": 20.6,
+    "id": "56c38930-e2b3-cca0-1002-eabbcbd06a1d",
+    "controls": [
+        "0f99e47c-04c2-a534-66a2-6c2cfe8152a3",
+        "3709b515-733e-9cb9-8d95-8ba2aefb6b07",
+        "47edcd52-1b9b-b2e0-371d-58647850db1a"
+    ]
+}

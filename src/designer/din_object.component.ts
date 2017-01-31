@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 
-import { DINObject } from '../structures/all';
+import { Control } from '../structures/all';
 
 @Component({
     selector: '[DINObject]',
@@ -32,6 +32,6 @@ import { DINObject } from '../structures/all';
 export class DINObjectComponent {
     @Input() parent_height: number;
     @Input() ui: any;
-    @Input() item: DINObject;
+    @Input() item: Control;
     @Input() corrected_x: number;
 }

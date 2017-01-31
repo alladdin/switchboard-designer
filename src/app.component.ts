@@ -3,6 +3,7 @@ import { Locale, LocaleService, LocalizationService } from 'angular2localization
 
 import { SwitchBoard } from './structures/all';
 import { SwitchBoardService } from './switchboard.service';
+import { LoaderService } from './loader.service';
 
 @Component({
     selector: 'my-app',
@@ -13,6 +14,22 @@ import { SwitchBoardService } from './switchboard.service';
 
         .app-toolbar-menu {
             min-width: 0;
+        }
+
+        .app-panels {
+            position: relative;
+        }
+
+        .loading-bar {
+            height: 2px;
+            width: 100%;
+            position:absolute;
+            z-index:5000;
+            top:0;
+        }
+
+        .loading-bar md-progress-bar {
+            height: 2px;
         }
     `],
     template: `
@@ -44,11 +61,14 @@ import { SwitchBoardService } from './switchboard.service';
                 <button md-icon-button (click)="zoomOut($event)"><i class="fa fa-search-minus"></i></button>
             </md-toolbar>
             <div class="app-panels">
+                <div *ngIf="loading.visible" ngClass="loading-bar">
+                    <md-progress-bar [mode]="loading.mode" [value]="loading.value"></md-progress-bar>
+                </div>
                 <div *ngIf="ui.selected" class="side app-panel">
                     <PropertyEditor [ui]="ui" [item]="ui.selected"></PropertyEditor>
                 </div>
                 <div class="main app-panel">
-                    <SwitchBoard [ui]="ui" [id]="current_switchboard_id"></SwitchBoard>
+                    <SwitchBoard *ngIf="switchboard" [ui]="ui" [item]="switchboard"></SwitchBoard>
                 </div>
             </div>
         </div>
@@ -64,21 +84,26 @@ export class AppComponent extends Locale implements OnInit {
             max: 9
         }
     };
-    public current_switchboard_id: string;
+    public switchboard: SwitchBoard;
     public supported_languages: any = {
         en: 'us',
         cs: 'cz'
     };
+    public loading:any = {
+        visible: false,
+        value: 0,
+        mode: 'indeterminate',
+    };
 
     constructor(
         private switchboard_service: SwitchBoardService,
+        private loader: LoaderService,
         public locale: LocaleService,
         public localization: LocalizationService
     ) {
         super(locale, localization);
 
         this.locale.addLanguages(Object.keys(this.supported_languages));
-        /*this.locale.definePreferredLocale('en', 'US', 30);*/
         this.locale.definePreferredLanguage('en', 30);
 
         this.localization.translationProvider('/locale/');
@@ -86,11 +111,31 @@ export class AppComponent extends Locale implements OnInit {
     }
 
     loadSwitchBoard(): void {
-        this.current_switchboard_id = this.switchboard_service.getSwitchBoardID();
+        let switchboard_id = 'ae518529-59dd-d6ed-a871-4a43ad215804';
+        this.switchboard_service.getSwitchBoard(switchboard_id)
+            .subscribe(control => {
+                this.switchboard = <SwitchBoard>control;
+            });
     }
 
     ngOnInit(): void {
         this.loadSwitchBoard();
+        this.getLoadingBar();
+    }
+
+    ngDoCheck(): void {
+        this.getLoadingBar();
+    }
+
+    getLoadingBar(): void {
+        let loading_mode = this.loader.getLoadingMode();
+        if (loading_mode){
+            this.loading.visible = true;
+            this.loading.mode = loading_mode;
+            this.loading.value = this.loader.getLoadingValue();
+        }else{
+            this.loading.visible = false;
+        }
     }
 
     zoomIn(event: any): void {

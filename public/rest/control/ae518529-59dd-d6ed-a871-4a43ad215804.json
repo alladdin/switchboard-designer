@@ -1,0 +1,13 @@
+{
+    "type": "SwitchBoard",
+    "name": "Garáž",
+    "width": 545,
+    "height": 738,
+    "id": "ae518529-59dd-d6ed-a871-4a43ad215804",
+    "controls": [
+        "fb70359b-9a0f-5766-f2ec-d6375c589546",
+        "16b06989-b809-e068-7079-bf01a44f48bc",
+        "49b8b40a-e28c-67dc-f5c9-ac50a60273fc",
+        "27aaccb5-7ce3-3a90-10d0-0fa415f4af07"
+    ]
+}
