@@ -27,13 +27,13 @@ import { SwitchBoardService } from '../switchboard.service';
     template: `
         <svg ngClass="din-terminal-group"
             [class.selected]="isSelected()"
-            [attr.width]="reCalculateWidth() + 'mm'"
+            [attr.width]="getItemWidth() + 'mm'"
             [attr.height]="(parent_height - 40) + 'mm'"
             [attr.x]="corrected_x + 'mm'"
             y="20mm"
         >
             <svg:rect
-                [attr.width]="reCalculateWidth() + 'mm'"
+                [attr.width]="getItemWidth() + 'mm'"
                 [attr.height]="(parent_height - 40) + 'mm'"
                 stroke="none"
                 fill="#f99"
@@ -49,7 +49,7 @@ import { SwitchBoardService } from '../switchboard.service';
                 stroke-dasharray="3mm, 3mm"
             />
             <svg:g DINTerminal
-                *ngFor="let terminal of getOrderedList()"
+                *ngFor="let terminal of display_terminals"
                 [parent_height]="parent_height - 40"
                 [item]="terminal.item"
                 [ui]="ui"
@@ -73,6 +73,10 @@ export class DINTerminalGroupComponent extends ControlComponent implements OnIni
 
     terminals: DINTerminal[];
 
+    private display_terminals: any[] = [];
+    private all_terminals_width: number = 0;
+    private item_width: number = 0;
+
     constructor(
         private switchboard_service: SwitchBoardService
     ) { super() }
@@ -81,12 +85,36 @@ export class DINTerminalGroupComponent extends ControlComponent implements OnIni
         this.loadTerminals();
     }
 
+    ngDoCheck() {
+        let new_terminals_width = this.displayTerminalsIdent();
+        if( this.all_terminals_width !== new_terminals_width ){
+            this.all_terminals_width = new_terminals_width;
+            this. updateDisplayTerminals();
+        }
+    }
+
     loadTerminals(): void {
         this.switchboard_service.getControls(this.item.terminals)
             .subscribe(controls => {
                 this.terminals = <DINTerminal[]>controls;
-                this.reCalculateWidth();
             });
+    }
+
+    getItemWidth(): number {
+        this.item.width = this.item_width;
+        return this.item.width;
+    }
+
+    displayTerminalsIdent(): number {
+        if (!this.terminals){
+            return 0;
+        }
+        return this.terminals.map(item => item.x + item.width).reduce((a, b) => a+b);
+    }
+
+    updateDisplayTerminals(): void {
+        this.item_width = this.calculateWidth();
+        this.display_terminals = this.getOrderedList();
     }
 
     getOrderedList(): any[] {
@@ -104,7 +132,7 @@ export class DINTerminalGroupComponent extends ControlComponent implements OnIni
             });
     }
 
-    reCalculateWidth(): number {
+    calculateWidth(): number {
         let last_x = 0;
         for (let item of this.getSortedTerminals()) {
             if (last_x < item.x) {
@@ -112,8 +140,7 @@ export class DINTerminalGroupComponent extends ControlComponent implements OnIni
             }
             last_x += item.width;
         }
-        this.item.width = last_x;
-        return this.item.width;
+        return last_x;
     }
 
     private getSortedTerminals(): any[] {

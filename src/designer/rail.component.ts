@@ -50,7 +50,7 @@ import { ControlComponent } from './control.component';
                 {{item.name}}
             </svg:text>
             <svg:g DINObject
-                *ngFor="let object of getOrderedList()"
+                *ngFor="let object of display_items"
                 [parent_height]="item.height"
                 [item]="object.item"
                 [ui]="ui"
@@ -65,6 +65,9 @@ export class RailComponent extends ControlComponent implements OnInit {
 
     items: DINObject[];
 
+    private display_items: any[] = [];
+    private all_items_width: number = 0;
+
     constructor(
         private switchboard_service: SwitchBoardService
     ) { super() }
@@ -78,6 +81,25 @@ export class RailComponent extends ControlComponent implements OnInit {
 
     ngOnInit(): void {
         this.loadItems();
+    }
+
+    ngDoCheck() {
+        let new_items_width = this.displayItemsIdent();
+        if( this.all_items_width !== new_items_width ){
+            this.all_items_width = new_items_width;
+            this. updateDisplayItems();
+        }
+    }
+
+    displayItemsIdent(): number {
+        if (!this.items){
+            return 0;
+        }
+        return this.items.map(item => item.x + item.width).reduce((a, b) => a+b);
+    }
+
+    updateDisplayItems(): void {
+        this.display_items = this.getOrderedList();
     }
 
     getOrderedList(): any[] {
