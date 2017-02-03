@@ -22,9 +22,9 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
     template: `
         <svg ngClass="din-device" *ngIf="device_type"
             [class.selected]="isSelected()"
-            [attr.height]="parent_height + 'mm'"
-            [attr.width]="device_type.width + 'mm'"
-            [attr.x]="corrected_x + 'mm'"
+            [attr.height]="item.display.height + 'mm'"
+            [attr.width]="item.display.width + 'mm'"
+            [attr.x]="item.display.x + 'mm'"
             y="0"
         >
             <svg:g>
@@ -54,8 +54,6 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 })
 
 export class DINDeviceComponent extends ControlComponent implements OnInit {
-    @Input() parent_height: number;
-    @Input() corrected_x: number;
     @Input() item: DINDevice;
 
     device_type: any;
@@ -69,6 +67,6 @@ export class DINDeviceComponent extends ControlComponent implements OnInit {
     }
 
     getSymbolTop(): number {
-        return (this.parent_height/2 - this.device_type.symbol.y_origin);
+        return (this.item.display.height/2 - this.device_type.symbol.y_origin);
     }
 }
