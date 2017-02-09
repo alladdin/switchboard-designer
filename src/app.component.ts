@@ -36,11 +36,19 @@ import { SwitchBoardService } from './switchboard.service';
             </md-toolbar>
             <div class="app-panels">
                 <LoadingBar></LoadingBar>
-                <div *ngIf="ui.selected" class="side app-panel">
+                <div *ngIf="ui.selected" class="properties app-panel">
                     <PropertyEditor [ui]="ui" [item]="ui.selected"></PropertyEditor>
                 </div>
                 <div class="main app-panel">
                     <SwitchBoard *ngIf="switchboard" [ui]="ui" [item]="switchboard"></SwitchBoard>
+                </div>
+                <div class="side-toolbar app-panel">
+                    <span mdTooltipPosition="left" mdTooltip="Edit">
+                        <button md-raised-button color=""><i class="fa fa-pencil"></i></button>
+                    </span>
+                    <span mdTooltipPosition="left" mdTooltip="Move">
+                        <button md-raised-button><i class="fa fa-arrows"></i></button>
+                    </span>
                 </div>
             </div>
         </div>
