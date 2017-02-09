@@ -18,6 +18,12 @@
             "DIMENSION_HEIGHT": "výška"
         }
     },
+    "TOOL": {
+        "EDIT": "Upravit",
+        "MOVE": "Přesunout",
+        "ADD": "Přidat",
+        "DELETE": "Smazat"
+    },
     "OBJECT": {
         "SWITCHBOARD": "Rozvaděč",
         "RAIL": "Přístrojová lišta",

@@ -18,6 +18,12 @@
             "DIMENSION_HEIGHT": "height"
         }
     },
+    "TOOL": {
+        "EDIT": "Edit",
+        "MOVE": "Move",
+        "ADD": "Add",
+        "DELETE": "Delete"
+    },
     "OBJECT": {
         "SWITCHBOARD": "Switchboard",
         "RAIL": "DIN Rail",

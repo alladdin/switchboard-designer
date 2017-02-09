@@ -36,19 +36,15 @@ import { SwitchBoardService } from './switchboard.service';
             </md-toolbar>
             <div class="app-panels">
                 <LoadingBar></LoadingBar>
-                <div *ngIf="ui.selected" class="properties app-panel">
-                    <PropertyEditor [ui]="ui" [item]="ui.selected"></PropertyEditor>
+                <div class="properties app-panel">
+                    <PropertyEditor *ngIf="(ui.tool === 'EDIT') || (ui.tool === 'MOVE')"
+                        [ui]="ui" [item]="ui.selected"></PropertyEditor>
                 </div>
                 <div class="main app-panel">
                     <SwitchBoard *ngIf="switchboard" [ui]="ui" [item]="switchboard"></SwitchBoard>
                 </div>
                 <div class="side-toolbar app-panel">
-                    <span mdTooltipPosition="left" mdTooltip="Edit">
-                        <button md-raised-button color=""><i class="fa fa-pencil"></i></button>
-                    </span>
-                    <span mdTooltipPosition="left" mdTooltip="Move">
-                        <button md-raised-button><i class="fa fa-arrows"></i></button>
-                    </span>
+                    <ToolbarGroup [buttons]="toolbar_buttons" [(model)]="ui.tool"></ToolbarGroup>
                 </div>
             </div>
         </div>
@@ -58,6 +54,7 @@ import { SwitchBoardService } from './switchboard.service';
 export class AppComponent extends Translation implements OnInit {
     public ui: any = {
         selected: undefined,
+        tool: 'EDIT',
         mode: 'DESIGNER',
         zoom: {
             current: 5,
@@ -70,6 +67,12 @@ export class AppComponent extends Translation implements OnInit {
         en: 'us',
         cs: 'cz'
     };
+    public toolbar_buttons: any[] = [
+        { id: 'EDIT', icon: 'pencil'},
+        { id: 'MOVE', icon: 'arrows', disabled: true},
+        { id: 'ADD', icon: 'plus', disabled: true},
+        { id: 'DELETE', icon: 'trash', disabled:true},
+    ];
 
     constructor(
         private switchboard_service: SwitchBoardService,

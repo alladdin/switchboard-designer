@@ -8,9 +8,9 @@ import { Control } from '../structures/all';
     styles: [`
     `],
     template: `
-        <div *ngIf="item" ngClass="property-editor">
+        <div ngClass="property-editor">
             <div class="row full"><h4>{{'PROPERTY-EDITOR.TITLE' | translate:lang }}</h4></div>
-            <form>
+            <form *ngIf="item">
                 <Control [item]="item"></Control>
             </form>
         </div>
