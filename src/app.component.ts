@@ -3,7 +3,6 @@ import { Locale, LocaleService, LocalizationService } from 'angular2localization
 
 import { SwitchBoard } from './structures/all';
 import { SwitchBoardService } from './switchboard.service';
-import { LoaderService } from './loader.service';
 
 @Component({
     selector: 'my-app',
@@ -19,18 +18,6 @@ import { LoaderService } from './loader.service';
         .app-panels {
             position: relative;
         }
-
-        .loading-bar {
-            height: 2px;
-            width: 100%;
-            position:absolute;
-            z-index:5000;
-            top:0;
-        }
-
-        .loading-bar md-progress-bar {
-            height: 2px;
-        }
     `],
     template: `
         <div class="app-container">
@@ -40,30 +27,15 @@ import { LoaderService } from './loader.service';
                 </button>-->
                 <span>{{ 'APP.TITLE' | translate:lang }}</span>
                 <span class="app-toolbar-filler"></span>
-                <md-button-toggle-group name="language-selector" class="language-selector"
-                    [value]="locale.getCurrentLanguage()"
-                    (change)="onLanguageChange($event)"
-                >
-                    <md-button-toggle *ngFor="let lang of locale.getAvailableLanguages()"
-                        [value]="lang"
-                    >
-                        <img src="{{getLanguageFlag(lang)}}" alt="{{lang}}" />
-                    </md-button-toggle>
-                </md-button-toggle-group>
-                <button md-icon-button (click)="zoomIn($event)"><i class="fa fa-search-plus"></i></button>
-                <md-slider
-                    [(ngModel)]="ui.zoom.current"
+                <LanguageSelector [supported_languages]="supported_languages"></LanguageSelector>
+                <ZoomSlider
+                    [(model)]="ui.zoom.current"
                     [min]="ui.zoom.min"
                     [max]="ui.zoom.max"
-                    [step]="1"
-                    invert="1"
-                ></md-slider>
-                <button md-icon-button (click)="zoomOut($event)"><i class="fa fa-search-minus"></i></button>
+                ></ZoomSlider>
             </md-toolbar>
             <div class="app-panels">
-                <div *ngIf="loading.visible" ngClass="loading-bar">
-                    <md-progress-bar [mode]="loading.mode" [value]="loading.value"></md-progress-bar>
-                </div>
+                <LoadingBar></LoadingBar>
                 <div *ngIf="ui.selected" class="side app-panel">
                     <PropertyEditor [ui]="ui" [item]="ui.selected"></PropertyEditor>
                 </div>
@@ -89,15 +61,9 @@ export class AppComponent extends Locale implements OnInit {
         en: 'us',
         cs: 'cz'
     };
-    public loading:any = {
-        visible: false,
-        value: 0,
-        mode: 'indeterminate',
-    };
 
     constructor(
         private switchboard_service: SwitchBoardService,
-        private loader: LoaderService,
         public locale: LocaleService,
         public localization: LocalizationService
     ) {
@@ -120,51 +86,5 @@ export class AppComponent extends Locale implements OnInit {
 
     ngOnInit(): void {
         this.loadSwitchBoard();
-        this.getLoadingBar();
-    }
-
-    ngDoCheck(): void {
-        this.getLoadingBar();
-    }
-
-    getLoadingBar(): void {
-        let loading_mode = this.loader.getLoadingMode();
-        if (loading_mode){
-            this.loading.visible = true;
-            this.loading.mode = loading_mode;
-            this.loading.value = this.loader.getLoadingValue();
-        }else{
-            this.loading.visible = false;
-        }
-    }
-
-    zoomIn(event: any): void {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this.ui.zoom.current < this.ui.zoom.max){
-            this.ui.zoom.current++;
-        }
-    }
-
-    zoomOut(event: any): void {
-        event.preventDefault();
-        event.stopPropagation();
-        if (this.ui.zoom.current > this.ui.zoom.min){
-            this.ui.zoom.current--;
-        }
-    }
-
-    onLanguageChange(event: any) {
-        this.setLanguage(event.value);
-    }
-
-    setLanguage(lang: string) {
-        event.preventDefault();
-        event.stopPropagation();
-        this.locale.setCurrentLanguage(lang);
-    }
-
-    getLanguageFlag(lang: string) {
-        return '/node_modules/flag-icon-css/flags/4x3/'+this.supported_languages[lang]+'.svg';
     }
 }
