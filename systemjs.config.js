@@ -29,7 +29,7 @@
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       'angular2-uuid': 'npm:angular2-uuid/index.js',
       'ng-inline-svg': 'npm:ng-inline-svg',
-      'angular2localization': 'npm:angular2localization/bundles/angular2localization.umd.min.js',
+      'angular-l10n': 'node_modules/angular-l10n/bundles/angular-l10n.umd.js',
       '@angular/material': 'npm:@angular/material/bundles/material.umd.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension

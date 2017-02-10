@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, TranslationService } from 'angular-l10n';
 
 @Component({
     selector: 'FieldTextArea',
@@ -16,7 +16,7 @@ import { Locale, LocaleService, LocalizationService } from 'angular2localization
     `
 })
 
-export class FieldTextAreaComponent extends Locale {
+export class FieldTextAreaComponent extends Translation {
     private model_value: string;
 
     @Output() modelChange: EventEmitter<string> = new EventEmitter<string>();
@@ -33,9 +33,8 @@ export class FieldTextAreaComponent extends Locale {
     @Input() name: string;
 
     constructor(
-        public locale: LocaleService,
-        public localization: LocalizationService
+        public translation: TranslationService
     ) {
-        super(locale, localization);
+        super(translation);
     }
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, TranslationService } from 'angular-l10n';
 
 import { Control } from '../structures/all';
 
@@ -17,14 +17,13 @@ import { Control } from '../structures/all';
     `
 })
 
-export class PropertyEditorComponent extends Locale {
+export class PropertyEditorComponent extends Translation {
     @Input() item: Control;
     @Input() ui: any;
 
     constructor(
-        public locale: LocaleService,
-        public localization: LocalizationService
+        public translation: TranslationService
     ) {
-        super(locale, localization);
+        super(translation);
     }
 }

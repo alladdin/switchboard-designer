@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, LocaleService, TranslationService } from 'angular-l10n';
 
 @Component({
     selector: 'LanguageSelector',
@@ -19,14 +19,14 @@ import { Locale, LocaleService, LocalizationService } from 'angular2localization
     `
 })
 
-export class LanguageSelectorComponent extends Locale {
+export class LanguageSelectorComponent extends Translation {
     @Input() supported_languages: any;
 
     constructor(
         public locale: LocaleService,
-        public localization: LocalizationService
+        public translation: TranslationService
     ) {
-        super(locale, localization);
+        super(translation);
     }
 
     onLanguageChange(event: any) {

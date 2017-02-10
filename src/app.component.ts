@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, LocaleService, TranslationService } from 'angular-l10n';
 
 import { SwitchBoard } from './structures/all';
 import { SwitchBoardService } from './switchboard.service';
@@ -55,9 +55,10 @@ import { SwitchBoardService } from './switchboard.service';
     `
 })
 
-export class AppComponent extends Locale implements OnInit {
+export class AppComponent extends Translation implements OnInit {
     public ui: any = {
         selected: undefined,
+        mode: 'DESIGNER',
         zoom: {
             current: 5,
             min: 1,
@@ -73,15 +74,19 @@ export class AppComponent extends Locale implements OnInit {
     constructor(
         private switchboard_service: SwitchBoardService,
         public locale: LocaleService,
-        public localization: LocalizationService
+        public translation: TranslationService
     ) {
-        super(locale, localization);
+        super(translation);
 
-        this.locale.addLanguages(Object.keys(this.supported_languages));
-        this.locale.definePreferredLanguage('en', 30);
+        this.locale.AddConfiguration()
+            .AddLanguages(Object.keys(this.supported_languages))
+            .SetCookieExpiration(30)
+            .DefineLanguage('en');
+        this.locale.init();
 
-        this.localization.translationProvider('/locale/');
-        this.localization.updateTranslation();
+        this.translation.AddConfiguration()
+            .AddProvider('/locale/');
+        this.translation.init();
     }
 
     loadSwitchBoard(): void {

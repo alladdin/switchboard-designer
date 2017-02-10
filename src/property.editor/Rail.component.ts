@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, TranslationService } from 'angular-l10n';
 
 import { Rail } from '../structures/all';
 
@@ -10,7 +10,7 @@ import { Rail } from '../structures/all';
     template: `
         <div class="row full"><FieldDeviceTypeInfo
             [name]="'type'"
-            [value]="[localization.translate('OBJECT.'+item.constructor.name.toUpperCase())]"
+            [value]="[translation.translate('OBJECT.'+item.constructor.name.toUpperCase())]"
         ></FieldDeviceTypeInfo></div>
         <div class="row full"><FieldText [name]="'name'" [(model)]="item.name"></FieldText></div>
         <div class="row full"><FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea></div>
@@ -45,14 +45,13 @@ import { Rail } from '../structures/all';
     `
 })
 
-export class RailComponent extends Locale {
+export class RailComponent extends Translation {
     @Input() item: Rail;
 
     constructor(
-        public locale: LocaleService,
-        public localization: LocalizationService
+        public translation: TranslationService
     ) {
-        super(locale, localization);
+        super(translation);
     }
 }
 

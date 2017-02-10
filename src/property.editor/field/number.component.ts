@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, TranslationService } from 'angular-l10n';
 
 @Component({
     selector: 'FieldNumber',
@@ -19,7 +19,7 @@ import { Locale, LocaleService, LocalizationService } from 'angular2localization
     `
 })
 
-export class FieldNumberComponent extends Locale {
+export class FieldNumberComponent extends Translation {
     private model_value: string;
 
     @Output() modelChange: EventEmitter<string> = new EventEmitter<string>();
@@ -39,10 +39,9 @@ export class FieldNumberComponent extends Locale {
     @Input() width: string;
 
     constructor(
-        public locale: LocaleService,
-        public localization: LocalizationService
+        public translation: TranslationService
     ) {
-        super(locale, localization);
+        super(translation);
     }
 }
 

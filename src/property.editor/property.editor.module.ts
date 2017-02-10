@@ -3,7 +3,7 @@ import { CommonModule }  from '@angular/common';
 import { HttpModule }    from '@angular/http';
 import { FormsModule }   from '@angular/forms';
 import { MaterialModule } from '@angular/material';
-import { LocaleModule, LocalizationModule } from 'angular2localization';
+import { TranslationModule } from 'angular-l10n';
 
 import {ItemService} from '../item.service';
 import {PropertyEditorComponent} from './property.editor.component';
@@ -24,9 +24,8 @@ import {FieldNumberComponent} from './field/number.component';
         CommonModule,
         HttpModule,
         FormsModule,
-        LocaleModule,
-        LocalizationModule.forChild(),
-        MaterialModule
+        MaterialModule,
+        TranslationModule.forChild(),
     ],
     declarations: [
         ControlComponent,

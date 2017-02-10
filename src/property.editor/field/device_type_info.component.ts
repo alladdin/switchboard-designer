@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, TranslationService } from 'angular-l10n';
 
 @Component({
     selector: 'FieldDeviceTypeInfo',
@@ -18,15 +18,14 @@ import { Locale, LocaleService, LocalizationService } from 'angular2localization
     `
 })
 
-export class FieldDeviceTypeInfoComponent extends Locale {
+export class FieldDeviceTypeInfoComponent extends Translation {
     @Input() value: string[];
     @Input() name: string;
 
     constructor(
-        public locale: LocaleService,
-        public localization: LocalizationService
+        public translation: TranslationService
     ) {
-        super(locale, localization);
+        super(translation);
     }
 }
 

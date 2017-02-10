@@ -1,7 +1,7 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule }    from '@angular/http';
-import { LocaleModule, LocalizationModule } from 'angular2localization';
+import { TranslationModule } from 'angular-l10n';
 import { MaterialModule } from '@angular/material';
 import { FormsModule }   from '@angular/forms';
 
@@ -23,8 +23,7 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
         DesignerModule,
         FormsModule,
         PropertyEditorModule,
-        LocaleModule.forRoot(),
-        LocalizationModule.forRoot(),
+        TranslationModule.forRoot(),
         MaterialModule.forRoot()
     ],
     declarations: [

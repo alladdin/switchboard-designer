@@ -18,7 +18,7 @@ import {ParamsInterpolatePipe} from './params_interpolate.pipe';
     imports: [
         CommonModule,
         HttpModule,
-        InlineSVGModule
+        InlineSVGModule,
     ],
     declarations: [
         SwitchBoardComponent,
@@ -29,7 +29,7 @@ import {ParamsInterpolatePipe} from './params_interpolate.pipe';
         DINTerminalComponent,
         ValueTitleComponent,
         ValueTitleSVGComponent,
-        ParamsInterpolatePipe
+        ParamsInterpolatePipe,
     ],
     providers: [
         ItemService

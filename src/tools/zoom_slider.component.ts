@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
 
 @Component({
     selector: 'ZoomSlider',
@@ -18,7 +17,7 @@ import { Locale, LocaleService, LocalizationService } from 'angular2localization
     `
 })
 
-export class ZoomSliderComponent extends Locale {
+export class ZoomSliderComponent {
     @Input() min: number;
     @Input() max: number;
     @Input() step: number = 1;
@@ -34,13 +33,6 @@ export class ZoomSliderComponent extends Locale {
 
     get model(): number {
         return this.model_value;
-    }
-
-    constructor(
-        public locale: LocaleService,
-        public localization: LocalizationService
-    ) {
-        super(locale, localization);
     }
 
     zoomIn(event: any): void {

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Locale, LocaleService, LocalizationService } from 'angular2localization';
+import { Translation, TranslationService } from 'angular-l10n';
 
 import { ItemService } from '../item.service';
 import { DINTerminal } from '../structures/all';
@@ -27,17 +27,16 @@ import { DINTerminal } from '../structures/all';
     `
 })
 
-export class DINTerminalComponent extends Locale {
+export class DINTerminalComponent extends Translation {
     @Input() item: DINTerminal;
     device_type: any;
     device_descriptions: any[];
 
     constructor(
-        public locale: LocaleService,
-        public localization: LocalizationService,
+        public translation: TranslationService,
         private item_service: ItemService
     ) {
-        super(locale, localization);
+        super(translation);
     }
 
     getDeviceTitle(lang:string) {
