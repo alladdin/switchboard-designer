@@ -47,6 +47,14 @@ import { SwitchBoardService } from './switchboard.service';
                     <ToolbarGroup [buttons]="toolbar_buttons" [(model)]="ui.tool"></ToolbarGroup>
                 </div>
             </div>
+            <div ngClass="app-status-bar">
+                <span>{{'STATUS.COORDINATES' | translate:lang}}: x =</span>
+                <span [style.width]="'50px'" [style.text-align]="'right'">{{ui.cursor_pos.x}}</span>
+                <span>mm; y =</span>
+                <span [style.width]="'50px'" [style.text-align]="'right'">{{ui.cursor_pos.y}}</span>
+                <span>mm</span>
+                <span>|</span>
+            </div>
         </div>
     `
 })
@@ -59,8 +67,12 @@ export class AppComponent extends Translation implements OnInit {
         zoom: {
             current: 5,
             min: 1,
-            max: 9
-        }
+            max: 9,
+        },
+        cursor_pos: {
+            x: 0,
+            y: 0,
+        },
     };
     public switchboard: SwitchBoard;
     public supported_languages: any = {

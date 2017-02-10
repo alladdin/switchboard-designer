@@ -28,5 +28,8 @@
         "SWITCHBOARD": "Switchboard",
         "RAIL": "DIN Rail",
         "DINTERMINALGROUP": "Terminal Group"
+    },
+    "STATUS": {
+        "COORDINATES": "Coordinates"
     }
 }

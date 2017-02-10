@@ -28,5 +28,8 @@
         "SWITCHBOARD": "Rozvaděč",
         "RAIL": "Přístrojová lišta",
         "DINTERMINALGROUP": "Skupina svorek"
+    },
+    "STATUS": {
+        "COORDINATES": "Souřadnice"
     }
 }

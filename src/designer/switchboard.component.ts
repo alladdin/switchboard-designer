@@ -23,6 +23,7 @@ import { ControlComponent } from './control.component';
         <svg *ngIf="item"
             [attr.width]="(item.width * getZoom()) + 'mm'"
             [attr.height]="(item.height * getZoom()) + 'mm'"
+            (mousemove)="onMouseMove($event)"
         >
             <svg:defs>
                 <svg:pattern id="din-rail-symbol" x="0" y="0" width="50mm" height="50mm" patternUnits="userSpaceOnUse"
@@ -57,5 +58,10 @@ export class SwitchBoardComponent extends ControlComponent {
 
     getZoom():number {
         return (this.ui.zoom.current * this.ui.zoom.current * 2 + 50)/140;
+    }
+
+    onMouseMove(event: any){
+        this.ui.cursor_pos.x = (event.offsetX*this.item.width/event.currentTarget.width.baseVal.value).toFixed(1);
+        this.ui.cursor_pos.y = (event.offsetY*this.item.height/event.currentTarget.height.baseVal.value).toFixed(1);
     }
 }
