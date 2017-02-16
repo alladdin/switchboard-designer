@@ -5,6 +5,13 @@ export class DINTerminalGroup extends ControlGroup {
 
     constructor(params: any, controls: Control[]) {
         super(params, controls);
+        this.dimension_display.horizontal = true;
+        this.dimension_display.offset.y = -30;
+        this.dimension_display.spacing.y = 15;
+
+        if (this.y === undefined){
+            this.y = 0;
+        }
     }
 
     childDimensionChange(control:Control): void{
@@ -22,6 +29,14 @@ export class DINTerminalGroup extends ControlGroup {
             }
             if (last_x != ctrl.display.x) {
                 ctrl.display.x = last_x;
+            }
+            if (
+                (ctrl.display.x + ctrl.display.width > this.display.width)
+                || (ctrl.display.x < 0)
+            ) {
+                ctrl.dimension_error = true;
+            }else{
+                ctrl.dimension_error = false;
             }
 
             last_x += ctrl.width;

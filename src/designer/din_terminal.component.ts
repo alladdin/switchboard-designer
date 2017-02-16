@@ -40,6 +40,15 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
             >
                 {{item.name}}
             </svg:text>
+            <svg:g *ngIf="item.dimension_error">
+                <svg ngClass="dimension-error"
+                    [inlineSVG]="'/images/exclamation-triangle.svg'"
+                    [attr.x]="getDimensionErrorX() + 'mm'"
+                    [attr.y]="getDimensionErrorY() + 'mm'"
+                    [attr.width]="getDimensionErrorWidth() + 'mm'"
+                    [attr.height]="getDimensionErrorWidth() + 'mm'"
+                ></svg>
+            </svg:g>
         </svg>
     `
 })
@@ -62,6 +71,21 @@ export class DINTerminalComponent extends ControlComponent implements OnInit {
 
     getSymbolTop(): number {
         return (this.item.display.height/2 - this.device_type.symbol.y_origin);
+    }
+
+    getDimensionErrorX(): number {
+        return (this.item.display.width - this.getDimensionErrorWidth())/2;
+    }
+
+    getDimensionErrorY(): number {
+        return (this.item.display.height - this.getDimensionErrorWidth())/2;
+    }
+
+    getDimensionErrorWidth(): number {
+        if (this.item.display.width < 15){
+            return this.item.display.width;
+        }
+        return 15;
     }
 }
 

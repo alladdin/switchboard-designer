@@ -12,6 +12,7 @@ export class ControlGroup extends Control {
 
     addControl(control:Control): void {
         this.controls.push(control);
+        control.parent_control = this;
         control.on_dimension_change = (ctrl: Control) => this.childDimensionChange(ctrl);
     }
 

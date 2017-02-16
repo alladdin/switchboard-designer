@@ -48,6 +48,28 @@ import { ControlComponent } from './control.component';
                     {{item.name}}
                 </svg:text>
                 <svg:g Rail *ngFor="let rail of item.controls" [item]="rail" [ui]="ui" ></svg:g>
+                <svg:g *ngIf="ui.selected">
+                    <svg:g Dimension *ngIf="ui.selected.dimension_display.horizontal"
+                        [outer_length]="ui.selected.parent_control.display.width"
+                        [inner_length]="ui.selected.display.width"
+                        [position]="ui.selected.display.x"
+                        [x]="ui.selected.parent_control.abs_display_x"
+                        [y]="ui.selected.abs_display_y
+                            + ui.selected.display.height
+                            + ui.selected.dimension_display.offset.y"
+                        [spacing]="ui.selected.dimension_display.spacing.y"
+                    ></svg:g>
+                    <svg:g Dimension *ngIf="ui.selected.dimension_display.vertical"
+                        [outer_length]="ui.selected.parent_control.display.height"
+                        [inner_length]="ui.selected.display.height"
+                        [position]="ui.selected.display.y"
+                        [y]="ui.selected.parent_control.abs_display_y"
+                        [x]="ui.selected.abs_display_x
+                            - ui.selected.dimension_display.offset.x"
+                        [spacing]="ui.selected.dimension_display.spacing.x"
+                        [vertical]="true"
+                    ></svg:g>
+                </svg:g>
             </svg:g>
         </svg>
     `

@@ -42,6 +42,15 @@ import { ControlComponent } from './control.component';
                 stroke="none"
                 fill="url(#din-rail-symbol)"
             />
+            <svg:g *ngIf="item.dimension_error">
+                <svg ngClass="dimension-error"
+                    [inlineSVG]="'/images/exclamation-triangle.svg'"
+                    x="1mm"
+                    y="7mm"
+                    width="15mm"
+                    height="15mm"
+                ></svg>
+            </svg:g>
             <svg:text ngClass="name"
                 x="1mm"
                 y="11mm"

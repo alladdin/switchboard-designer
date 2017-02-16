@@ -2,16 +2,32 @@ export class Control {
     id: string;
     name: string;
     description: string;
-    _x: number;
-    _y: number;
-    _width: number;
-    _height: number;
+    _x: number = 0;
+    _y: number = 0;
+    _width: number = 0;
+    _height: number = 0;
     display:any = {
         x: 0,
         y: 0,
         width: 0,
         height: 0,
     };
+    dimension_error: boolean = false;
+    dimension_display:any = {
+        vertical: false,
+        horizontal: false,
+        offset: {
+            x: 0,
+            y: 0,
+        },
+        spacing: {
+            x: 15,
+            y: 15,
+        },
+    };
+
+    parent_control: Control;
+
     private in_change:boolean = false;
 
     get x(): number { return this._x; }
@@ -40,6 +56,22 @@ export class Control {
         this._height = value;
         this.display.height = value;
         this.onDimensionChange();
+    }
+
+    get abs_display_x(): number {
+        let abs_x = this.display.x;
+        if (this.parent_control !== undefined){
+            abs_x += this.parent_control.abs_display_x;
+        }
+        return abs_x;
+    }
+
+    get abs_display_y(): number {
+        let abs_y = this.display.y;
+        if (this.parent_control !== undefined){
+            abs_y += this.parent_control.abs_display_y;
+        }
+        return abs_y;
     }
 
     on_dimension_change: (control: Control) => void;

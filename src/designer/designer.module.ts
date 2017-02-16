@@ -13,6 +13,7 @@ import {DINTerminalGroupComponent} from './din_terminal_group.component';
 import {ValueTitleComponent} from './value_title.component';
 import {ValueTitleSVGComponent} from './value_title_svg.component';
 import {ParamsInterpolatePipe} from './params_interpolate.pipe';
+import {DimensionComponent, DimensionTextComponent} from './dimension.component';
 
 @NgModule({
     imports: [
@@ -30,6 +31,8 @@ import {ParamsInterpolatePipe} from './params_interpolate.pipe';
         ValueTitleComponent,
         ValueTitleSVGComponent,
         ParamsInterpolatePipe,
+        DimensionComponent,
+        DimensionTextComponent,
     ],
     providers: [
         ItemService

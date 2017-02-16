@@ -58,6 +58,15 @@ import { ControlComponent } from './control.component';
             >
                 {{item.name}}
             </svg:text>
+            <svg:g *ngIf="item.dimension_error">
+                <svg ngClass="dimension-error"
+                    [inlineSVG]="'/images/exclamation-triangle.svg'"
+                    [attr.x]="(item.display.width - 7)/2 +'mm'"
+                    y="18mm"
+                    width="7mm"
+                    height="7mm"
+                ></svg>
+            </svg:g>
         </svg>
     `
 })
