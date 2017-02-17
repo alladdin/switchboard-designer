@@ -52,8 +52,8 @@ export class DimensionTextComponent {
     color: string = '#000';
     stroke_width: number = 0.3;
     large_margin = 0.5;
-    middle_margin = 6;
-    other_margin = 2;
+    middle_margin = 7;
+    other_margin = 1;
     text_line = 8;
 
     get baseType(): string {
