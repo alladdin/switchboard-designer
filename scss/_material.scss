@@ -1,18 +1,18 @@
 @import 'all-theme';
 
-@include md-core();
+@include mat-core();
 
-$primary: md-palette($md-indigo);
-$accent:  md-palette($md-light-blue, A200, A100, A400);
+$primary: mat-palette($mat-indigo);
+$accent:  mat-palette($mat-light-blue, A200, A100, A400);
 
-$theme: md-light-theme($primary, $accent);
+$theme: mat-light-theme($primary, $accent);
 
 @include angular-material-theme($theme);
 
 div.field-wrapper {
     display: inline-block;
 
-    .md-input-wrapper {
+    .mat-input-wrapper {
         position: relative;
     }
 }

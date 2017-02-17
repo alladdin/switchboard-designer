@@ -7,8 +7,12 @@ import { Translation, TranslationService } from 'angular-l10n';
     `],
     template: `
         <div class="field-wrapper" [style.width]="'100%'">
-            <div class="md-input-wrapper">
-                <label class="md-input-placeholder md-float">{{'PROPERTY-EDITOR.FIELD.'+name | uppercase | translate:lang}}:</label>
+            <div class="mat-input-wrapper">
+                <span class="mat-input-placeholder-wrapper">
+                    <label class="mat-input-placeholder mat-float">
+                        {{'PROPERTY-EDITOR.FIELD.'+name | uppercase | translate:lang}}:
+                    </label>
+                </span>
                 {{value}}
             </div>
         </div>

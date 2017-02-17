@@ -7,7 +7,7 @@ import { Translation, TranslationService } from 'angular-l10n';
     `],
     template: `
         <div class="field-wrapper" [style.width]="'100%'">
-            <div class="md-input-wrapper">
+            <div class="mat-input-wrapper">
                 <md-select
                     placeholder="{{'PROPERTY-EDITOR.FIELD.'+name | uppercase | translate:lang}}:"
                     name="{{name}}"

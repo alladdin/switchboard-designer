@@ -7,7 +7,7 @@ import { Translation, TranslationService } from 'angular-l10n';
     `],
     template: `
         <md-input-container [style.width]="'100%'">
-            <textarea md-input
+            <textarea mdInput
                 placeholder="{{'PROPERTY-EDITOR.FIELD.'+name | uppercase | translate:lang}}:"
                 name="{{name}}"
                 [(ngModel)]="model"

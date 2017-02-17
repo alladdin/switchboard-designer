@@ -7,7 +7,7 @@ import { Translation, TranslationService } from 'angular-l10n';
     `],
     template: `
         <md-input-container align="end" [style.width]="width">
-            <input md-input
+            <input mdInput
                 placeholder="{{'PROPERTY-EDITOR.FIELD.'+name | uppercase | translate:lang}}:"
                 type="number"
                 name="{{name}}"
