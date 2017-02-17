@@ -34,14 +34,16 @@ import { ControlComponent } from './control.component';
                 fill="#f99"
                 fill-opacity="0"
             />
-            <svg:rect
-                [attr.x]="0"
-                [attr.y]="((item.display.height - 50)/2) + 'mm'"
-                [attr.width]="item.display.width + 'mm'"
-                [attr.height]="'50mm'"
-                stroke="none"
-                fill="url(#din-rail-symbol)"
-            />
+            <svg [attr.x]="0" [attr.y]="((item.display.height - 50)/2) + 'mm'">
+                <svg:rect
+                    [attr.x]="0"
+                    [attr.y]="0"
+                    [attr.width]="item.display.width + 'mm'"
+                    [attr.height]="'50mm'"
+                    stroke="none"
+                    fill="url(#din-rail-symbol)"
+                />
+            </svg>
             <svg:g *ngIf="item.dimension_error">
                 <svg ngClass="dimension-error"
                     [inlineSVG]="'/images/exclamation-triangle.svg'"

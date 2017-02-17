@@ -8,8 +8,8 @@ export class DINDevice extends Control {
     constructor(params: any) {
         super(params);
         this.dimension_display.horizontal = true;
-        this.dimension_display.offset.y = -30;
-        this.dimension_display.spacing.y = 15;
+        this.dimension_display.offset.y = -15;
+        this.dimension_display.spacing.y = 10;
 
         this.device_type = params.device_type;
         this.device_data = params.device_data;
