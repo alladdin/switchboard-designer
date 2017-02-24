@@ -19,7 +19,7 @@
         }
     },
     "TOOL": {
-        "EDIT": "Edit",
+        "SELECT": "Select",
         "MOVE": "Move",
         "ADD": "Add",
         "DELETE": "Delete"

@@ -19,7 +19,7 @@
         }
     },
     "TOOL": {
-        "EDIT": "Upravit",
+        "SELECT": "Označit",
         "MOVE": "Přesunout",
         "ADD": "Přidat",
         "DELETE": "Smazat"

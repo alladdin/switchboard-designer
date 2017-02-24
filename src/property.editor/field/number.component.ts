@@ -30,7 +30,13 @@ export class FieldNumberComponent extends Translation {
     }
 
     get model(): string {
-        return this.model_value;
+        let n:number = Number(this.model_value);
+        let step_split:any = this.step.toString().split('.', 2);
+        let decimal = 0;
+        if (step_split.length > 1){
+            decimal = step_split[1].length;
+        }
+        return n.toFixed(decimal);
     }
 
     @Input() name: string;

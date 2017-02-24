@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, HostListener } from '@angular/core';
 
 import { SwitchBoard } from '../structures/all';
 import { ControlComponent } from './control.component';
@@ -33,6 +33,8 @@ import { ControlComponent } from './control.component';
             <svg:g ngClass="switchboard"
                 [attr.transform]="'scale('+getZoom()+')'"
                 [class.selected]="isSelected()"
+                [class.grab]="ui.tool_event && ui.tool_event.drag"
+                [class.mode-move]="ui.tool === 'MOVE'"
             >
                 <svg:rect
                     [attr.width]="item.width + 'mm'"
@@ -85,5 +87,69 @@ export class SwitchBoardComponent extends ControlComponent {
     onMouseMove(event: any){
         this.ui.cursor_pos.x = (event.offsetX*this.item.width/event.currentTarget.width.baseVal.value).toFixed(1);
         this.ui.cursor_pos.y = (event.offsetY*this.item.height/event.currentTarget.height.baseVal.value).toFixed(1);
+
+        if (this.ui.tool_event && (this.ui.tool === 'MOVE') && this.ui.tool_event.item.moveable){
+            this.onMoveItem(event);
+        }
+    }
+
+    onMoveItem(event: any): void {
+        var e = this.ui.tool_event;
+
+        if (!e.mouse_start) {
+            e.mouse_start = {
+                x: this.ui.cursor_pos.x,
+                y: this.ui.cursor_pos.y,
+            };
+        }
+
+        if (
+            !e.drag
+            && (
+                (Math.abs(event.screenX - e.mouse.screenX) > 2)
+                || (Math.abs(event.screenY - e.mouse.screenY) > 2)
+            )
+        ){
+            e.drag = true;
+        }
+
+        if (e.drag){
+            e.item.x += this.ui.cursor_pos.x - e.mouse_start.x;
+            e.item.y += this.ui.cursor_pos.y - e.mouse_start.y;
+            e.mouse_start = {
+                x: this.ui.cursor_pos.x,
+                y: this.ui.cursor_pos.y,
+            };
+        }
+    }
+
+    onMouseDown(event: any):void {
+        super.onMouseDown(event);
+
+        if (this.ui.tool_event){
+            let e = this.ui.tool_event;
+
+            if (e.mouse.buttons == 1){
+                this.ui.selected = e.item;
+                event.preventDefault();
+                event.stopPropagation();
+            }
+        }
+    }
+
+    onMouseUp(event: any):void {
+        super.onMouseUp(event);
+        this.mouseStop(event);
+    }
+
+    @HostListener('mouseleave', ['$event'])
+    onMouseLeave(event: any): void {
+        this.mouseStop(event);
+    }
+
+    mouseStop(event: any){
+        if (this.ui.tool_event){
+            this.ui.tool_event = undefined;
+        }
     }
 }

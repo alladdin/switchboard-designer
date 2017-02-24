@@ -10,7 +10,6 @@ import { ControlComponent } from './control.component';
             position: relative;
             float: left;
             border-left: 0.4mm dashed gray;
-            cursor: default;
         }
 
         .din-terminal-group.selected > rect {
@@ -24,7 +23,7 @@ import { ControlComponent } from './control.component';
         }
     `],
     template: `
-        <svg ngClass="din-terminal-group"
+        <svg ngClass="din-terminal-group grabable"
             [class.selected]="isSelected()"
             [attr.width]="item.display.width + 'mm'"
             [attr.height]="(item.display.height - 40) + 'mm'"

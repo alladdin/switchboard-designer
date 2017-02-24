@@ -6,10 +6,6 @@ import { ControlComponent } from './control.component';
 @Component({
     selector: '[Rail]',
     styles: [`
-        .rail {
-            cursor: default;
-        }
-
         .rail.selected > rect.rail-background {
             fill-opacity: 0.4 !important;
         }

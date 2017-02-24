@@ -10,7 +10,6 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
         .din-device {
             position: relative;
             float: left;
-            cursor: default;
         }
 
         .din-device .name {
@@ -20,7 +19,7 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
         }
     `],
     template: `
-        <svg ngClass="din-device" *ngIf="device_type"
+        <svg ngClass="din-device grabable" *ngIf="device_type"
             [class.selected]="isSelected()"
             [attr.height]="item.display.height + 'mm'"
             [attr.width]="item.display.width + 'mm'"

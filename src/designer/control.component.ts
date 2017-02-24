@@ -27,20 +27,22 @@ export class ControlComponent {
         return selected.id === this.item.id;
     }
 
-    setSelected() {
-        if (this.ui !== undefined){
-            if (this.ui.selected === this.item){
-                this.ui.selected = undefined;
-            }else{
-                this.ui.selected = this.item;
-            }
+    @HostListener('mousedown', ['$event'])
+    onMouseDown(event: any): void {
+        if (!this.ui.tool_event){
+            this.ui.tool_event = {
+                mouse: {
+                    buttons: event.buttons,
+                    screenX: event.screenX,
+                    screenY: event.screenY,
+                },
+                item: this.item,
+                drag: false,
+            };
         }
     }
 
-    @HostListener('click', ['$event'])
-    onClick(event: any): void {
-        this.setSelected();
-        event.preventDefault();
-        event.stopPropagation();
+    @HostListener('mouseup', ['$event'])
+    onMouseUp(event: any): void {
     }
 }

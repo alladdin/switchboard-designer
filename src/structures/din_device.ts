@@ -19,4 +19,13 @@ export class DINDevice extends Control {
             this.y = 0;
         }
     }
+
+    set y(value: number){
+        this._y = 0;
+        this.display.y = 0;
+    }
+
+    get moveable(): boolean {
+        return true;
+    }
 }

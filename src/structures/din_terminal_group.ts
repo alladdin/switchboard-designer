@@ -35,6 +35,11 @@ export class DINTerminalGroup extends ControlGroup {
                 || (ctrl.display.x < 0)
             ) {
                 ctrl.dimension_error = true;
+                if (ctrl.display.x < 0){
+                    ctrl.display.x = 0;
+                }else{
+                    ctrl.display.x = this.display.width - ctrl.display.width;
+                }
             }else{
                 ctrl.dimension_error = false;
             }
@@ -49,5 +54,14 @@ export class DINTerminalGroup extends ControlGroup {
     onDimensionChange(): void {
         super.onDimensionChange();
         this.calculateDimensions();
+    }
+
+    set y(value: number){
+        this._y = 0;
+        this.display.y = 0;
+    }
+
+    get moveable(): boolean {
+        return true;
     }
 }

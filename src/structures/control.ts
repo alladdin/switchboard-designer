@@ -74,6 +74,10 @@ export class Control {
         return abs_y;
     }
 
+    get moveable(): boolean {
+        return false;
+    }
+
     on_dimension_change: (control: Control) => void;
 
     constructor(params: any) {

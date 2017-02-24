@@ -34,6 +34,11 @@ export class Rail extends ControlGroup {
                 || (ctrl.display.x < 0)
             ) {
                 ctrl.dimension_error = true;
+                if (ctrl.display.x < 0){
+                    ctrl.display.x = 0;
+                }else{
+                    ctrl.display.x = this.display.width - ctrl.display.width;
+                }
             }else{
                 ctrl.dimension_error = false;
             }

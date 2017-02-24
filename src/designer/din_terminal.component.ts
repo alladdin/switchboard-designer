@@ -7,10 +7,6 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 @Component({
     selector: '[DINTerminal]',
     styles: [`
-        .din-terminal {
-            cursor: default;
-        }
-
         .din-terminal .name {
             font-family: monospace;
             font-weight: normal;
@@ -18,7 +14,7 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
         }
     `],
     template: `
-        <svg ngClass="din-terminal" *ngIf="device_type"
+        <svg ngClass="din-terminal grabable" *ngIf="device_type"
             [class.selected]="isSelected()"
             [attr.height]="item.display.height + 'mm'"
             [attr.width]="item.display.width + 'mm'"

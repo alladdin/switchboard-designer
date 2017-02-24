@@ -37,7 +37,7 @@ import { SwitchBoardService } from './switchboard.service';
             <div class="app-panels">
                 <LoadingBar></LoadingBar>
                 <div class="properties app-panel">
-                    <PropertyEditor *ngIf="(ui.tool === 'EDIT') || (ui.tool === 'MOVE')"
+                    <PropertyEditor *ngIf="(ui.tool === 'SELECT') || (ui.tool === 'MOVE')"
                         [ui]="ui" [item]="ui.selected"></PropertyEditor>
                 </div>
                 <div class="main app-panel">
@@ -62,7 +62,7 @@ import { SwitchBoardService } from './switchboard.service';
 export class AppComponent extends Translation implements OnInit {
     public ui: any = {
         selected: undefined,
-        tool: 'EDIT',
+        tool: 'SELECT',
         mode: 'DESIGNER',
         zoom: {
             current: 5,
@@ -73,6 +73,7 @@ export class AppComponent extends Translation implements OnInit {
             x: 0,
             y: 0,
         },
+        tool_event: undefined,
     };
     public switchboard: SwitchBoard;
     public supported_languages: any = {
@@ -80,8 +81,8 @@ export class AppComponent extends Translation implements OnInit {
         cs: 'cz'
     };
     public toolbar_buttons: any[] = [
-        { id: 'EDIT', icon: 'pencil'},
-        { id: 'MOVE', icon: 'arrows', disabled: true},
+        { id: 'SELECT', icon: 'mouse-pointer'},
+        { id: 'MOVE', icon: 'arrows'},
         { id: 'ADD', icon: 'plus', disabled: true},
         { id: 'DELETE', icon: 'trash', disabled:true},
     ];

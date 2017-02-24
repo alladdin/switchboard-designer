@@ -66,6 +66,18 @@ $ui-border-color: #cccccc;
             &.main {
                 flex: 1 1 auto;
 
+                .switchboard.mode-move .grabable {
+                    cursor: -moz-grab;
+                    cursor: -webkit-grab;
+                    cursor: grab;
+                }
+
+                .switchboard.mode-move.grab, .switchboard.mode-move.grab .grabable {
+                    cursor: -moz-grabbing;
+                    cursor: -webkit-grabbing;
+                    cursor: grabbing;
+                }
+
                 padding: 16px;
             }
         }
