@@ -7,11 +7,6 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
 @Component({
     selector: '[DINDevice]',
     styles: [`
-        .din-device {
-            position: relative;
-            float: left;
-        }
-
         .din-device .name {
             font-family: monospace;
             font-weight: bold;

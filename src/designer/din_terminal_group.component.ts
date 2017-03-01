@@ -6,21 +6,6 @@ import { ControlComponent } from './control.component';
 @Component({
     selector: '[DINTerminalGroup]',
     styles: [`
-        .din-terminal-group {
-            position: relative;
-            float: left;
-            border-left: 0.4mm dashed gray;
-        }
-
-        .din-terminal-group.selected > rect {
-            fill-opacity: 0.4 !important;
-        }
-
-        .din-terminal-group .name {
-            font-family: monospace;
-            font-weight: bold;
-            font-size: 5mm;
-        }
     `],
     template: `
         <svg ngClass="din-terminal-group grabable"
@@ -37,15 +22,23 @@ import { ControlComponent } from './control.component';
                 fill="#f99"
                 fill-opacity="0"
             />
-            <svg:line
-                [attr.x1]="0"
-                [attr.y1]="0"
-                [attr.x2]="0"
-                [attr.y2]="(item.display.height - 40) + 'mm'"
-                stroke-width="0.8mm"
-                stroke="black"
-                stroke-dasharray="3mm, 3mm"
-            />
+            <svg ngClass="border"
+                [attr.x]="0"
+                [attr.y]="0"
+                [attr.width]="item.display.width + 'mm'"
+                [attr.height]="(item.display.height - 40) + 'mm'"
+                [attr.viewBox]="'0 0 ' + item.display.width + ' ' + (item.display.height - 40)"
+            >
+                <svg:path
+                    [attr.d]="
+                        ' M 2 0 h -2 v 2'
+                        +' M 2 ' + (item.display.height - 40) + ' h -2 v -2'
+                        +' M ' + (item.display.width - 2) + ' 0 h 2 v 2'
+                        +' M ' + (item.display.width - 2) + ' ' + (item.display.height - 40) + ' h 2 v -2'
+                    "
+                    [attr.fill]="'none'"
+                />
+            </svg>
             <svg:g DINTerminal
                 *ngFor="let control of item.controls"
                 [item]="control"

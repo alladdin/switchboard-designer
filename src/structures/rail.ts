@@ -1,4 +1,4 @@
-import { Control } from './control';
+import { Control, DINDevice, DINTerminal, DINTerminalGroup } from './all';
 import { ControlGroup } from './control_group';
 
 export class Rail extends ControlGroup {
@@ -51,4 +51,12 @@ export class Rail extends ControlGroup {
         super.onDimensionChange();
         this.calculateDimensions();
     }
+
+    isAcceptableChild(control: Control): boolean {
+        if (control instanceof DINDevice){ return true; }
+        if (control instanceof DINTerminalGroup){ return true; }
+        if (control instanceof DINTerminal){ return true; }
+        return false;
+    }
+
 }

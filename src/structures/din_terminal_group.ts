@@ -1,4 +1,4 @@
-import { Control } from './control';
+import { Control, DINTerminal } from './all';
 import { ControlGroup } from './control_group';
 
 export class DINTerminalGroup extends ControlGroup {
@@ -63,5 +63,10 @@ export class DINTerminalGroup extends ControlGroup {
 
     get moveable(): boolean {
         return true;
+    }
+
+    isAcceptableChild(control: Control): boolean {
+        if (control instanceof DINTerminal){ return true; }
+        return false;
     }
 }

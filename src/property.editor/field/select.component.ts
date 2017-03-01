@@ -14,7 +14,7 @@ import { Translation, TranslationService } from 'angular-l10n';
                     [(ngModel)]="model"
                     [style.width]="'100%'"
                 >
-                    <md-option *ngFor="let val of options" [value]="val">{{val}}</md-option>
+                    <md-option *ngFor="let val of options" [value]="getOptionID(val)">{{getOptionName(val)}}</md-option>
                 </md-select>
             </div>
         </div>
@@ -38,6 +38,20 @@ export class FieldSelectComponent extends Translation {
     }
 
     @Input() name: string;
+
+    getOptionID(item: any){
+        if (typeof(item) === 'object'){
+            return item.id;
+        }
+        return item;
+    }
+
+    getOptionName(item: any){
+        if (typeof(item) === 'object'){
+            return item.name;
+        }
+        return item;
+    }
 
     constructor(
         public translation: TranslationService

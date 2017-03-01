@@ -106,4 +106,40 @@ export class Control {
 
     calculateDimensions(): void {
     }
+
+    addControl(control: Control): void {
+    }
+
+    removeControl(control: Control): void {
+    }
+
+    changeParent(new_parent: Control): void {
+        if (this.parent_control !== undefined){
+            let old_parent = this.parent_control;
+            old_parent.removeControl(this);
+            old_parent.calculateDimensions();
+        }
+        if (new_parent !== undefined){
+            new_parent.addControl(this);
+            new_parent.calculateDimensions();
+        }
+    }
+
+    getAcceptableParents(control: Control): Control[] {
+        if (this.isAcceptableChild(control)){
+            return [this];
+        }
+        return [];
+    }
+
+    isAcceptableChild(control: Control): boolean {
+        return false;
+    }
+
+    getRoot(): Control {
+        if (this.parent_control === undefined){
+            return this;
+        }
+        return this.parent_control.getRoot();
+    }
 }

@@ -11,9 +11,23 @@ export class ControlGroup extends Control {
     }
 
     addControl(control:Control): void {
+        super.addControl(control);
+
+        if (!this.isAcceptableChild(control)) {
+            return;
+        }
+
         this.controls.push(control);
         control.parent_control = this;
         control.on_dimension_change = (ctrl: Control) => this.childDimensionChange(ctrl);
+        this.sortControls();
+    }
+
+    removeControl(control:Control): void {
+        super.removeControl(control);
+        control.parent_control = undefined;
+        control.on_dimension_change = undefined;
+        this.controls = this.controls.filter(item => (item !== control));
     }
 
     sortControls(): void {
@@ -27,6 +41,16 @@ export class ControlGroup extends Control {
     calculateDimensions(): void {
         super.calculateDimensions();
         this.controls.forEach(control => control.calculateDimensions());
+    }
+
+    getAcceptableParents(control: Control): Control[] {
+        let parents: Control[] = super.getAcceptableParents(control);
+
+        this.controls.forEach((ctrl:Control) => {
+            parents = parents.concat(ctrl.getAcceptableParents(control));
+        });
+
+        return parents;
     }
 }
 
