@@ -41,7 +41,7 @@ import { SwitchBoardService } from './switchboard.service';
                         [ui]="ui" [item]="ui.selected"></PropertyEditor>
                 </div>
                 <div class="main app-panel">
-                    <SwitchBoard *ngIf="switchboard" [ui]="ui" [item]="switchboard"></SwitchBoard>
+                    <Designer *ngIf="switchboard" [ui]="ui" [switchboard]="switchboard"></Designer>
                 </div>
                 <div class="side-toolbar app-panel">
                     <ToolbarGroup [buttons]="toolbar_buttons" [(model)]="ui.tool"></ToolbarGroup>

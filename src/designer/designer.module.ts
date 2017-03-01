@@ -4,6 +4,7 @@ import { InlineSVGModule } from 'ng-inline-svg';
 import { HttpModule }    from '@angular/http';
 
 import {ItemService} from '../item.service';
+import {DesignerComponent} from './designer.component';
 import {SwitchBoardComponent} from './switchboard.component';
 import {RailComponent} from './rail.component';
 import {DINObjectComponent} from './din_object.component';
@@ -22,6 +23,7 @@ import {DimensionComponent, DimensionTextComponent} from './dimension.component'
         InlineSVGModule,
     ],
     declarations: [
+        DesignerComponent,
         SwitchBoardComponent,
         RailComponent,
         DINObjectComponent,
@@ -37,7 +39,7 @@ import {DimensionComponent, DimensionTextComponent} from './dimension.component'
     providers: [
         ItemService
     ],
-    exports: [ SwitchBoardComponent ],
+    exports: [ DesignerComponent ],
 })
 
 export class DesignerModule { }
