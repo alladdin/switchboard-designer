@@ -61,8 +61,8 @@ export class DesignerComponent {
 
         if (!e.mouse_start) {
             e.mouse_start = {
-                x: this.ui.cursor_pos.x,
-                y: this.ui.cursor_pos.y,
+                x: this.ui.cursor_pos.x - e.item.abs_display_x,
+                y: this.ui.cursor_pos.y - e.item.abs_display_y,
             };
         }
 
@@ -77,13 +77,23 @@ export class DesignerComponent {
         }
 
         if (e.drag){
-            e.item.x += this.ui.cursor_pos.x - e.mouse_start.x;
-            e.item.y += this.ui.cursor_pos.y - e.mouse_start.y;
-            e.mouse_start = {
-                x: this.ui.cursor_pos.x,
-                y: this.ui.cursor_pos.y,
+            if (e.acceptable_parent && (!e.item.parent_control || (e.acceptable_parent.id != e.item.parent_control.id)) ){
+                e.item.changeParent(e.acceptable_parent);
+            }
+
+            var parent_coords = {
+                x: 0,
+                y: 0,
             };
+            if (e.item.parent_control !== undefined){
+                parent_coords.x = e.item.parent_control.abs_display_x;
+                parent_coords.y = e.item.parent_control.abs_display_y;
+            }
+            e.item.x = this.ui.cursor_pos.x - parent_coords.x - e.mouse_start.x;
+            e.item.y = this.ui.cursor_pos.y - parent_coords.y - e.mouse_start.y;
         }
+
+        e.acceptable_parent = undefined;
     }
 
     onMouseUp(event: any):void {
