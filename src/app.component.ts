@@ -4,6 +4,9 @@ import { Translation, LocaleService, TranslationService } from 'angular-l10n';
 import { SwitchBoard } from './structures/all';
 import { SwitchBoardService } from './switchboard.service';
 
+import { DesignerActionSelect } from './designer/action/select';
+import { DesignerActionMove } from './designer/action/move';
+
 @Component({
     selector: 'my-app',
     styles: [`
@@ -115,5 +118,18 @@ export class AppComponent extends Translation implements OnInit {
 
     ngOnInit(): void {
         this.loadSwitchBoard();
+    }
+
+    ngDoCheck(): void {
+        if (!this.ui.action || ( this.ui.action.getName() !== this.ui.tool )){
+            switch(this.ui.tool){
+                case 'MOVE':
+                    this.ui.action = new DesignerActionMove(this.ui);
+                    break;
+                case 'SELECT':
+                    this.ui.action = new DesignerActionSelect(this.ui);
+                    break;
+            }
+        }
     }
 }

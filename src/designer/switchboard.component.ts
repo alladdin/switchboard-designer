@@ -22,7 +22,7 @@ import { ControlComponent } from './control.component';
     template: `
         <svg:g ngClass="switchboard"
             [class.selected]="isSelected()"
-            [class.grab]="ui.tool_event && ui.tool_event.drag"
+            [class.grab]="ui.action && ui.action.in_drag"
             [class.mode-move]="ui.tool === 'MOVE'"
         >
             <svg:rect

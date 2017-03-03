@@ -29,33 +29,22 @@ export class ControlComponent {
 
     @HostListener('mousedown', ['$event'])
     onMouseDown(event: any): void {
-        if (!this.ui.tool_event){
-            this.ui.tool_event = {
-                mouse: {
-                    buttons: event.buttons,
-                    screenX: event.screenX,
-                    screenY: event.screenY,
-                },
-                item: this.item,
-                drag: false,
-            };
+        if (this.ui.action){
+            this.ui.action.itemMouseDown(event, this.item);
         }
     }
 
     @HostListener('mouseup', ['$event'])
     onMouseUp(event: any): void {
+        if (this.ui.action){
+            this.ui.action.itemMouseUp(event, this.item);
+        }
     }
 
     @HostListener('mousemove', ['$event'])
     onMouseMove(event: any): void {
-        if (this.ui.tool_event && (this.ui.tool === 'MOVE') && this.ui.tool_event.item.moveable){
-            var e = this.ui.tool_event;
-
-            if (e.drag && !e.acceptable_parent){
-                if (this.item.isAcceptableChild(e.item)){
-                    e.acceptable_parent = this.item;
-                }
-            }
+        if (this.ui.action){
+            this.ui.action.itemMouseMove(event, this.item);
         }
     }
 }
