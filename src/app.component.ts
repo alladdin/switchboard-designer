@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Translation, LocaleService, TranslationService } from 'angular-l10n';
 
-import { SwitchBoard } from './structures/all';
+import { SwitchBoard, ControlGroup } from './structures/all';
 import { SwitchBoardService } from './switchboard.service';
 
 import { DesignerActionSelect } from './designer/action/select';
@@ -47,7 +47,7 @@ import { DesignerActionMove } from './designer/action/move';
                     <Designer *ngIf="switchboard" [ui]="ui" [switchboard]="switchboard"></Designer>
                 </div>
                 <div class="side-toolbar app-panel">
-                    <ToolbarGroup [buttons]="toolbar_buttons" [(model)]="ui.tool"></ToolbarGroup>
+                    <ToolbarGroup [buttons]="toolbar_buttons" [model]="ui.tool" (buttonClick)="onToolBarClick($event)"></ToolbarGroup>
                 </div>
             </div>
             <div ngClass="app-status-bar">
@@ -120,6 +120,26 @@ export class AppComponent extends Translation implements OnInit {
         this.loadSwitchBoard();
     }
 
+    onToolBarClick(button_id: string){
+        console.log("ToolbarButton: "+button_id);
+        switch(button_id){
+            case 'MOVE':
+            case 'SELECT':
+                if (this.ui.tool != button_id){
+                    this.ui.tool = button_id;
+                }
+                break;
+            case 'DELETE':
+                if (this.ui.selected && !(this.ui.selected instanceof SwitchBoard)){
+                    if (this.ui.selected.parent_control){
+                        this.ui.selected.parent_control.removeControl(this.ui.selected);
+                        this.ui.selected = undefined;                            
+                    }
+                }
+                break;
+        }
+    }
+
     ngDoCheck(): void {
         if (!this.ui.action || ( this.ui.action.getName() !== this.ui.tool )){
             switch(this.ui.tool){
@@ -130,6 +150,14 @@ export class AppComponent extends Translation implements OnInit {
                     this.ui.action = new DesignerActionSelect(this.ui);
                     break;
             }
+        }
+
+        if (this.ui.selected !== undefined){
+            this.toolbar_buttons[2].disabled = !(this.ui.selected instanceof ControlGroup);
+            this.toolbar_buttons[3].disabled = (this.ui.selected instanceof SwitchBoard);
+        } else {
+            this.toolbar_buttons[2].disabled = true;
+            this.toolbar_buttons[3].disabled = true;
         }
     }
 }

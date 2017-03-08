@@ -32,6 +32,7 @@ export class ToolbarGroupComponent extends Translation {
     private model_value: string;
 
     @Output() modelChange: EventEmitter<string> = new EventEmitter<string>();
+    @Output() buttonClick: EventEmitter<string> = new EventEmitter<string>();
 
     @Input() set model(value: string) {
         this.model_value = value;
@@ -49,9 +50,7 @@ export class ToolbarGroupComponent extends Translation {
     }
 
     on_button_click(event: any, id: string): void {
-        if (this.model !== id){
-            this.model = id;
-        }
+        this.buttonClick.emit(id);
     }
 }
 
