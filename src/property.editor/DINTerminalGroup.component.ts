@@ -2,6 +2,8 @@ import { Component, Input, SimpleChanges } from '@angular/core';
 import { Translation, TranslationService } from 'angular-l10n';
 
 import { DINTerminalGroup } from '../structures/all';
+import { ControlBase } from './control_base';
+import { UndoQueueService } from '../tools/undo_queue.service';
 
 @Component({
     selector: 'DINTerminalGroup',
@@ -12,8 +14,16 @@ import { DINTerminalGroup } from '../structures/all';
             [name]="'type'"
             [value]="[translation.translate('OBJECT.'+item.constructor.name.toUpperCase())]"
         ></FieldDeviceTypeInfo></div>
-        <div class="row full"><FieldText [name]="'name'" [(model)]="item.name"></FieldText></div>
-        <div class="row full"><FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea></div>
+        <div class="row full"><FieldText
+            [name]="'name'"
+            [model]="item.name"
+            (modelChange)="onChange('name', $event)"
+        ></FieldText></div>
+        <div class="row full"><FieldTextArea
+            [name]="'description'"
+            [model]="item.description"
+            (modelChange)="onChange('description', $event)"
+        ></FieldTextArea></div>
         <div class="row full"><FieldSelect
             [name]="'parent'"
             [(model)]="parent_item"
@@ -21,7 +31,8 @@ import { DINTerminalGroup } from '../structures/all';
         ></FieldSelect></div>
         <div class="row full"><FieldNumber
             [name]="'dimension_x'"
-            [(model)]="item.x"
+            [model]="item.x"
+            (modelChange)="onChange('x', $event)"
             [step]="0.1"
             [units]="'mm'"
             [width]="'100%'"
@@ -29,16 +40,17 @@ import { DINTerminalGroup } from '../structures/all';
     `
 })
 
-export class DINTerminalGroupComponent extends Translation {
+export class DINTerminalGroupComponent extends ControlBase {
     @Input() item: DINTerminalGroup;
 
     available_parents: any[] = [];
     _parent_item: string;
 
     constructor(
-        public translation: TranslationService
+        public translation: TranslationService,
+        protected undo_queue: UndoQueueService,
     ) {
-        super(translation);
+        super(translation, undo_queue);
     }
 
     get parent_item(): string {
@@ -59,6 +71,10 @@ export class DINTerminalGroupComponent extends Translation {
             return false;
         });
 
+        let item = this.item;
+        this.undo_queue.add('parent of '+item.id,
+            function() { item.changeParent(old_parent); },
+            function() { item.changeParent(new_parent); });
         this.item.changeParent(new_parent);
 
         if (new_parent !== undefined){

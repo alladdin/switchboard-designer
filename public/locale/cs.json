@@ -23,7 +23,9 @@
         "SELECT": "Označit",
         "MOVE": "Přesunout",
         "ADD": "Přidat",
-        "DELETE": "Smazat"
+        "DELETE": "Smazat",
+        "UNDO": "Zpět",
+        "REDO": "Znovu"
     },
     "OBJECT": {
         "SWITCHBOARD": "Rozvaděč",

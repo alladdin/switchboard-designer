@@ -8,6 +8,7 @@ import { FormsModule }   from '@angular/forms';
 import {SwitchBoardService} from './switchboard.service';
 import {LoaderService} from './loader.service';
 import {ControlService} from './control.service';
+import {UndoQueueService} from './tools/undo_queue.service';
 
 import { AppComponent }   from './app.component';
 import { LoadingBarComponent } from './loading_bar.component';
@@ -40,6 +41,7 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
         SwitchBoardService,
         LoaderService,
         ControlService,
+        UndoQueueService,
     ],
     bootstrap: [ AppComponent ]
 })

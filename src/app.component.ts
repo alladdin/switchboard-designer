@@ -3,6 +3,7 @@ import { Translation, LocaleService, TranslationService } from 'angular-l10n';
 
 import { SwitchBoard, ControlGroup } from './structures/all';
 import { SwitchBoardService } from './switchboard.service';
+import { UndoQueueService } from './tools/undo_queue.service';
 
 import { DesignerActionSelect } from './designer/action/select';
 import { DesignerActionMove } from './designer/action/move';
@@ -84,16 +85,19 @@ export class AppComponent extends Translation implements OnInit {
         cs: 'cz'
     };
     public toolbar_buttons: any[] = [
-        { id: 'SELECT', icon: 'mouse-pointer'},
-        { id: 'MOVE', icon: 'arrows'},
-        { id: 'ADD', icon: 'plus', disabled: true},
-        { id: 'DELETE', icon: 'trash', disabled:true},
+        { id: 'SELECT', icon: 'mouse-pointer' },
+        { id: 'MOVE', icon: 'arrows' },
+        { id: 'UNDO', icon: 'undo', disabled: true },
+        { id: 'REDO', icon: 'repeat', disabled: true },
+        { id: 'ADD', icon: 'plus', disabled: true },
+        { id: 'DELETE', icon: 'trash', disabled: true },
     ];
 
     constructor(
         private switchboard_service: SwitchBoardService,
         public locale: LocaleService,
-        public translation: TranslationService
+        public translation: TranslationService,
+        private undo_queue: UndoQueueService,
     ) {
         super(translation);
 
@@ -106,6 +110,8 @@ export class AppComponent extends Translation implements OnInit {
         this.translation.AddConfiguration()
             .AddProvider('/locale/');
         this.translation.init();
+
+        this.ui.undo_queue = this.undo_queue;
     }
 
     loadSwitchBoard(): void {
@@ -121,8 +127,14 @@ export class AppComponent extends Translation implements OnInit {
     }
 
     onToolBarClick(button_id: string){
-        console.log("ToolbarButton: "+button_id);
+        let that = this;
         switch(button_id){
+            case 'UNDO':
+                this.ui.undo_queue.undo();
+                break;
+            case 'REDO':
+                this.ui.undo_queue.redo();
+                break;
             case 'MOVE':
             case 'SELECT':
                 if (this.ui.tool != button_id){
@@ -132,8 +144,18 @@ export class AppComponent extends Translation implements OnInit {
             case 'DELETE':
                 if (this.ui.selected && !(this.ui.selected instanceof SwitchBoard)){
                     if (this.ui.selected.parent_control){
+                        let item = this.ui.selected;
+                        let parent_item = item.parent_control;
+                        this.undo_queue.add('delete of '+item.id,
+                            function() { parent_item.addControl(item); },
+                            function() {
+                                parent_item.removeControl(item);
+                                if (that.ui.selected === item){
+                                    that.ui.selected = undefined;
+                                }
+                            });
                         this.ui.selected.parent_control.removeControl(this.ui.selected);
-                        this.ui.selected = undefined;                            
+                        this.ui.selected = undefined;
                     }
                 }
                 break;
@@ -152,12 +174,17 @@ export class AppComponent extends Translation implements OnInit {
             }
         }
 
+        if (this.ui.undo_queue){
+            this.toolbar_buttons[2].disabled = (this.ui.undo_queue.undo_size() <= 0);
+            this.toolbar_buttons[3].disabled = (this.ui.undo_queue.redo_size() <= 0);
+        }
+
         if (this.ui.selected !== undefined){
-            this.toolbar_buttons[2].disabled = !(this.ui.selected instanceof ControlGroup);
-            this.toolbar_buttons[3].disabled = (this.ui.selected instanceof SwitchBoard);
+            this.toolbar_buttons[4].disabled = !(this.ui.selected instanceof ControlGroup);
+            this.toolbar_buttons[5].disabled = (this.ui.selected instanceof SwitchBoard);
         } else {
-            this.toolbar_buttons[2].disabled = true;
-            this.toolbar_buttons[3].disabled = true;
+            this.toolbar_buttons[4].disabled = true;
+            this.toolbar_buttons[5].disabled = true;
         }
     }
 }

@@ -23,7 +23,9 @@
         "SELECT": "Select",
         "MOVE": "Move",
         "ADD": "Add",
-        "DELETE": "Delete"
+        "DELETE": "Delete",
+        "UNDO": "Undo",
+        "REDO": "Repeat"
     },
     "OBJECT": {
         "SWITCHBOARD": "Switchboard",

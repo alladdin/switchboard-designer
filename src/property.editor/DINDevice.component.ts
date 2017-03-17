@@ -3,6 +3,8 @@ import { Translation, TranslationService } from 'angular-l10n';
 
 import { ItemService } from '../item.service';
 import { DINDevice, Control } from '../structures/all';
+import { ControlBase } from './control_base';
+import { UndoQueueService } from '../tools/undo_queue.service';
 
 @Component({
     selector: 'DINDevice',
@@ -10,8 +12,16 @@ import { DINDevice, Control } from '../structures/all';
     `],
     template: `
         <div class="row full"><FieldDeviceTypeInfo [name]="'type'" [value]="getDeviceTitle(lang)"></FieldDeviceTypeInfo></div>
-        <div class="row full"><FieldText [name]="'name'" [(model)]="item.name"></FieldText></div>
-        <div class="row full"><FieldTextArea [name]="'description'" [(model)]="item.description"></FieldTextArea></div>
+        <div class="row full"><FieldText
+            [name]="'name'"
+            [model]="item.name"
+            (modelChange)="onChange('name', $event)"
+        ></FieldText></div>
+        <div class="row full"><FieldTextArea
+            [name]="'description'"
+            [model]="item.description"
+            (modelChange)="onChange('description', $event)"
+        ></FieldTextArea></div>
         <div class="row full"><FieldSelect
             [name]="'parent'"
             [(model)]="parent_item"
@@ -19,20 +29,22 @@ import { DINDevice, Control } from '../structures/all';
         ></FieldSelect></div>
         <div class="row full"><FieldNumber
             [name]="'dimension_x'"
-            [(model)]="item.x"
+            [model]="item.x"
+            (modelChange)="onChange('x', $event)"
             [step]="0.1"
             [units]="'mm'"
             [width]="'100%'"
         ></FieldNumber></div>
         <div class="row full"><FieldSelect *ngFor="let param_key of getDeviceParamKeys()"
             [name]="param_key"
-            [(model)]="item.device_params[param_key]"
+            [model]="item.device_params[param_key]"
+            (modelChange)="onDeviceParamChange(param_key, $event)"
             [options]="device_type.params[param_key].options"
         ></FieldSelect></div>
     `
 })
 
-export class DINDeviceComponent extends Translation {
+export class DINDeviceComponent extends ControlBase {
     @Input() item: DINDevice;
     device_type: any;
     device_descriptions: any[];
@@ -42,9 +54,10 @@ export class DINDeviceComponent extends Translation {
 
     constructor(
         public translation: TranslationService,
+        protected undo_queue: UndoQueueService,
         private item_service: ItemService
     ) {
-        super(translation);
+        super(translation, undo_queue);
     }
 
     getDeviceTitle(lang:string) {
@@ -98,6 +111,10 @@ export class DINDeviceComponent extends Translation {
             return false;
         });
 
+        let item = this.item;
+        this.undo_queue.add('parent of '+item.id,
+            function() { item.changeParent(old_parent); },
+            function() { item.changeParent(new_parent); });
         this.item.changeParent(new_parent);
 
         if (new_parent !== undefined){
@@ -132,6 +149,19 @@ export class DINDeviceComponent extends Translation {
                 this.loadDeviceType();
                 this.loadDeviceDescription();
             }
+        }
+    }
+
+    onDeviceParamChange(key: string, value: any){
+        let item = this.item.device_params;
+        let old = this.item.device_params[key];
+
+        if (old !== value){
+            this.undo_queue.add('device param '+key+' of '+item.id,
+                function() { item[key] = old; },
+                function() { item[key] = value; });
+
+            item[key] = value;
         }
     }
 }
