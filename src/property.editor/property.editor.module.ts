@@ -12,6 +12,7 @@ import {DINDeviceComponent} from './DINDevice.component';
 import {DINTerminalComponent} from './DINTerminal.component';
 import {DINTerminalGroupComponent} from './DINTerminalGroup.component';
 import {RailComponent} from './Rail.component';
+import {SwitchBoardComponent} from './SwitchBoard.component';
 import {FieldInfoComponent} from './field/info.component';
 import {FieldDeviceTypeInfoComponent} from './field/device_type_info.component';
 import {FieldTextComponent} from './field/text.component';
@@ -33,6 +34,7 @@ import {FieldNumberComponent} from './field/number.component';
         DINTerminalComponent,
         DINTerminalGroupComponent,
         RailComponent,
+        SwitchBoardComponent,
         FieldInfoComponent,
         FieldDeviceTypeInfoComponent,
         FieldTextComponent,

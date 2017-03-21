@@ -13,6 +13,7 @@ import { Control } from '../structures/all';
             <DINTerminal *ngSwitchCase="'DINTerminal'" [item]="item"></DINTerminal>
             <DINTerminalGroup *ngSwitchCase="'DINTerminalGroup'" [item]="item"></DINTerminalGroup>
             <Rail *ngSwitchCase="'Rail'" [item]="item"></Rail>
+            <SwitchBoard *ngSwitchCase="'SwitchBoard'" [item]="item"></SwitchBoard>
             <div *ngSwitchDefault>
                 <div class="row full"><FieldDeviceTypeInfo [name]="'type'" [value]="[translation.translate('OBJECT.'+item.constructor.name.toUpperCase())]"></FieldDeviceTypeInfo></div>
                 <div class="row full"><FieldText [name]="'name'" [(model)]="item.name"></FieldText></div>
