@@ -92,6 +92,7 @@ export class AppComponent extends Translation implements OnInit {
         { id: 'ADD', icon: 'plus', disabled: true },
         { id: 'DELETE', icon: 'trash', disabled: true },
     ];
+    private toolbar_button_map: any = {};
 
     constructor(
         private switchboard_service: SwitchBoardService,
@@ -112,6 +113,9 @@ export class AppComponent extends Translation implements OnInit {
         this.translation.init();
 
         this.ui.undo_queue = this.undo_queue;
+
+        let that = this;
+        this.toolbar_buttons.forEach((button) => that.toolbar_button_map[button.id] = button);
     }
 
     loadSwitchBoard(): void {
@@ -175,16 +179,16 @@ export class AppComponent extends Translation implements OnInit {
         }
 
         if (this.ui.undo_queue){
-            this.toolbar_buttons[2].disabled = (this.ui.undo_queue.undo_size() <= 0);
-            this.toolbar_buttons[3].disabled = (this.ui.undo_queue.redo_size() <= 0);
+            this.toolbar_button_map.UNDO.disabled = (this.ui.undo_queue.undo_size() <= 0);
+            this.toolbar_button_map.REDO.disabled = (this.ui.undo_queue.redo_size() <= 0);
         }
 
         if (this.ui.selected !== undefined){
-            this.toolbar_buttons[4].disabled = !(this.ui.selected instanceof ControlGroup);
-            this.toolbar_buttons[5].disabled = (this.ui.selected instanceof SwitchBoard);
+            this.toolbar_button_map.ADD.disabled = !(this.ui.selected instanceof ControlGroup);
+            this.toolbar_button_map.DELETE.disabled = (this.ui.selected instanceof SwitchBoard);
         } else {
-            this.toolbar_buttons[4].disabled = true;
-            this.toolbar_buttons[5].disabled = true;
+            this.toolbar_button_map.ADD.disabled = true;
+            this.toolbar_button_map.DELETE.disabled = true;
         }
     }
 }
