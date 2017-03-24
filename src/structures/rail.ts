@@ -59,4 +59,7 @@ export class Rail extends ControlGroup {
         return false;
     }
 
+    get moveable(): boolean {
+        return true;
+    }
 }
