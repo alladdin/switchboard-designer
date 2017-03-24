@@ -21,6 +21,7 @@ export class ControlGroup extends Control {
         control.parent_control = this;
         control.on_dimension_change = (ctrl: Control) => this.childDimensionChange(ctrl);
         this.sortControls();
+        this.calculateDimensions();
     }
 
     removeControl(control:Control): void {
@@ -28,6 +29,7 @@ export class ControlGroup extends Control {
         control.parent_control = undefined;
         control.on_dimension_change = undefined;
         this.controls = this.controls.filter(item => (item !== control));
+        this.calculateDimensions();
     }
 
     sortControls(): void {

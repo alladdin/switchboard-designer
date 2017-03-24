@@ -117,11 +117,9 @@ export class Control {
         if (this.parent_control !== undefined){
             let old_parent = this.parent_control;
             old_parent.removeControl(this);
-            old_parent.calculateDimensions();
         }
         if (new_parent !== undefined){
             new_parent.addControl(this);
-            new_parent.calculateDimensions();
         }
     }
 

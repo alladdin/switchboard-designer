@@ -46,6 +46,9 @@ export class DINTerminalGroup extends ControlGroup {
 
             last_x += ctrl.width;
         });
+        if (last_x < 5) {
+            last_x = 5;
+        }
         if (last_x != this.width){
             this.width = last_x;
         }
