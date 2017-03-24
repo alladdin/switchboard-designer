@@ -1,0 +1,28 @@
+{
+    "label": {
+        "title": [
+            { "text": "Miniserver" }
+        ],
+        "font_size": "5.5mm",
+        "top": 57,
+        "left": 150,
+        "text_anchor": "end",
+        "color": "rgb(131, 184, 25)"
+    },
+    "name": {
+        "top": 37,
+        "left": 3
+    },
+    "width": 156,
+    "symbol": {
+        "width": 156,
+        "height": 110,
+        "y_origin": 55,
+        "file": "DEVICE/LOXONE/miniserver.svg"
+    },
+    "params": {},
+    "title": {
+        "en": "Miniserver",
+        "cs": "Miniserver"
+    }
+}

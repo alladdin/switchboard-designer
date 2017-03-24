@@ -33,6 +33,7 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
                 [attr.x]="device_type.name.left + 'mm'"
                 [attr.y]="(device_type.name.top + getSymbolTop()) + 'mm'"
                 [attr.text-anchor]="device_type.name.text_anchor"
+                [attr.fill]="device_type.name.color ? device_type.name.color : 'black'"
             >
                 {{item.name}}
             </svg:text>

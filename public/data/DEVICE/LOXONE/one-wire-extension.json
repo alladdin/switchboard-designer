@@ -1,0 +1,29 @@
+{
+    "label": {
+        "title": [
+            { "text": "1-Wire" }
+        ],
+        "font_size": "4.5mm",
+        "top": 56.5,
+        "left": 33.5,
+        "text_anchor": "end",
+        "color": "rgb(255, 255, 255)"
+    },
+    "name": {
+        "top": 37,
+        "left": 1,
+        "color": "rgb(255, 255, 255)"
+    },
+    "width": 35.5,
+    "symbol": {
+        "width": 35.5,
+        "height": 110,
+        "y_origin": 55,
+        "file": "DEVICE/LOXONE/one-wire-extension.svg"
+    },
+    "params": {},
+    "title": {
+        "en": "One-Wire Extension",
+        "cs": "One-Wire Extension"
+    }
+}

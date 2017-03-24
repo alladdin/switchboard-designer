@@ -32,14 +32,19 @@ import { ParamsInterpolatePipe } from './params_interpolate.pipe';
             <svg:text ngClass="name"
                 [attr.x]="device_type.name.left + 'mm'"
                 [attr.y]="(device_type.name.top + getSymbolTop()) + 'mm'"
+                [attr.text-anchor]="device_type.name.text_anchor"
+                [attr.fill]="device_type.name.color ? device_type.name.color : 'black'"
             >
                 {{item.name}}
             </svg:text>
             <svg:text ValueTitleSVG
+                *ngIf="device_type.label"
                 ngClass="value"
                 [attr.x]="device_type.label.left + 'mm'"
                 [attr.y]="(device_type.label.top + getSymbolTop()) + 'mm'"
                 [attr.font-size]="device_type.label.font_size"
+                [attr.fill]="device_type.label.color ? device_type.label.color : 'black'"
+                [attr.text-anchor]="device_type.label.text_anchor"
                 [texts]="device_type.label.title"
                 [params]="item.device_params"
             ></svg:text>

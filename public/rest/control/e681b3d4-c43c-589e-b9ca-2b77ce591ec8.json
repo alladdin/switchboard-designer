@@ -1,0 +1,12 @@
+{
+    "type": "DINDevice",
+    "name": "Miniserver1",
+    "x": 50,
+    "device_type": [
+        "DEVICE",
+        "LOXONE",
+        "miniserver"
+    ],
+    "id": "e681b3d4-c43c-589e-b9ca-2b77ce591ec8"
+}
+

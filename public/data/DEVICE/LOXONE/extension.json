@@ -1,0 +1,30 @@
+{
+    "label": {
+        "title": [
+            { "text": "Extension" }
+        ],
+        "font_size": "5.5mm",
+        "top": 57,
+        "left": 150,
+        "text_anchor": "end",
+        "color": "rgb(255, 255, 255)"
+    },
+    "name": {
+        "top": 37,
+        "left": 3,
+        "color": "rgb(255, 255, 255)"
+    },
+    "width": 156,
+    "symbol": {
+        "width": 156,
+        "height": 110,
+        "y_origin": 55,
+        "file": "DEVICE/LOXONE/extension.svg"
+    },
+    "params": {},
+    "title": {
+        "en": "Extension",
+        "cs": "Extension"
+    }
+}
+
