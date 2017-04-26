@@ -2,10 +2,10 @@ import { Component, Input } from '@angular/core';
 
 @Component({
     selector: 'ValueTitle',
-    template: '<template [ngIf]="text" *ngFor="let text of texts">'
-                + '<template [ngIf]="!text.tag">{{text.text | paramsInterpolate:params}}</template>'
+    template: '<ng-template [ngIf]="text" *ngFor="let text of texts">'
+                + '<ng-template [ngIf]="!text.tag">{{text.text | paramsInterpolate:params}}</ng-template>'
                 + '<strong [style.font-size]="text.font_size" *ngIf="text.tag === \'strong\'">{{text.text | paramsInterpolate:params}}</strong>'
-                + '</template>'
+                + '</ng-template>'
 })
 
 export class ValueTitleComponent {

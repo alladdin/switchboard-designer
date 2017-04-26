@@ -1,5 +1,6 @@
 import { NgModule }      from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule }    from '@angular/http';
 import { TranslationModule } from 'angular-l10n';
 import { MaterialModule } from '@angular/material';
@@ -22,6 +23,7 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
 @NgModule({
     imports: [
         BrowserModule,
+        BrowserAnimationsModule,
         HttpModule,
         DesignerModule,
         FormsModule,

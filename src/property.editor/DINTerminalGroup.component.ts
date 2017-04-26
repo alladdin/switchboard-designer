@@ -91,7 +91,10 @@ export class DINTerminalGroupComponent extends ControlBase {
     ngOnChanges(changes: SimpleChanges): void {
         let chng = changes['item'];
         if (chng){
-            if (chng.currentValue.id !== chng.previousValue.id){
+            if (
+                (chng.previousValue === undefined)
+                || (chng.currentValue.id !== chng.previousValue.id)
+            ){
                 this.available_parents = this.getAvailableParents();
                 this._parent_item = this.item.parent_control.id;
             }
