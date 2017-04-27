@@ -18,78 +18,78 @@
   <g transform="translate(38, 2)">
     <rect x="0" y="0" width="25" height="9" style="fill: rgb(64, 192, 128); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 0.5 h 25 m 0 6 h -25" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
   <g transform="translate(63, 2)">
     <rect x="0" y="0" width="25" height="9" style="fill: rgb(64, 192, 128); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 0.5 h 25 m 0 6 h -25" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
   <g transform="translate(88, 2)">
     <rect x="0" y="0" width="30" height="9" style="fill: rgb(245, 148, 28); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 0.5 h 30 m 0 6 h -30" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="27.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="27.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
   <g transform="translate(118, 2)">
     <rect x="0" y="0" width="25" height="9" style="fill: rgb(32, 32, 32); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 0.5 h 25 m 0 6 h -25" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="12.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="17.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="22.5" cy="3.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
 
   <g transform="translate(23, 99)">
     <rect x="0" y="0" width="20" height="9" style="fill: rgb(64, 192, 128); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 2.5 h 20 m 0 6 h -20" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="12.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="17.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="12.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="17.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
   <g transform="translate(43, 99)">
     <rect x="0" y="0" width="10" height="9" style="fill: rgb(38, 118, 206); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 2.5 h 10 m 0 6 h -10" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
   <g transform="translate(63, 99)">
     <rect x="0" y="0" width="40" height="9" style="fill: rgb(216, 32, 32); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 2.5 h 40 m 0 6 h -40" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="12.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="17.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="22.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="27.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="32.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="37.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="12.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="17.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="22.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="27.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="32.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="37.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
   <g transform="translate(103, 99)">
     <rect x="0" y="0" width="40" height="9" style="fill: rgb(216, 32, 32); stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
     <path d="M 0 2.5 h 40 m 0 6 h -40" style="fill: none; stroke:rgb(0, 0, 0); stroke-width: 0.4;"/>
-    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="12.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="17.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="22.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="27.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="32.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
-    <ellipse cx="37.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: rgb(111, 111, 111);"/>
+    <ellipse cx="2.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="7.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="12.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="17.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="22.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="27.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="32.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
+    <ellipse cx="37.5" cy="5.5" rx="2" ry="2" style="stroke: rgb(0, 0, 0); stroke-width: 0.4; fill: url(#screw-head-slot-pattern);"/>
   </g>
 
   <rect class="outline" y="11" width="156" height="88" style="stroke: rgb(0, 0, 0); stroke-width: 0.8; fill: none;"/>

@@ -20,6 +20,7 @@ import { SwitchBoard } from '../structures/all';
                     [inlineSVG]="'images/din-rail-symbol.svg'"
                 ></svg:pattern>
             </svg:defs>
+            <svg [inlineSVG]="'images/screw-heads.svg'"></svg>
             <svg:g SwitchBoard *ngIf="switchboard" [ui]="ui" [item]="switchboard"
                 [attr.transform]="'scale('+getZoom()+')'"
             ></svg:g>
