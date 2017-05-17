@@ -29,7 +29,7 @@ import { PropertyEditorModule } from './property.editor/property.editor.module';
         FormsModule,
         PropertyEditorModule,
         TranslationModule.forRoot(),
-        MaterialModule.forRoot()
+        MaterialModule
     ],
     declarations: [
         AppComponent,

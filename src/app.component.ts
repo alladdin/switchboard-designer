@@ -102,14 +102,14 @@ export class AppComponent extends Translation implements OnInit {
     ) {
         super(translation);
 
-        this.locale.AddConfiguration()
-            .AddLanguages(Object.keys(this.supported_languages))
-            .SetCookieExpiration(30)
-            .DefineLanguage('en');
+        this.locale.addConfiguration()
+            .addLanguages(Object.keys(this.supported_languages))
+            .setCookieExpiration(30)
+            .defineLanguage('en');
         this.locale.init();
 
-        this.translation.AddConfiguration()
-            .AddProvider('/locale/');
+        this.translation.addConfiguration()
+            .addProvider('/locale/');
         this.translation.init();
 
         this.ui.undo_queue = this.undo_queue;
