@@ -5,15 +5,17 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
     styles: [`
     `],
     template: `
-        <button md-icon-button (click)="zoomIn($event)"><i class="fa fa-search-plus"></i></button>
+        <div class="toolbar-slider">
+        <button md-raised-button (click)="zoomIn($event)" ngClass="toolbar-button"><i class="fa fa-search-plus"></i></button>
         <md-slider
             [(ngModel)]="model"
             [min]="min"
             [max]="max"
             [step]="step"
-            invert="1"
+            vertical="1"
         ></md-slider>
-        <button md-icon-button (click)="zoomOut($event)"><i class="fa fa-search-minus"></i></button>
+        <button md-raised-button (click)="zoomOut($event)" ngClass="toolbar-button"><i class="fa fa-search-minus"></i></button>
+        </div>
     `
 })
 

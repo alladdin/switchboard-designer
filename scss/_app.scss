@@ -61,6 +61,38 @@ $ui-border-color: #cccccc;
             &.side-toolbar {
                 flex: 0 0 (36px+2*8px+1px);
                 border-left: 1px solid $ui-border-color;
+
+                .toolbar-button {
+                    margin: 8px 0 0 8px;
+                    min-width: 36px;
+                    width: 36px;
+                    height: 36px;
+                    line-height: 36px;
+                    padding-left: 0;
+                    padding-right: 0;
+                    float: left;
+                }
+
+                .toolbar-slider {
+                    width: 36px;
+                    margin: 8px 0 0 8px;
+                    position: relative;
+                    float: left;
+                    .mat-slider-vertical {
+                        width: 36px;
+                        margin: 8px 0;
+                        height: 80px;
+                        min-height: 80px;
+
+                        .mat-slider-wrapper {
+                            left: 17px;
+                        }
+                    }
+
+                    .toolbar-button {
+                        margin: 0;
+                    }
+                }
             }
 
             &.main {

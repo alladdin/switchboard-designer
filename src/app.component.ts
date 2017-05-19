@@ -32,11 +32,6 @@ import { DesignerActionMove } from './designer/action/move';
                 <span>{{ 'APP.TITLE' | translate:lang }}</span>
                 <span class="app-toolbar-filler"></span>
                 <LanguageSelector [supported_languages]="supported_languages"></LanguageSelector>
-                <ZoomSlider
-                    [(model)]="ui.zoom.current"
-                    [min]="ui.zoom.min"
-                    [max]="ui.zoom.max"
-                ></ZoomSlider>
             </md-toolbar>
             <div class="app-panels">
                 <LoadingBar></LoadingBar>
@@ -49,6 +44,11 @@ import { DesignerActionMove } from './designer/action/move';
                 </div>
                 <div class="side-toolbar app-panel">
                     <ToolbarGroup [buttons]="toolbar_buttons" [model]="ui.tool" (buttonClick)="onToolBarClick($event)"></ToolbarGroup>
+                    <ZoomSlider
+                        [(model)]="ui.zoom.current"
+                        [min]="ui.zoom.min"
+                        [max]="ui.zoom.max"
+                    ></ZoomSlider>
                 </div>
             </div>
             <div ngClass="app-status-bar">

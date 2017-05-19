@@ -3,16 +3,6 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 @Component({
     selector: 'ToolbarButton',
     styles: [`
-        .toolbar-button {
-            margin: 8px 0 0 8px;
-            min-width: 36px;
-            width: 36px;
-            height: 36px;
-            line-height: 36px;
-            padding-left: 0;
-            padding-right: 0;
-            float: left;
-        }
     `],
     template: `
         <button md-raised-button (click)="on_click($event)" [color]="getColor()"
